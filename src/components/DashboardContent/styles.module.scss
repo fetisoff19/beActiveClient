@@ -1,0 +1,198 @@
+@import "../App/vars";
+
+:export {
+  appColor: $primaryColor;
+}
+
+.page{
+  @include page($backgroundLightGray);
+
+  .loader{
+    width: 840px;
+    margin: 30px 0;
+  }
+
+  .container{
+    @include flexRowCenter($gap: 20px, $ai: stretch);
+
+    .stats{
+      position: sticky;
+      top: 20px;
+      width: 400px;
+      font-weight: 300;
+      padding: 30px 0;
+      background: $backgroundLight;
+      border-radius: 6px;
+      box-shadow: inset 0 0 0 1px $borderColor;
+
+      .statsContent{
+
+        h1{
+          padding: 0 30px 20px 30px;
+        }
+        .list{
+          height: 20px;
+          width: 100%;
+          ul{
+            font-weight: 600;
+            background-color: $backgroundLight;
+            color: $primaryColor;
+            margin: 1px;
+            position: absolute;
+            cursor: pointer;
+            width: calc(400px - 2px);
+            padding: 0;
+            li{
+              height: 25px;
+              line-height: 1.7;
+              list-style: none;
+              padding-left: 29px;
+            }
+            li:first-child{
+              text-decoration: underline solid 1px;
+            }
+            li:hover{
+              background-color: $primaryColor;
+              color: $backgroundLight;
+              width: 370px;
+            }
+          }
+          .open{
+            box-shadow: 0 0 1px 1px #cbcbcb;;
+          }
+        }
+        .blocks{
+          padding: 5px 30px 0 30px;
+          .block{
+            @include flexRowSpaceBetween;
+            height: 25px;
+          }
+        }
+      }
+    }
+
+
+    .workouts{
+      width: 780px;
+
+      .workout{
+        @include flexRowSpaceBetween(20px);
+
+        background: $backgroundLight;
+        border-radius: 6px;
+        box-shadow: inset 0 0 0 1px $borderColor;
+
+        margin: 20px 0;
+        padding: 30px;
+        width: 720px;
+
+
+        .workoutInfo{
+          width: 450px;
+
+          .date{
+            font-weight: 100;
+          }
+
+          .name{
+            @include mainFont($fs: 22px, $fw: 600);
+            padding: 10px 0;
+            a{
+              color: black;
+              text-decoration: none;
+              cursor: pointer;
+            }
+            :hover{
+              color: $primaryColor;
+            }
+          }
+
+
+          .indicators{
+            display: flex;
+            padding: 10px 0 20px 0;
+            .indicator:not(:last-child){
+              padding-right: 20px;
+              border-right: 1px solid $borderColor;
+            }
+            .indicator:not(:first-child){
+              padding-left: 20px;
+            }
+            .unit{
+              font-weight: 400;
+              font-size: 22px;
+            }
+            .label{
+              font-weight: 300;
+              font-size: 14px;
+            }
+          }
+
+
+          .aboutWorkout{
+            padding: 10px 0;
+
+            .note{
+              display: flex;
+              gap: 10px;
+              textarea{
+                @include mainFont;
+                @include border($color: rgba(0, 0, 0, 0));
+                resize: none;
+                overflow: hidden;
+                width: 350px;
+
+                outline: none;
+                margin-left: -2px;
+              }
+              textarea:hover{
+                cursor: pointer;
+              }
+              textarea:focus{
+                @include border;
+                cursor: text;
+              }
+              .buttons{
+                display: flex;
+                padding-top: 5px;
+                gap: 5px;
+                .ok:hover{
+                  cursor: pointer;
+                  svg{
+                    fill: $primaryColor;
+                  }
+                }
+                .close:hover{
+                  cursor: pointer;
+                  svg{
+                    fill: $deleteColor;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .plug{
+          @include flexRowCenter;
+          @include border;
+          @include mainFont($fst: italic);
+
+          box-sizing: border-box;
+
+          height: 200px;
+          width: 200px;
+        }
+      }
+
+      .smallLoader{
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+
+::-webkit-scrollbar {
+  width: 0;
+}
