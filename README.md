@@ -1,10 +1,10 @@
-# SportsApp
+# beActive
 // добавить описание
 # Getting Started
 
 First, you must copy it to your project:
 
-### `git clone https://github.com/fetisoff19/beActiveServer /<your_directory>`
+### `git clone https://github.com/fetisoff19/beActiveClient /<your_directory>`
 
 Then install the dependencies:
 
