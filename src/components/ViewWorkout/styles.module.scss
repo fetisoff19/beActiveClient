@@ -1,0 +1,308 @@
+@import "../App/vars";
+
+.page{
+  @include page;
+
+  .content{
+
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1200px 1fr;
+
+    .nextWorkout a{
+      display: flex;
+      justify-content: space-around;
+      position: sticky;
+      top: calc(50% - 20px);
+
+      cursor: default;
+      z-index: 2;
+      svg{
+        transition: all 0.2s;
+        fill: $lightGrey;
+      }
+      &:hover{
+        svg{
+          cursor: pointer ;
+          fill: $primaryColor;
+        }
+      }
+    }
+
+  }
+
+
+  .container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 720px 460px;
+    gap: 20px;
+
+    // left block with charts
+    .charts{
+      height: fit-content;
+      margin: 20px 0;
+      padding: 20px;
+      background: $backgroundLight;
+      border-radius: 8px;
+      box-shadow: inset 0 0 0 1px $borderColor;
+      .refreshValuesResetZoom{
+        @include flexRowSpaceBetween;
+        padding-bottom: 5px;
+        position: sticky;
+        top: 0;
+
+        z-index: 2;
+        background-color: rgba(255, 255, 255, 0.8);
+        .refreshValues{
+          td{
+            padding-right: 15px;
+            min-width: 50px;
+          }
+          thead {
+            font-weight: 300;
+          }
+          tbody{
+            font-weight: 400;
+            font-size: $fsXLarge;
+          }
+        }
+        .resetZoomInfo{
+          display: flex;
+          justify-content: flex-end;
+          position: relative;
+          width: 100px;
+        }
+        .resetZoom{
+          @include mainFont;
+          position: absolute;
+          top: 0;
+          right: 0;
+          padding: 5px 10px;
+
+          background: $primaryColor;
+          border-radius: 3px;
+          color: $backgroundLight;
+          cursor: pointer;
+          z-index: 1;
+          &:hover{
+            background: $primaryColorDark;
+          }
+        }
+
+        .info{
+          position: relative;
+          display: inline-block;
+          height: 20px;
+          width: 20px;
+          padding: 2px;
+          svg{
+            fill: $grey;
+          }
+          .tooltip {
+            @include border($color: $grey);
+            top: 30px;
+            left: -201px;
+
+            padding: 10px;
+            font-weight: 300;
+            position: absolute;
+            width: 200px;
+
+            background: $backgroundLight;
+            text-align: start;
+            white-space: pre-wrap;
+
+
+            opacity: 0;
+            transition: opacity 0.5s;
+            visibility: hidden;
+          }
+          &:hover{
+            cursor: help;
+            svg{
+              fill: $primaryColor;
+            }
+            .tooltip{
+              visibility: visible;
+              opacity: 1;
+            }
+          }
+        }
+      }
+      .chatsContainer{
+        width: 800px;
+      }
+    }
+
+
+    // right block with charts
+    .mapsNameStats{
+      margin: 20px 0;
+      padding: 20px;
+      background: #ffffff;
+      border-radius: 5px;
+      box-shadow: inset 0 0 0 1px $borderColor;
+
+
+      h1{
+        padding: 15px 0;
+        font-size: $fsXLarge;
+      }
+
+      .dateSportName{
+        margin-bottom: 10px;
+        .date{
+          font-weight: 300;
+        }
+        .changeName{
+          display: flex;
+          align-items: center;
+          .input{
+            outline: 2px ridge rgba(0, 0, 0, 0);
+            border: none;
+            border-radius: 2px;
+            background: transparent;
+            color: black;
+            @include mainFont($fw: 600, $fs: $fsXLarge);
+            margin-right: 5px;
+          };
+
+          .edit{
+            outline: 2px ridge rgba(45, 42, 42, 0.5);
+            background: $backgroundLightGray;
+
+          }
+
+          .button{
+            height: 20px;
+            width: 20px;
+            cursor: pointer;
+            .edit{
+              outline: none;
+              background: $backgroundLight;
+            }
+            &:hover {
+              .edit{
+                fill: #ad8f00;
+              }
+              .svg {
+                fill: $confirmColor;
+              }
+              .close{
+                cursor: pointer;
+                fill: $deleteColor;
+              }
+            }
+          }
+        }
+      }
+
+      .mainStats{
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        gap: 10px;
+        div {
+          display: grid;
+          .mainStatsUnit{
+            @include mainFont($fw: 400, $fs: $fsXLarge);
+            color: rgb(54, 54, 54);
+
+          }
+          .mainStatsLabel{
+            @include mainFont;
+          }
+        }
+      }
+
+      .maps{
+        margin-top: 10px;
+        .buttonStickyMaps{
+          @include flexRowCenter;
+          @include border($thickness: 2px, $color:  rgba(0, 0, 0, 0.3), $radius: 4px);
+
+          position: absolute;
+          height: 30px;
+          width: 30px;
+          top: 10px;
+          right: 10px;
+
+          cursor: pointer;
+          background: $backgroundLight;
+          z-index: 1000;
+        }
+        .buttonStickyMaps:hover{
+          background: $backgroundLightGray;
+        }
+      }
+
+
+      .stats{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 10px;
+
+        .statsMainLabel{
+          @include mainFont($fw: 400);
+          border-bottom: 1px solid $primaryColor;
+          margin-bottom: 5px;
+        }
+        .statsBlock{
+          padding: 2px 0;
+          .statsUnit{
+            @include mainFont($fs: $fsMedium);
+          }
+          .statsLabel{
+            @include mainFont($fw: 600, $fs: $fsXSmall);
+            color: rgb(54, 54, 54);
+            line-height: 1.5;
+            text-transform: uppercase;
+          }
+        }
+
+      }
+      .note{
+        @include flexRowSpaceBetween(10px);
+
+        textarea{
+          @include mainFont;
+          @include border($color: rgba(0, 0, 0, 0));
+          margin-left: -2px;
+          resize: none;
+          overflow: hidden;
+          outline: none;
+          width: 440px;
+          &:hover{
+            cursor: pointer;
+          }
+          &:focus{
+            border-color: $borderColor;
+            cursor: text;
+          }
+        }
+
+        .buttons{
+          @include flexRowSpaceBetween(5px);
+          padding-top: 5px;
+          .ok:hover{
+            cursor: pointer;
+            svg{
+              fill: $confirmColor;
+            }
+          }
+          .close:hover{
+            cursor: pointer;
+            svg{
+              fill: $deleteColor;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+
+
+}
+
