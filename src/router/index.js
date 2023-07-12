@@ -16,8 +16,9 @@ export let privateRoutes = [
   {path: 'stats', element: Stats},
   {path: 'about', element: About},
   {path: 'settings', element: SettingsPage},
-  {path: '/sports-app', navigate: true,},
-  {path: '/login', navigate: true,},
+  {path: 'sports-app', navigate: true,},
+  {path: 'login', navigate: true,},
+  {path: '/beActiveClient', navigate: true,},    //убрать, специально для гитхаба
   {path: "*", element: PageNotFound},
 ];
 
@@ -26,5 +27,6 @@ export let publicRoutes = [
   {path: '/login', element: Login},
   {path: '/about', element: About},
   {path: '/sports-app', navigate: true,},
+  {path: '/beActiveClient', navigate: true,},  //убрать, специально для гитхаба
   {path: "*", element: Login},
 ];
