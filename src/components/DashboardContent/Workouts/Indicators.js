@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from "../styles.module.scss";
-import {convertDistance, getHourMinSec} from "../../../AppService/functionsDate&Values.js";
-import {dict, userLang} from "../../../config/config.js";
+import {convertDistance, getHourMinSec} from "../../../utils/helpers/functionsDate&Values.helpers.js";
+import {dict, userLang} from "../../../utils/constants/config.js";
 
 const Indicators = ({data}) => {
 

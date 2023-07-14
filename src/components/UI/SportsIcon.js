@@ -1,11 +1,5 @@
 import React from 'react';
-import Cycling from "./svgComponents/Sports/Cycling.js";
-import Running from "./svgComponents/Sports/Running.js";
-import Walking from "./svgComponents/Sports/Walking.js";
-import Hiking from "./svgComponents/Sports/Hiking.js";
-import Fitness from "./svgComponents/Sports/Fitness.js";
-import Other from "./svgComponents/Sports/Other.js";
-import Training from "./svgComponents/Sports/Training";
+import { Cycling, Fitness, Hiking, Other, Running, Training, Walking} from '@components/UI/svgComponents/Sports'
 
 const SportsIcon = ({sport, fill, height, width, className}) => {
   const sportIcon =

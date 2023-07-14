@@ -2,16 +2,15 @@ import React, {useMemo, useRef} from 'react';
 import {MapContainer, Marker, Polyline, TileLayer} from 'react-leaflet'
 import Leaflet from "leaflet";
 import "leaflet/dist/leaflet.css";
-import start from '../../Assets/icons/start.svg';
-import stop from '../../Assets/icons/stop.svg';
-import pizza from '../../Assets/icons/pizza.svg';
-import donut from '../../Assets/icons/donut.svg';
-import now from '../../Assets/icons/now.svg';
-import iceCream from '../../Assets/icons/iceCream.svg';
-import banana from '../../Assets/icons/banana.svg';
-import watermelon from '../../Assets/icons/watermelon.svg';
-import coffee from '../../Assets/icons/coffee.svg';
-import energyBottle from '../../Assets/icons/energyBottle.svg';
+import start from '@assets/icons/start.svg';
+import stop from '@assets/icons/stop.svg';
+import pizza from '@assets/icons/pizza.svg';
+import donut from '@assets/icons/donut.svg';
+import now from '@assets/icons/now.svg';
+import banana from '@assets/icons/banana.svg';
+import watermelon from '@assets/icons/watermelon.svg';
+import coffee from '@assets/icons/coffee.svg';
+import energyBottle from '@assets/icons/energyBottle.svg';
 
 function NewMarker({position, className, icon, iconSize, iconAnchor}) {
   const newIcon = new Leaflet.Icon({
@@ -60,8 +59,6 @@ const Maps = (props) => {
   if (polylinePoints.length === 0) return;
   const startCoordinates = polylinePoints[0];
   const endCoordinates = polylinePoints.at(-1);
-  const startZoom = props.startZoom || 7;
-  const maxZoom = props.maxZoom || 19;
   const polylineStyle = props.polylineStyle || {color: 'blue'}
   const polylinePowerCurveStyle = props.polylinePowerCurveStyle || {color: 'red'}
   let bounds = polylinePoints.getBounds ? polylinePoints.getBounds() : L.latLngBounds(polylinePoints);
@@ -69,8 +66,6 @@ const Maps = (props) => {
   return (
     <MapContainer
       style={props.style || {height: 300, width: 300}}
-      // zoom={startZoom}
-      // maxZoom={maxZoom}
       scrollWheelZoom={props.scrollWheelZoom}
       bounds={[bounds.getSouthWest(), bounds.getNorthEast()]}
       boundsOptions={{padding: [10, 10]}}

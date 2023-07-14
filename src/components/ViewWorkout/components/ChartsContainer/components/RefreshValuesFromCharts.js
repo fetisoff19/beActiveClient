@@ -1,6 +1,6 @@
 import React from 'react';
-import {getHourMinSec, getMinSec} from "../../../../../AppService/functionsDate&Values.js";
-import {dict, userLang, chartsConfig} from "../../../../../config/config.js";
+import {getHourMinSec, getMinSec} from "@helpers/functionsDate&Values.helpers";
+import {dict, userLang, chartsConfig} from "@constants/config";
 import {useContext} from "react";
 import ViewWorkoutContext from "../../../context/Context.js";
 import styles from "../../../styles.module.scss";

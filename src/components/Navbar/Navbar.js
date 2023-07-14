@@ -1,23 +1,26 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
-import {dict} from "../../config/config";
+import {dict} from "@constants/config";
 import {useDispatch, useSelector} from "react-redux";
-import {logout} from "../../store/auth/auth.slice.js";
+import {logout} from "@store/auth/auth.slice";
 
 const Navbar = () => {
   const dispatch = useDispatch()
   const isAuth = useSelector(state => state.user.isAuth)
   const language = useSelector(state => state.settings.language)
 
+
   const logoutHandlerClick = () => {
     dispatch(logout())
   }
+
+
 
   const logo =
     <NavLink
       to={'/'}
       className={'logo'}>
-      beActive
+      {'beActive'}
     </NavLink>
 
   const about =
@@ -68,6 +71,7 @@ const Navbar = () => {
           <a onClick={logoutHandlerClick}>
             {dict.title.out[language]}
           </a>
+
         </div>
       </header>
     )

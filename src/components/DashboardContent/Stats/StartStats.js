@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {dict, userLang} from "../../../config/config.js";
+import {dict, userLang} from "@constants/config";
 import Block from "./Block";
-import {convertDistance, convertPace, convertSpeed, getHourMinSec} from "../../../AppService/functionsDate&Values";
+import {convertDistance, convertPace, convertSpeed, getHourMinSec} from "../../../utils/helpers/functionsDate&Values.helpers.js";
 import {useSelector} from "react-redux";
 import styles from "../styles.module.scss";
 

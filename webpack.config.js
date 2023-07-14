@@ -82,5 +82,13 @@ module.exports = {
   },
   resolve: {
     extensions: ["", ".js", ".jsx", '.png', '.jpg', '.jpeg', '.svg', '.gif', ".es6", ".scss", ".ttf"],  //
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+      '@assets': path.resolve(__dirname, 'src/assets'),
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@constants': path.resolve(__dirname, 'src/utils/constants'),
+      '@helpers': path.resolve(__dirname, 'src/utils/helpers'),
+      '@store': path.resolve(__dirname, 'src/store'),
+    }
   },
 };

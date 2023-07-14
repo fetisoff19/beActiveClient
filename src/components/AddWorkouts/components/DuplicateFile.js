@@ -1,5 +1,5 @@
 import React from 'react';
-import {dict, userLang} from "../../../config/config";
+import {dict, userLang} from "@constants/config";
 import {Link} from "react-router-dom";
 
 const DuplicateFile = ({data, className}) => {

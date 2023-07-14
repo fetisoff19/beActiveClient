@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import styles from "../styles.module.scss";
-import {dict, statsConfig, userLang} from "../../../config/config";
+import {dict, statsConfig, userLang} from "@constants/config";
 import Highcharts from "highcharts";
-import {getDataForStatsChart} from "../service/stats.service.js";
+import {getDataForStatsChart} from "@helpers/stats.helpers";
 import Plus from "../../UI/svgComponents/Plus";
 import Minus from "../../UI/svgComponents/Minus";
 

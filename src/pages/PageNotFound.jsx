@@ -1,5 +1,5 @@
 import React from 'react';
-import {dict, userLang} from "../config/config";
+import {dict, userLang} from "../utils/constants/config.js";
 import {Link} from "react-router-dom";
 
 const PageNotFound = () => {

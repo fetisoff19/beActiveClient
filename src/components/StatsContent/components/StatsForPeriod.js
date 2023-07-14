@@ -1,12 +1,12 @@
 import React, {useEffect, useMemo, useState} from 'react';
 import {useSelector} from "react-redux";
-import WorkoutsNotFound from "../../WorkoutsList/Components/WorkoutsNotFound";
+import WorkoutsNotFound from "../../WorkoutsList/components/WorkoutsNotFound";
 import StatsCharts from "./StatsCharts";
-import {dict, statsConfig, userLang} from "../../../config/config";
-import {calcDate, dayInMs,} from "../../../AppService/functionsDate&Values";
+import {dict, statsConfig, userLang} from "@constants/config";
+import {calcDate, dayInMs,} from "@helpers/functionsDate&Values.helpers";
 import IndicatorsList from "./IndicatorsList";
 import styles from '../styles.module.scss'
-import {getDataForStatsChart} from "../service/stats.service.js";
+import {getDataForStatsChart} from "@helpers/stats.helpers";
 import Highcharts from 'highcharts'
 import AddSeriesList from "./AddSeriesList";
 

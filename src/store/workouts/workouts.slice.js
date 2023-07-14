@@ -5,6 +5,7 @@ import {createSlice} from "@reduxjs/toolkit";
   initialState: {
     workouts: null,
     allWorkouts: [],
+    filesToUpload: [],
     uploadedFiles: [],
     filesToDelete: [],
     polylines: [],
@@ -43,6 +44,9 @@ import {createSlice} from "@reduxjs/toolkit";
     deleteWorkoutAction(state, action) {
       state.workouts = state.workouts.filter(workout => workout._id !== action.payload)
       state.allWorkouts = state.allWorkouts.filter(workout => workout[2] !== action.payload)
+    },
+    addFilesToUpload(state, action) {
+      state.filesToUpload = action.payload
     },
     addWorkout(state, action) {
       state.uploadedFiles = [...state.uploadedFiles, action.payload]
@@ -86,4 +90,5 @@ export const {
   resetStateUploadedFiles,
   setNumberOfFiles,
   setStats,
+  addFilesToUpload,
 } = workoutsSlice.actions;

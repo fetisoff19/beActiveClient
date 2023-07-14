@@ -1,5 +1,5 @@
 import React from 'react';
-import {dict, userLang} from "../../config/config";
+import {dict, userLang} from "@constants/config";
 import SportsIcon from "./SportsIcon.js";
 import {useMemo} from "react";
 import {useSelector} from "react-redux";

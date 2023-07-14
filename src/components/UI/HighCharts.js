@@ -2,32 +2,22 @@ import React, {useEffect, useRef} from 'react';
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import Exporting from 'highcharts/modules/exporting';
-import {getMinSec} from "../../AppService/functionsDate&Values.js";
-import {dict, userLang, chartsConfig} from "../../config/config.js";
+import {getMinSec} from "@helpers/functionsDate&Values.helpers";
+import {dict, userLang, chartsConfig} from "@constants/config";
 
 Exporting(Highcharts);
 
-const Charts = ({name, data,
-  k,
+const Charts = ({
+    setLoaded,
+    name, data, k,
+    name2, data2, addPolylinePowerCurve,
+    xAxis, minX, maxX,
 
+    mouseOver, mouseOut, selection,
 
-                  addPolylinePowerCurve,
-
-                  selection,
-  setLoaded,
-                  xAxis,
-  exporting,
-  tooltip,
-                  mouseOver,
-                  mouseOut,
-                  style,
-                  name2,
-                  data2,
-                  credits,
-                  animation,
-                  minX, maxX,
-                  type
-                }) => {
+    style, type, animation,
+    tooltip, exporting, credits,
+  }) => {
 
   useEffect(() => {
     if(name === 'powerCurve')
@@ -101,54 +91,12 @@ const Charts = ({name, data,
         // data2
         //   ? {x: - 1, y: 0,} :
           {x: 5000, y: 1000,},
-        // theme: {
-          // backgroundColor: chartsConfig[name]?.reversed ? chartsConfig[name].lineColor : 'white' ,
-          //   stroke: 'silver',
-          //   states: {
-          //   hover: {
-          //     fill: config[name].themeColor,
-          //       style: {
-          //       display: 'none',
-          //         color: config[name].themeLightBG,
-          //     }
-          //   }
-          // }
-        // }
       },
       panning: true,
       panKey: 'shift',
       events: {
         selection: selection || null,
         load: setLoaded || null,
-        // render: function() {
-        //   let chart = this;
-        //
-        //   chart.renderer
-        //     .button("<<", 620, 40, () => refreshPosition (true, chart))
-        //     .attr({
-        //       zIndex: 3
-        //     })
-        //     .add();
-        //   chart.renderer
-        //     .button(">>", 660, 40, () => refreshPosition (false, chart))
-        //     .attr({
-        //       zIndex: 3
-        //     })
-        //     .add();
-        //   chart.renderer
-        //     .button("-", 620, 80, () => zoomOut(chart))
-        //     .attr({
-        //       zIndex: 3
-        //     })
-        //     .add();
-        //   chart.renderer
-        //     .button("+", 660, 80, () => zoomIn(chart))
-        //     .attr({
-        //       zIndex: 3
-        //     })
-        //     .add();
-        //
-        // }
       },
     },
     title: {
@@ -166,9 +114,7 @@ const Charts = ({name, data,
       enabled: false,
     },
     xAxis: xAxis || {
-      // opposite: true,
       tickWidth: 0,
-      // minorTickPosition: 'inside',
       showFirstLabel: false,
       labels: {
         enabled: true,
@@ -220,8 +166,6 @@ const Charts = ({name, data,
       series: {
         marker: {
           fillColor: chartsConfig[name].themeColor,
-          // lineWidth: 1,
-          // lineColor: 'black' // inherit from series
         },
         allowPointSelect: animation,
         states: {
@@ -243,31 +187,8 @@ const Charts = ({name, data,
     tooltip: {
       enabled: tooltip || false,
       formatter: chartsConfig[name].formatter ? function (){
-        // const date = this.color !== chartsConfig[name].lineColor
-        //   ? powerCurveAllTimeMap.get(this.x).timestamp.toLocaleDateString() : null
         return chartsConfig[name].formatter(this.x, this.y)
-       //  const date = this.color !== chartsConfig[name].lineColor
-       //    ? powerCurveAllTimeMap.get(this.x).timestamp.toLocaleDateString() : null;
-       //  const id = this.color !== chartsConfig[name].lineColor
-       //    ? powerCurveAllTimeMap.get(this.x).id : null
-       //
-       //  return `<span>
-       //  {chartsConfig[name].formatter(this.x, this.y)}
-       //  <a href={'/workouts/' + id}>{date}</a>
-       // </span>`
-        // return (<span>{chartsConfig[name].formatter(this.x, this.y)}
-        //   <Navigate to={'/workouts/' + id}>{date}</Navigate>
-        // </span>)
       }  : null,
-        // backgroundColor: {
-        // linearGradient: [0, 0, 0, 60],
-        //   stops: [
-      //     [0, '#FFFFFF'],
-      //     [1, '#E0E0E0']
-      //   ]
-      // },
-      // borderWidth: 1,
-      //   borderColor: '#AAA'
     },
     navigation: {
       buttonOptions: {
@@ -277,7 +198,6 @@ const Charts = ({name, data,
     },
     exporting: {
       enabled: exporting || true,
-      // enabled: false,
       buttons: {
         contextButton: {
           symbolStrokeWidth: 2,
@@ -288,6 +208,7 @@ const Charts = ({name, data,
       },
     },
   }
+
   return (
     <div key={Date.now()} className={name}>
       <HighchartsReact

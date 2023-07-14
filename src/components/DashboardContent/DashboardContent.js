@@ -1,12 +1,12 @@
 import React, {useRef, useState} from 'react';
 import StartStats from "./Stats/StartStats.js";
 import Workout from "./Workouts/Workout.js";
-import useScroll from "../../hooks/useScroll";
+import useScroll from "../../utils/hooks/useScroll";
 import styles from './styles.module.scss';
 import AppLoader from "../Loaders/AppLoader";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {getWorkouts} from "../../store/workouts/workouts.actions.js";
+import {getWorkouts} from "@store/workouts/workouts.actions";
 import ThreeDotsLoader from "../Loaders/ThreeDotsLoader";
 
 const DashboardContent = () => {

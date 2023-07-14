@@ -1,5 +1,4 @@
 import React from 'react';
-import {dict, userLang} from "../../../config/config";
 
 const NonValidateFile = ({name, text, className}) => {
   return (

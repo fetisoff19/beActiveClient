@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {demoUser, dict, userLang} from "../../config/config";
+import {demoUser, dict, userLang} from "@constants/config";
 import styles from './styles.module.scss'
 import {useDispatch, useSelector} from "react-redux";
 import Input from "../UI/Input";
-import {login, registration} from "../../store/auth/auth.actions.js";
+import {login, registration} from "@store/auth/auth.actions";
 import ModalTransparent from "../UI/ModalTransparent.js";
 import Button from "../UI/Button";
 

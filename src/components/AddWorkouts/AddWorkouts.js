@@ -1,11 +1,11 @@
 import React, {useEffect, useRef, useState} from 'react';
 import styles from './styles.module.scss'
 import FilesList from "./components/FilesList";
-import {dict, userLang} from "../../config/config";
+import {dict, userLang} from "@constants/config";
 import {useDispatch, useSelector} from "react-redux";
-import {uploadWorkouts} from "../../store/workouts/workouts.actions.js";
-import {resetStateUploadedFiles} from "../../store/workouts/workouts.slice.js";
-import {auth} from "../../store/auth/auth.actions.js";
+import {uploadWorkouts} from "@store/workouts/workouts.actions";
+import {addFilesToUpload, resetStateUploadedFiles} from "@store/workouts/workouts.slice";
+import {auth} from "@store/auth/auth.actions";
 
 
 export default function AddWorkouts() {
@@ -56,14 +56,19 @@ export default function AddWorkouts() {
     if (files?.length) {
       setButtonClick(true)
       dispatch(uploadWorkouts(files))
+      dispatch(addFilesToUpload(files))
     }
   }
 
   useEffect(() => {
-    if(uploadedFiles.length && files.length === uploadedFiles.length) {
-      dispatch(auth())
+    return () => {
+      if(uploadedFiles.length && files.length === uploadedFiles.length) {
+        dispatch(auth())
+        dispatch(resetStateUploadedFiles());
+      }
     }
-  })
+
+  }, [])
 
   return (
     <div className={styles.page}>

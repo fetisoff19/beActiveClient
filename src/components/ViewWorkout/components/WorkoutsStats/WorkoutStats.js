@@ -1,5 +1,5 @@
 import React from 'react';
-import {dict, userLang, statsFields} from "../../../../config/config";
+import {dict, userLang, statsFields} from "@constants/config";
 
 const WorkoutStats = ({data, styles}) => {
 

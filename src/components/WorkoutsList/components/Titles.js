@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
 import styles from "../styles.modules.scss";
-import {dict, userLang} from "../../../config/config";
+import {dict, userLang} from "@constants/config";
 import Delete from "../../UI/svgComponents/Delete";
-import Other from "../../UI/svgComponents/Sports/Other.js";
+import Other from "../../UI/svgComponents/Sports/sportsIcons/Other.js";
 import {useContext} from "react";
 import WorkoutsListContext from "../context/Context";
 

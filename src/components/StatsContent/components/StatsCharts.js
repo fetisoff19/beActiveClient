@@ -1,8 +1,8 @@
 import React from 'react';
-import Highcharts, {chart} from 'highcharts'
+import Highcharts  from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import Exporting from 'highcharts/modules/exporting';
-import {dict, statsConfig, userLang} from "../../../config/config";
+import {dict, statsConfig, userLang} from "@constants/config";
 
 
 Exporting(Highcharts);

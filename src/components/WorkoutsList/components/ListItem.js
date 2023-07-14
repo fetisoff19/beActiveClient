@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {dict, userLang} from "../../../config/config";
+import {dict, userLang} from "@constants/config";
 import BlockMetricContainer from "./BlockMetricContainer";
 import ChangeName from "../../UI/ChangeName";
 import styles from '../styles.modules'
@@ -7,8 +7,8 @@ import Delete from "../../UI/svgComponents/Delete";
 import SportsIcon from "../../UI/SportsIcon.js";
 import {useDispatch, useSelector} from "react-redux";
 import AppLoader from "../../Loaders/AppLoader";
-import {addFilesToDelete} from "../../../store/workouts/workouts.slice.js";
-import {showModal, showSmallLoader} from "../../../store/appEvents/appEvents.slice.js";
+import {addFilesToDelete} from "@store/workouts/workouts.slice";
+import {showModal, showSmallLoader} from "@store/appEvents/appEvents.slice";
 
 
 const ListItem = ({data}) => {

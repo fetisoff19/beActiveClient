@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from "../../../styles.module.scss";
-import {dict, userLang} from "../../../../../config/config.js";
+import {dict, userLang} from "@constants/config";
 import Info from "../../../../UI/svgComponents/Info.js";
 import {useContext} from "react";
 import ViewWorkoutContext from "../../../context/Context.js";
-import {resetZoom} from "../../../service/chartsServices.js";
+import {resetZoom} from "@helpers/viewWorkout.helpers";
 
 const ResetZoomAndInfo = () => {
   const {dataForCharts, zooming, setZooming} = useContext(ViewWorkoutContext)

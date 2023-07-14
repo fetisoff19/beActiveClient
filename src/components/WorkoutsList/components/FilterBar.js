@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react';
-import {dict, userLang} from "../../../config/config";
+import {dict, userLang} from "@constants/config";
 import {useSelector} from "react-redux";
 import styles from '../styles.modules.scss'
 import Input from "../../UI/Input";

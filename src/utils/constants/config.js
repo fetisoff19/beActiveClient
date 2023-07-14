@@ -4,8 +4,7 @@ import {
   convertPaceInMinute,
   convertSpeed,
   getHourMinSec
-} from "../AppService/functionsDate&Values";
-import variables from '../components/DashboardContent/styles.module.scss'
+} from "@helpers/functionsDate&Values.helpers";
 
 
 // export const API_URL = `http://localhost:80/`
@@ -213,6 +212,7 @@ export const dict = {
     avg: {ru: 'Среднее', en: 'Average'},
     noData: {ru: 'Нет активностей', en: 'No workouts'},
     photo: {ru: 'Фото:', en: 'Photo credits:'},
+    filesUploaded: {ru: 'Загружено файлов', en: 'Files uploaded'},
   },
 
   month:{

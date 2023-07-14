@@ -1,5 +1,5 @@
 import React from 'react';
-import {configMainStats, dict, userLang} from "../../../../config/config";
+import {configMainStats, dict, userLang} from "@constants/config";
 
 const MainWorkoutStats = ({data, styles}) => {
   const order = ['totalDistance', 'totalTimerTime', 'enhancedAvgSpeed', 'totalAscent', 'avgHeartRate', 'avgPower',]

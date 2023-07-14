@@ -1,13 +1,13 @@
 import React, {useEffect} from 'react';
-import ViewWorkout from "../components/ViewWorkout/ViewWorkout";
+import ViewWorkout from "@components/ViewWorkout/ViewWorkout";
 import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import PageNotFound from "./PageNotFound";
 import Error from "./Error";
-import {getChartsData, getWorkouts, getPolyline, getPowerCurve} from "../store/workouts/workouts.actions.js";
-import AppLoader from "../components/Loaders/AppLoader";
-import NoWorkouts from "../components/NoWorkouts/NoWorkouts";
-import {cursorWaitOff, hideLoader, showLoader} from "../store/appEvents/appEvents.slice.js";
+import {getChartsData, getWorkouts, getPolyline, getPowerCurve} from "@store/workouts/workouts.actions";
+import AppLoader from "@components/Loaders/AppLoader";
+import NoWorkouts from "@components/NoWorkouts/NoWorkouts";
+import {cursorWaitOff, hideLoader, showLoader} from "@store/appEvents/appEvents.slice";
 
 const View = () => {
   // компонент отвечает за получение и передачу данных в ViewWorkout

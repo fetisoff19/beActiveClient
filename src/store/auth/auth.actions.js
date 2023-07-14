@@ -1,6 +1,6 @@
 import axios from 'axios'
 import {logout, setDemo, setUser} from "./auth.slice.js";
-import {API_URL, demoUser} from "../../config/config.js";
+import {API_URL, demoUser} from "@constants/config";
 import {hideLoader, hideSmallLoader, showLoader, showSmallLoader} from "../appEvents/appEvents.slice.js";
 import {setAllWorkouts, setStats} from "../workouts/workouts.slice.js";
 
@@ -56,10 +56,10 @@ export const login = (email, password, setRequest) => {
   }
 }
 
-export const auth = () => {
+export const auth = (update = false) => {
   return async dispatch => {
     try {
-      dispatch(showLoader())
+      !update && dispatch(showLoader())
       const response = await axios.get(`${API_URL}api/auth/auth`,
         {headers:
             {Authorization:`Bearer ${localStorage.getItem('token')}`}
@@ -67,17 +67,17 @@ export const auth = () => {
       )
       dispatch(setUser(response.data.user))
       dispatch(setStats(response.data.user.stats))
-      localStorage.setItem('token', response.data.token)
+      !update && localStorage.setItem('token', response.data.token)
       dispatch(setAllWorkouts(response.data.user.workouts))
-      if(demoUser.includes(response.data.user?.email))
+      if(!update && demoUser.includes(response.data.user?.email))
         dispatch(setDemo());
 
     } catch (e) {
       console.log(e)
-      dispatch(logout())
+      !update && dispatch(logout())
     }
     finally {
-      dispatch(hideLoader())
+      !update && dispatch(hideLoader())
     }
   }
 }

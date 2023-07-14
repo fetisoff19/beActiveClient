@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Routes} from "react-router-dom";
-import {privateRoutes, publicRoutes} from "../../router";
+import {privateRoutes, publicRoutes} from "@/routes";
 import Main from "../Main/Main.jsx";
 import {Navigate} from "react-router";
 import {useSelector} from "react-redux";

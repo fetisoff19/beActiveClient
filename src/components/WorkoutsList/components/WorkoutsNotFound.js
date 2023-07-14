@@ -1,5 +1,5 @@
 import React from 'react';
-import {dict, userLang} from "../../../config/config";
+import {dict, userLang} from "@constants/config";
 import Body from "../../UI/svgComponents/Body";
 
 const WorkoutsNotFound = ({styles}) => {

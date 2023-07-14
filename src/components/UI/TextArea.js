@@ -1,8 +1,8 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {dict, userLang} from "../../config/config";
+import {dict, userLang} from "@constants/config";
 import Ok from "./svgComponents/Ok";
 import Close from "./svgComponents/Close";
-import {editWorkout} from "../../store/workouts/workouts.actions.js";
+import {editWorkout} from "@store/workouts/workouts.actions";
 import {useDispatch, useSelector} from "react-redux";
 import AppLoader from "../Loaders/AppLoader";
 

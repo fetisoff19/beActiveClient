@@ -3,7 +3,7 @@ import {useEffect} from "react";
 import {getPolyline} from "../../../store/workouts/workouts.actions.js";
 import Maps from "../../UI/Maps.js";
 import styles from "../styles.module.scss";
-import {dict, userLang} from "../../../config/config.js";
+import {dict, userLang} from "../../../utils/constants/config.js";
 import {useDispatch, useSelector} from "react-redux";
 
 const Map = ({id}) => {

@@ -16,7 +16,7 @@ const FilesList = ({files, setFiles, buttonClick, styles}) => {
               if (uploadedFiles[index].name) {
                 return (
                   <VerifiedFile
-                    ok={true} buttonClick={buttonClick}
+                    ok={true } buttonClick={buttonClick}
                     files={files} setFiles={setFiles}
                     key={index} index={index} name={item.name}
                     className={styles?.validateFiles + ' ' + styles?.file}

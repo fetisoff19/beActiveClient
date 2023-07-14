@@ -2,11 +2,11 @@ import React, {useEffect, useState} from 'react';
 import styles from './styles.modules.scss'
 import {useDispatch, useSelector} from "react-redux";
 import AppLoader from "../Loaders/AppLoader";
-import Workouts from "./Components/Workouts";
-import {getWorkouts} from "../../store/workouts/workouts.actions.js";
-import useScroll from "../../hooks/useScroll";
+import Workouts from "./components/Workouts";
+import {getWorkouts} from "@store/workouts/workouts.actions";
+import useScroll from "../../utils/hooks/useScroll";
 import {useRef} from "react";
-import FilterBarTitle from "./Components/FilterBarTitle.js";
+import FilterBarTitle from "./components/FilterBarTitle.js";
 import WorkoutsListContext from "./context/Context";
 import ModalTransparent from "../UI/ModalTransparent.js";
 

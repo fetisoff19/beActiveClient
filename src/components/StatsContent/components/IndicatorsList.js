@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styles from "../styles.module.scss";
-import {dict, userLang} from "../../../config/config";
+import {dict, userLang} from "@constants/config";
 
 const indicators = [ 'totalWorkouts', 'totalTimerTime', 'totalDistance', 'avgHeartRate', 'avgSpeed', 'enhancedAvgSpeed', 'avgPower', 'maxHeartRate',  'totalAscent',  'avgCadence', 'totalCalories']
 

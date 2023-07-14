@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "../styles.module.scss";
-import {dict, userLang} from "../../../config/config.js";
+import {dict, userLang} from "../../../utils/constants/config.js";
 import Button from "../../UI/Button";
 
 const ModalContent = ({text, functionNo, functionYes}) => {

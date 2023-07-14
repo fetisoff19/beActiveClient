@@ -12,11 +12,12 @@ import {
   addPolyline, addPowerCurve,
   addWorkout, addWorkouts,
   changeWorkoutAction,
-  deleteWorkoutAction, removeFilesToDelete, setNumberOfFiles, setOneWorkout,
+  deleteWorkoutAction, removeFilesToDelete,
+  setNumberOfFiles,
   setWorkouts
 } from "./workouts.slice.js";
 import axios from "axios";
-import {API_URL} from "../../config/config.js";
+import {API_URL} from "@constants/config";
 import {logout} from "../auth/auth.slice.js";
 import {auth} from "../auth/auth.actions.js";
 
@@ -45,12 +46,10 @@ export function uploadWorkouts(files) {
         }
       }
     }
-    let time = Date.now();
     for (const file of files) {
-      const index = files.indexOf(file);
       await upload(file)
-        .then(() => console.log(index, Date.now() - time));
     }
+    dispatch(auth())
     dispatch(cursorWaitOff())
   }
 }

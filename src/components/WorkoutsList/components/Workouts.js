@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import ListItem from "./ListItem";
 import ThreeDotsLoader from "../../Loaders/ThreeDotsLoader";
 import WorkoutsNotFound from "./WorkoutsNotFound.js";
-import {deleteOneWorkout} from "../../../store/workouts/workouts.actions.js";
+import {deleteOneWorkout} from "@store/workouts/workouts.actions";
 import styles from '../styles.modules'
 
 

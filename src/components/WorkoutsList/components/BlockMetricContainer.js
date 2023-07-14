@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {configMainStats, dict, userLang} from "../../../config/config";
+import {configMainStats, dict, userLang} from "@constants/config";
 import styles from '../styles.modules.scss'
 
 const baseOrder = ['totalDistance', 'totalTimerTime',  'enhancedAvgSpeed', 'totalAscent', 'avgHeartRate']

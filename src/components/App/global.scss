@@ -1,3 +1,4 @@
+//noinspection ALL
 @import-normalize;
 @import "../App/vars";
 
@@ -11,52 +12,52 @@
 
 @font-face {
   font-family: Logo;
-  src: url("../../Assets/fonts/Acetone");
+  src: url("../../assets/fonts/Acetone");
   font-style: normal;
   font-weight: 700;
 }
 
 @font-face {
   font-family: Main;
-  src: url("../../Assets/fonts/OpenSans-Light");
+  src: url("../../assets/fonts/OpenSans-Light");
   font-style: normal;
   font-weight: 300;
 }
 
 @font-face {
   font-family: Main;
-  src: url("../../Assets/fonts/OpenSans-LightItalic");
+  src: url("../../assets/fonts/OpenSans-LightItalic");
   font-style: italic;
   font-weight: 300;
 }
 
 @font-face {
   font-family: Main;
-  src: url("../../Assets/fonts/OpenSans-Regular");
+  src: url("../../assets/fonts/OpenSans-Regular");
   font-style: normal;
   font-weight: 400;
 }
 @font-face {
   font-family: Main;
-  src: url("../../Assets/fonts/OpenSans-Medium");
+  src: url("../../assets/fonts/OpenSans-Medium");
   font-style: normal;
   font-weight: 500;
 }
 @font-face {
   font-family: Main;
-  src: url("../../Assets/fonts/OpenSans-SemiBold");
+  src: url("../../assets/fonts/OpenSans-SemiBold");
   font-style: normal;
   font-weight: 600;
 }
 @font-face {
   font-family: Main;
-  src: url("../../Assets/fonts/OpenSans-Bold");
+  src: url("../../assets/fonts/OpenSans-Bold");
   font-style: normal;
   font-weight: 700;
 }
 @font-face {
   font-family: Main;
-  src: url("../../Assets/fonts/OpenSans-ExtraBold");
+  src: url("../../assets/fonts/OpenSans-ExtraBold");
   font-style: normal;
   font-weight: 800;
 }
@@ -239,19 +240,28 @@ header{
 .modalNotice{
   position: absolute;
   @include flexRowCenter;
-  @include border($color: #d9a7ab);
-
   left: calc(50% - 156px);
   top: 10vh;
   width: 300px;
   min-height: 30px;
   padding: 10px;
-  color: #721c24;
-  background-color: #f8d7da;
   z-index: 3;
   transition: opacity 500ms ease-out;
   opacity: 0;
 }
+
+.noRules{
+  @include border($color: #d9a7ab);
+  color: #721c24;
+  background-color: #f8d7da;
+}
+
+.uploadModal{
+  @include border($color: $primaryColor);
+  color: $primaryColorDark;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
 
 .visible{
   opacity: 1;

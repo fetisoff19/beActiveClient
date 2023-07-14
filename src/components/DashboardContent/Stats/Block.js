@@ -1,6 +1,6 @@
 import React from 'react';
 import {useSelector} from "react-redux";
-import {dict, userLang} from "../../../config/config";
+import {dict, userLang} from "@constants/config";
 import styles from "../styles.module.scss";
 
 const Block = ({elem, config}) => {

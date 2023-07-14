@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './styles.module.scss'
-import {dict, userLang} from "../../config/config";
+import {dict, userLang} from "@constants/config";
 import {useSelector} from "react-redux";
 import DateSportsFilter from "./components/DateSportsFilter";
 import ModalTransparent from "../UI/ModalTransparent";
 import {useEffect, useState} from "react";
 import AppLoader from "../Loaders/AppLoader";
-import {getDataForInputDate} from "../../AppService/functionsDate&Values";
+import {getDataForInputDate} from "@helpers/functionsDate&Values.helpers";
 
 const StatsContent = () => {
   const [firstLoad, setFirstLoad] = useState(false)

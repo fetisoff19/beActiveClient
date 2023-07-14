@@ -1,17 +1,15 @@
 import React, {useState} from 'react';
-import {dict, userLang} from "../../config/config";
+import {dict, userLang} from "@constants/config";
 import styles from './styles.module.scss'
-import Question from "../UI/svgComponents/Question";
 import {useDispatch, useSelector} from "react-redux";
-import {setFunnyMarkers, setLanguage, setSmoothing} from "../../store/settings/settings.slice.js";
-import {deleteAllWorkouts, deleteUserWorkouts} from "../../store/workouts/workouts.actions.js";
+import {setFunnyMarkers, setLanguage, setSmoothing} from "@store/settings/settings.slice";
+import {deleteAllWorkouts, deleteUserWorkouts} from "@store/workouts/workouts.actions";
 import AppLoader from "../Loaders/AppLoader";
 import ModalNotice from "../UI/ModalNotice";
-import {showModal} from "../../store/appEvents/appEvents.slice.js";
+import {showModal} from "@store/appEvents/appEvents.slice";
 import ModalTransparent from "../UI/ModalTransparent";
 import ModalContent from "./components/ModalContent.js";
 import Input from "../UI/Input";
-import Select from "../UI/Select.js";
 import Button from "../UI/Button";
 
 
@@ -112,7 +110,7 @@ const Settings = () => {
       {modal &&
         <ModalNotice
           text={dict.title.notAvailableInDemoMode[userLang]}
-          className={'modalNotice '}/>}
+          className={'noRules'}/>}
       {clickButtonDeleteAllWorkouts &&
         <ModalTransparent
           content={deleteAllWorkoutsModalContent}

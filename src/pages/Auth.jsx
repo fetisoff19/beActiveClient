@@ -2,10 +2,10 @@ import React from 'react';
 import Authorization from "../components/Authorization/Authorization";
 
 
-const Login = () => {
+const Auth = () => {
   return (
     <Authorization/>
   )
 };
 
-export default Login;
+export default Auth;

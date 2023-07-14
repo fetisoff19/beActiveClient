@@ -3,7 +3,7 @@ import About from "../pages/About";
 import View from "../pages/View";
 import Add from "../pages/Add";
 import Dashboard from "../pages/Dashboard.jsx";
-import Login from "../pages/Login";
+import Auth from "../pages/Auth.jsx";
 import SettingsPage from "../pages/Settings.jsx";
 import PageNotFound from "../pages/PageNotFound.jsx";
 import Stats from "../pages/Stats";
@@ -21,8 +21,8 @@ export let privateRoutes = [
 ];
 
 export let publicRoutes = [
-  {path: '/', element: Login},
-  {path: '/login', element: Login},
+  {path: '/', element: Auth},
+  {path: '/login', element: Auth},
   {path: '/about', element: About},
-  {path: "*", element: Login},
+  {path: "*", element: Auth},
 ];

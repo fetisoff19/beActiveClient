@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "../styles.modules.scss";
-import {dict, userLang} from "../../../config/config";
+import {dict, userLang} from "@constants/config";
 import FilterBar from "./FilterBar";
 import Titles from "./Titles";
 import {useSelector} from "react-redux";
@@ -16,7 +16,7 @@ const FilterBarTitle = () => {
       {modal &&
         <ModalNotice
           text={dict.title.notAvailableInDemoMode[userLang]}
-          className={'modalNotice '}/>}
+          className={'noRules'}/>}
       {stats?.allTime?.totalWorkouts > 0 &&
         <>
           <h1>
