@@ -1,7 +1,6 @@
 import Highcharts from "highcharts";
-import Charts from "../../HighCharts/HighCharts";
+import Charts from "../../UI/HighCharts.js";
 import React from "react";
-// import {db} from "../../../API/db";
 
 export function setCharts(data, order, setZooming,setLoaded) {
   if (data) {

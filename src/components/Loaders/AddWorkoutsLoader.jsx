@@ -2,7 +2,7 @@ import React from 'react';
 import {ThreeDots} from "react-loader-spinner";
 import {useDispatch} from "react-redux";
 import {useEffect} from "react";
-import {cursorWaitOff, cursorWaitOn} from "../../redux/reducers/appReducer";
+import {cursorWaitOff, cursorWaitOn} from "../../store/appEvents/appEvents.slice.js";
 import variables from '../DashboardContent/styles.module.scss'
 
 

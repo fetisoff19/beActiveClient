@@ -46,16 +46,16 @@ $grey: rgb(108, 108, 108);
 
 // background-image
 
-@mixin bgImg($url: "/src/Assets/backgroundImages/1", $bgp: 70% 20%) {
+@mixin bgImg($url: "../../Assets/img/authPageBG", $bgp: 70% 20%) {
   background-image: url($url);
   background-position: $bgp;
 }
 
 @mixin backgroundImageLightGrayChains() {
-  background-image: url("../../Assets/backgroundImages/chains.svg")};
+  background-image: url("../../Assets/img/chainsBG")};
 
 @mixin backgroundImageLightGrayBottles() {
-  background-image: url("../../Assets/backgroundImages/bottles.svg")};
+  background-image: url("../../Assets/img/bottlesBG")};
 
 // fonts
 
@@ -79,12 +79,6 @@ $fsXLarge: 22px;
   height: $size;
   width: $size;
 }
-
-@mixin backgroundSVG($url: "/src/Assets/backgroundImages/IconGrig.svg", $bgp: 50% 50%) {
-  background-image: url($url);
-  background-position: $bgp;
-}
-
 
 
 

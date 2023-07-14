@@ -7,8 +7,6 @@ import {useSelector} from "react-redux";
 const FilesList = ({files, setFiles, buttonClick, styles}) => {
   const uploadedFiles = useSelector(state => state.workouts.uploadedFiles)
 
-  console.log(files)
-
   return (
     <>
       {files ?

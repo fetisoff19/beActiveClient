@@ -3,7 +3,7 @@ import styles from './styles.modules.scss'
 import {useDispatch, useSelector} from "react-redux";
 import AppLoader from "../Loaders/AppLoader";
 import Workouts from "./Components/Workouts";
-import {getWorkouts} from "../../redux/actions/workouts";
+import {getWorkouts} from "../../store/workouts/workouts.actions.js";
 import useScroll from "../../hooks/useScroll";
 import {useRef} from "react";
 import FilterBarTitle from "./Components/FilterBarTitle.js";

@@ -3,7 +3,7 @@ import {BrowserRouter} from "react-router-dom";
 import AppRouter from "../AppRouter/AppRouter.jsx";
 import './global.scss';
 import {Provider} from "react-redux";
-import {store} from "../../redux";
+import {store} from "../../store";
 
 export function App() {
   return (

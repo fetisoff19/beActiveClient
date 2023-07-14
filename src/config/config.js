@@ -4,7 +4,7 @@ import {
   convertPaceInMinute,
   convertSpeed,
   getHourMinSec
-} from "../API/functionsDate&Values";
+} from "../AppService/functionsDate&Values";
 import variables from '../components/DashboardContent/styles.module.scss'
 
 
@@ -151,12 +151,11 @@ export const dict = {
         ' or download my files from ',},
     aboutApp2:{
       ru:
-        '\nСтабильная поддержка следующих видов спорта: велоспорт, бег. \n' +
-        'Проверено на треках с устройств: garmin, wahoo, bryton, lezyne. \n' +
-        'Репозиторий: ',
+        '\nСтабильная поддержка следующих видов спорта: велоспорт, бег.' +
+        'Проверено на треках с устройств: garmin, wahoo, bryton, lezyne.',
       en: '\nStable support for the following sports: cycling, running. \n' +
-        'Tested on records from devices: garmin, wahoo, bryton, lezyne. \n' +
-        'Repository: ',},
+        'Tested on records from devices: garmin, wahoo, bryton, lezyne.'},
+    repo: {ru: 'Репозиторий: ', en: 'Repository: ',},
     link:{ru: 'ссылке', en: 'the link',},
     footer1: {ru: 'Размер базы: ', en: 'Database size: '},
     footer2: {ru: ' Мб. Занимает ', en: ' Mb. Takes '},
@@ -213,6 +212,7 @@ export const dict = {
     search: {ru: 'Найти', en: 'Search'},
     avg: {ru: 'Среднее', en: 'Average'},
     noData: {ru: 'Нет активностей', en: 'No workouts'},
+    photo: {ru: 'Фото:', en: 'Photo credits:'},
   },
 
   month:{

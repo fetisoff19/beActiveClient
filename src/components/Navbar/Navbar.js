@@ -2,7 +2,7 @@ import React from 'react';
 import {NavLink} from "react-router-dom";
 import {dict} from "../../config/config";
 import {useDispatch, useSelector} from "react-redux";
-import {logout} from "../../redux/reducers/userReducer";
+import {logout} from "../../store/auth/auth.slice.js";
 
 const Navbar = () => {
   const dispatch = useDispatch()

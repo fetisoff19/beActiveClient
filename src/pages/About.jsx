@@ -15,7 +15,15 @@ const About = () => {
             {dict.title.link[userLang] + '.'}
           </a>
           {dict.title.aboutApp2[userLang]}
-          <a href='https://github.com/fetisoff19/sports-app'>github.com/fetisoff19/sports-app</a>
+          <br/>
+          {dict.title.repo[userLang]}
+          <a href='https://github.com/fetisoff19/sports-app'>github.com/fetisoff19/beActiveClient</a>
+          <br/><br/>
+          {dict.title.photo[userLang]}
+          <br/>
+          <a href='https://www.pexels.com/photo/black-bicycle-leaning-on-green-wall-3680501/'>Raniery Costa Pelissari</a>
+          <br/>
+          <a href='https://www.pexels.com/photo/man-riding-bicycle-on-road-6090949/'>lawlesscapture</a>
         </p>
       </div>
     </div>

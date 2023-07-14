@@ -2,7 +2,7 @@ import React from 'react';
 import {useContext, useMemo, useRef, useState} from "react";
 import styles from "../../styles.module.scss";
 import variables from '../../../DashboardContent/styles.module.scss'
-import Maps from "../../../Maps/Maps";
+import Maps from "../../../UI/Maps.js";
 import Pushpin2 from "../../../UI/svgComponents/Pushpin2";
 import Pushpin1 from "../../../UI/svgComponents/Pushpin1";
 import NameSportDate from "../NameSportDate";

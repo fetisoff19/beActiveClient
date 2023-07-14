@@ -1,8 +1,8 @@
 import axios from 'axios'
-import {logout, setDemo, setUser} from "../reducers/userReducer.js";
+import {logout, setDemo, setUser} from "./auth.slice.js";
 import {API_URL, demoUser} from "../../config/config.js";
-import {hideLoader, hideSmallLoader, showLoader, showSmallLoader} from "../reducers/appReducer";
-import {setAllWorkouts, setStats} from "../reducers/workoutsReducer";
+import {hideLoader, hideSmallLoader, showLoader, showSmallLoader} from "../appEvents/appEvents.slice.js";
+import {setAllWorkouts, setStats} from "../workouts/workouts.slice.js";
 
 export const registration = (email, password, setRequest) => {
   return async dispatch => {
@@ -17,7 +17,6 @@ export const registration = (email, password, setRequest) => {
           password
         }
       })
-      console.log(response.data)
       setRequest(response.data.message)
     } catch (e) {
       const errors = e?.response?.data?.errors?.errors[0]?.msg
@@ -62,12 +61,10 @@ export const auth = () => {
     try {
       dispatch(showLoader())
       const response = await axios.get(`${API_URL}api/auth/auth`,
-        {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}}
+        {headers:
+            {Authorization:`Bearer ${localStorage.getItem('token')}`}
+        }
       )
-      //   await axios.get(`${API_URL}api/auth/auth`,
-      //   {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}}
-      // )
-      // console.log(response.data.user)
       dispatch(setUser(response.data.user))
       dispatch(setStats(response.data.user.stats))
       localStorage.setItem('token', response.data.token)

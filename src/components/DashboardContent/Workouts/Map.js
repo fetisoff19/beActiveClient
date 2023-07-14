@@ -1,7 +1,7 @@
 import React, {useMemo} from 'react';
 import {useEffect} from "react";
-import {getPolyline} from "../../../redux/actions/workouts.js";
-import Maps from "../../Maps/Maps.js";
+import {getPolyline} from "../../../store/workouts/workouts.actions.js";
+import Maps from "../../UI/Maps.js";
 import styles from "../styles.module.scss";
 import {dict, userLang} from "../../../config/config.js";
 import {useDispatch, useSelector} from "react-redux";

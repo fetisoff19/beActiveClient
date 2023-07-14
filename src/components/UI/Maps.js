@@ -2,16 +2,16 @@ import React, {useMemo, useRef} from 'react';
 import {MapContainer, Marker, Polyline, TileLayer} from 'react-leaflet'
 import Leaflet from "leaflet";
 import "leaflet/dist/leaflet.css";
-import start from './icons/start.svg';
-import stop from './icons/stop.svg';
-import pizza from './icons/pizza.svg';
-import donut from './icons/donut.svg';
-import now from './icons/now.svg';
-import iceCream from './icons/iceCream.svg';
-import banana from './icons/banana.svg';
-import watermelon from './icons/watermelon.svg';
-import coffee from './icons/coffee.svg';
-import energyBottle from './icons/energyBottle.svg';
+import start from '../../Assets/icons/start.svg';
+import stop from '../../Assets/icons/stop.svg';
+import pizza from '../../Assets/icons/pizza.svg';
+import donut from '../../Assets/icons/donut.svg';
+import now from '../../Assets/icons/now.svg';
+import iceCream from '../../Assets/icons/iceCream.svg';
+import banana from '../../Assets/icons/banana.svg';
+import watermelon from '../../Assets/icons/watermelon.svg';
+import coffee from '../../Assets/icons/coffee.svg';
+import energyBottle from '../../Assets/icons/energyBottle.svg';
 
 function NewMarker({position, className, icon, iconSize, iconAnchor}) {
   const newIcon = new Leaflet.Icon({

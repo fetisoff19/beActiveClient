@@ -11,52 +11,52 @@
 
 @font-face {
   font-family: Logo;
-  src: url("./fonts/Acetone");
+  src: url("../../Assets/fonts/Acetone");
   font-style: normal;
   font-weight: 700;
 }
 
 @font-face {
   font-family: Main;
-  src: url("./fonts/OpenSans-Light");
+  src: url("../../Assets/fonts/OpenSans-Light");
   font-style: normal;
   font-weight: 300;
 }
 
 @font-face {
   font-family: Main;
-  src: url("./fonts/OpenSans-LightItalic");
+  src: url("../../Assets/fonts/OpenSans-LightItalic");
   font-style: italic;
   font-weight: 300;
 }
 
 @font-face {
   font-family: Main;
-  src: url("./fonts/OpenSans-Regular");
+  src: url("../../Assets/fonts/OpenSans-Regular");
   font-style: normal;
   font-weight: 400;
 }
 @font-face {
   font-family: Main;
-  src: url("./fonts/OpenSans-Medium");
+  src: url("../../Assets/fonts/OpenSans-Medium");
   font-style: normal;
   font-weight: 500;
 }
 @font-face {
   font-family: Main;
-  src: url("./fonts/OpenSans-SemiBold");
+  src: url("../../Assets/fonts/OpenSans-SemiBold");
   font-style: normal;
   font-weight: 600;
 }
 @font-face {
   font-family: Main;
-  src: url("./fonts/OpenSans-Bold");
+  src: url("../../Assets/fonts/OpenSans-Bold");
   font-style: normal;
   font-weight: 700;
 }
 @font-face {
   font-family: Main;
-  src: url("./fonts/OpenSans-ExtraBold");
+  src: url("../../Assets/fonts/OpenSans-ExtraBold");
   font-style: normal;
   font-weight: 800;
 }
@@ -170,7 +170,7 @@ header{
 
 .about{
   @include page;
-  @include bgImg($url: "/src/Assets/backgroundImages/3.jpg", $bgp: 50% 0);
+  @include bgImg($url: "/src/Assets/img/aboutPageBG", $bgp: 50% 0);
 
   div{
     @include border($radius: 6px);

@@ -1,14 +1,14 @@
 import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
-import {getIndex,handleKeyboardDown} from "./functions/functions";
+import {getIndex,handleKeyboardDown} from "./service/chartsServices.js";
 import Highcharts from 'highcharts';
 import ViewWorkoutContext from './context/Context.js'
 import ShiftWorkoutButton from "./components/NextWorkout.js";
 import styles from './styles.module.scss'
-import {getDataA} from "./functions/func";
+import {getDataA} from "./service/getDataForCharts.js";
 import ChartsContainer from "./components/ChartsContainer/ChartsContainer.js";
 import MapsAndStatsContainer from "./components/MapsAndStatsContainer/MapsAndStatsContainer";
 import {useDispatch} from "react-redux";
-import {cursorWaitOff, cursorWaitOn} from "../../redux/reducers/appReducer";
+import {cursorWaitOff, cursorWaitOn} from "../../store/appEvents/appEvents.slice.js";
 
 
 const ViewWorkout = ({workout, chartsData, polyline, powerCurve}) => {

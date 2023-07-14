@@ -3,7 +3,7 @@ import Navbar from "../Navbar/Navbar.js";
 import {Outlet} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import Error from "../../pages/Error";
-import {auth} from "../../redux/actions/user";
+import {auth} from "../../store/auth/auth.actions.js";
 
 
 const Main = () => {

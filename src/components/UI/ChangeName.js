@@ -4,7 +4,7 @@ import Edit from "./svgComponents/Edit";
 import Ok from "./svgComponents/Ok";
 import Close from "./svgComponents/Close";
 import {useDispatch, useSelector} from "react-redux";
-import {editWorkout} from "../../redux/actions/workouts";
+import {editWorkout} from "../../store/workouts/workouts.actions.js";
 import AppLoader from "../Loaders/AppLoader";
 
 const ChangeName = ({data, isLink, styles, setState}) => {

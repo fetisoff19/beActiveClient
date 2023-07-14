@@ -42,7 +42,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     assetModuleFilename: 'assets/[hash][ext][query]',
     clean: true,
-    filename: 'bundle.js',  // добавил
+    filename: 'bundle.js',
     publicPath: '/',        //
   },
   experiments: {
@@ -81,6 +81,6 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ["", ".js", ".jsx", '.png', '.svg', '.gif', ".es6", ".scss", ".ttf"],  //
+    extensions: ["", ".js", ".jsx", '.png', '.jpg', '.jpeg', '.svg', '.gif', ".es6", ".scss", ".ttf"],  //
   },
 };

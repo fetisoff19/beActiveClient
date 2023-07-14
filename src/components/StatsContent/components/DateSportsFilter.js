@@ -3,10 +3,10 @@ import styles from "../styles.module.scss";
 import SportsFilter from "../../UI/SportsFilter";
 import {useState} from "react";
 import {dict, userLang} from "../../../config/config";
-import {getStats} from "../../../redux/actions/workouts";
+import {getStats} from "../../../store/workouts/workouts.actions.js";
 import {useDispatch} from "react-redux";
 import StatsForPeriod from "./StatsForPeriod";
-import {dayInMs, getDataForInputDate} from "../../../API/functionsDate&Values";
+import {dayInMs, getDataForInputDate} from "../../../AppService/functionsDate&Values";
 import Search from "../../UI/svgComponents/Search";
 
 const arrPeriod = ['7', '28', '180', '365'];

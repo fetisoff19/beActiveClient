@@ -1,7 +1,6 @@
-import {convertPaceInMinute, convertSpeed} from "../../../API/functionsDate&Values";
+import {convertPaceInMinute, convertSpeed} from "../../../AppService/functionsDate&Values";
 
 export function getDataA(data, workout){
-  // console.time(1)
   let result = {};
   let speedDistanceArray = [];
   let powerDistanceArray = [];
@@ -71,6 +70,8 @@ export function getDataA(data, workout){
     sport: workout.sport,
     k: workout?.k || 1,
   }
-  // console.timeEnd(1)
+
+  console.log(result, workout, workout?.minHeartRate)
+
   return result
 }

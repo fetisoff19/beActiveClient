@@ -1,7 +1,7 @@
 import React from 'react';
 import {TailSpin} from "react-loader-spinner";
 import {useEffect} from "react";
-import {cursorWaitOff, cursorWaitOn} from "../../redux/reducers/appReducer";
+import {cursorWaitOff, cursorWaitOn} from "../../store/appEvents/appEvents.slice.js";
 import {useDispatch} from "react-redux";
 import variables from "../DashboardContent/styles.module.scss";
 

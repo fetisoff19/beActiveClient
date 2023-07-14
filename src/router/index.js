@@ -4,7 +4,7 @@ import View from "../pages/View";
 import Add from "../pages/Add";
 import Dashboard from "../pages/Dashboard.jsx";
 import Login from "../pages/Login";
-import SettingsPage from "../pages/SettingsPage.jsx";
+import SettingsPage from "../pages/Settings.jsx";
 import PageNotFound from "../pages/PageNotFound.jsx";
 import Stats from "../pages/Stats";
 
@@ -16,8 +16,6 @@ export let privateRoutes = [
   {path: 'stats', element: Stats},
   {path: 'about', element: About},
   {path: 'settings', element: SettingsPage},
-  {path: '/sports-app', navigate: true,},
-  {path: '/beActiveClient', navigate: true,},    //убрать, специально для гитхаба
   {path: '/login', navigate: true,},
   {path: "*", element: PageNotFound},
 ];
@@ -26,7 +24,5 @@ export let publicRoutes = [
   {path: '/', element: Login},
   {path: '/login', element: Login},
   {path: '/about', element: About},
-  {path: '/sports-app', navigate: true,},
-  {path: '/beActiveClient', navigate: true,},    //убрать, специально для гитхаба
   {path: "*", element: Login},
 ];

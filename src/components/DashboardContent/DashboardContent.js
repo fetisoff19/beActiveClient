@@ -6,7 +6,7 @@ import styles from './styles.module.scss';
 import AppLoader from "../Loaders/AppLoader";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {getWorkouts} from "../../redux/actions/workouts";
+import {getWorkouts} from "../../store/workouts/workouts.actions.js";
 import ThreeDotsLoader from "../Loaders/ThreeDotsLoader";
 
 const DashboardContent = () => {

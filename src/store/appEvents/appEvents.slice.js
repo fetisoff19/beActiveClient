@@ -1,7 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-const appSlice = createSlice({
-  name: 'app',
+const appEventsSlice = createSlice({
+  name: 'appEvents',
   initialState: {
     appLoader: false,
     smallLoader: false,
@@ -54,11 +54,12 @@ const appSlice = createSlice({
   }
 })
 
-export default appSlice.reducer;
+export default appEventsSlice.reducer;
+
 export const {
-  showLoader, hideLoader,
-  setError,
+  showLoader, hideLoader, setError,
   showSmallLoader, hideSmallLoader,
   cursorWaitOn, cursorWaitOff,
   showModal, hideModal,
-  setRequestGetWorkouts, removeRequestGetWorkouts} = appSlice.actions;
+  setRequestGetWorkouts, removeRequestGetWorkouts
+} = appEventsSlice.actions;

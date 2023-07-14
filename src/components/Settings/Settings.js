@@ -3,11 +3,11 @@ import {dict, userLang} from "../../config/config";
 import styles from './styles.module.scss'
 import Question from "../UI/svgComponents/Question";
 import {useDispatch, useSelector} from "react-redux";
-import {setFunnyMarkers, setLanguage, setSmoothing} from "../../redux/reducers/settingsReducer";
-import {deleteAllWorkouts, deleteUserWorkouts} from "../../redux/actions/workouts";
+import {setFunnyMarkers, setLanguage, setSmoothing} from "../../store/settings/settings.slice.js";
+import {deleteAllWorkouts, deleteUserWorkouts} from "../../store/workouts/workouts.actions.js";
 import AppLoader from "../Loaders/AppLoader";
 import ModalNotice from "../UI/ModalNotice";
-import {showModal} from "../../redux/reducers/appReducer";
+import {showModal} from "../../store/appEvents/appEvents.slice.js";
 import ModalTransparent from "../UI/ModalTransparent";
 import ModalContent from "./components/ModalContent.js";
 import Input from "../UI/Input";

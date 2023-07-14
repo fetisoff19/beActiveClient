@@ -1,5 +1,3 @@
-
-
 export function getDataForStatsChart(workouts, timestampArray, formatter, field) {
   let data = new Array(timestampArray[0].length);
   let totalTimerTime = 0;
@@ -35,5 +33,6 @@ export function getDataForStatsChart(workouts, timestampArray, formatter, field)
     avg = yData.reduce((sum, current) => sum + current, 0)
       / yData.reduce((sum, current) => current > 0 ? sum + 1 : sum, 0)
   }
+
   return [yData, avg, field]
 }

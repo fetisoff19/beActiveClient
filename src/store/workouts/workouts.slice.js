@@ -4,7 +4,6 @@ import {createSlice} from "@reduxjs/toolkit";
   name: 'workouts',
   initialState: {
     workouts: null,
-    workout: null,  // del
     allWorkouts: [],
     uploadedFiles: [],
     filesToDelete: [],
@@ -58,9 +57,6 @@ import {createSlice} from "@reduxjs/toolkit";
             : workout
       )
     },
-    setOneWorkout(state, action) {
-      state.workout = action.payload;
-    },
     setNumberOfFiles(state, action){
       state.numberOfFiles = action.payload;
     },
@@ -82,7 +78,6 @@ export const {
   removeFilesToDelete,
   deleteWorkoutAction,
   changeWorkoutAction,
-  setOneWorkout,
   addPolyline,
   addChartsData,
   addPowerCurve,

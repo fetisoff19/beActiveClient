@@ -3,9 +3,9 @@ import styles from './styles.module.scss'
 import FilesList from "./components/FilesList";
 import {dict, userLang} from "../../config/config";
 import {useDispatch, useSelector} from "react-redux";
-import {uploadWorkouts} from "../../redux/actions/workouts";
-import {resetStateUploadedFiles} from "../../redux/reducers/workoutsReducer";
-import {auth} from "../../redux/actions/user";
+import {uploadWorkouts} from "../../store/workouts/workouts.actions.js";
+import {resetStateUploadedFiles} from "../../store/workouts/workouts.slice.js";
+import {auth} from "../../store/auth/auth.actions.js";
 
 
 export default function AddWorkouts() {

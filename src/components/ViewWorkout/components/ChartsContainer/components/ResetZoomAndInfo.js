@@ -4,7 +4,7 @@ import {dict, userLang} from "../../../../../config/config.js";
 import Info from "../../../../UI/svgComponents/Info.js";
 import {useContext} from "react";
 import ViewWorkoutContext from "../../../context/Context.js";
-import {resetZoom} from "../../../functions/functions.js";
+import {resetZoom} from "../../../service/chartsServices.js";
 
 const ResetZoomAndInfo = () => {
   const {dataForCharts, zooming, setZooming} = useContext(ViewWorkoutContext)

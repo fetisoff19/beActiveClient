@@ -3,7 +3,7 @@ import {demoUser, dict, userLang} from "../../config/config";
 import styles from './styles.module.scss'
 import {useDispatch, useSelector} from "react-redux";
 import Input from "../UI/Input";
-import {login, registration} from "../../redux/actions/user";
+import {login, registration} from "../../store/auth/auth.actions.js";
 import ModalTransparent from "../UI/ModalTransparent.js";
 import Button from "../UI/Button";
 

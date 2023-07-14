@@ -1,6 +1,6 @@
 import React from 'react';
 import {dict, userLang} from "../../config/config";
-import {getHourMinSec} from "../../API/functionsDate&Values";
+import {getHourMinSec} from "../../AppService/functionsDate&Values";
 
 const SportAndDate = ({data, className}) => {
   return (

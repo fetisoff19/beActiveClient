@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import {dict, userLang} from "../config/config";
-import {setError} from "../redux/reducers/appReducer";
+import {setError} from "../store/appEvents/appEvents.slice.js";
 import {useDispatch} from "react-redux";
 
 const Error = ({error}) => {

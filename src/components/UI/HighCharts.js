@@ -2,8 +2,8 @@ import React, {useEffect, useRef} from 'react';
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import Exporting from 'highcharts/modules/exporting';
-import {getMinSec} from "../../API/functionsDate&Values";
-import {dict, userLang, chartsConfig} from "../../config/config";
+import {getMinSec} from "../../AppService/functionsDate&Values.js";
+import {dict, userLang, chartsConfig} from "../../config/config.js";
 
 Exporting(Highcharts);
 

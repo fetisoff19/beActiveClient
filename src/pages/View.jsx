@@ -4,10 +4,10 @@ import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import PageNotFound from "./PageNotFound";
 import Error from "./Error";
-import {getChartsData, getWorkouts, getPolyline, getPowerCurve} from "../redux/actions/workouts";
+import {getChartsData, getWorkouts, getPolyline, getPowerCurve} from "../store/workouts/workouts.actions.js";
 import AppLoader from "../components/Loaders/AppLoader";
 import NoWorkouts from "../components/NoWorkouts/NoWorkouts";
-import {cursorWaitOff, hideLoader, showLoader} from "../redux/reducers/appReducer";
+import {cursorWaitOff, hideLoader, showLoader} from "../store/appEvents/appEvents.slice.js";
 
 const View = () => {
   // компонент отвечает за получение и передачу данных в ViewWorkout

@@ -6,7 +6,7 @@ import DateSportsFilter from "./components/DateSportsFilter";
 import ModalTransparent from "../UI/ModalTransparent";
 import {useEffect, useState} from "react";
 import AppLoader from "../Loaders/AppLoader";
-import {getDataForInputDate} from "../../API/functionsDate&Values";
+import {getDataForInputDate} from "../../AppService/functionsDate&Values";
 
 const StatsContent = () => {
   const [firstLoad, setFirstLoad] = useState(false)

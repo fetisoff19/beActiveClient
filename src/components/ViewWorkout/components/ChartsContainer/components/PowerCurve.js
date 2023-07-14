@@ -1,6 +1,6 @@
 import React, {useContext, useMemo} from 'react';
-import Charts from "../../../../HighCharts/HighCharts.js";
-import {addPolylinePowerCurve} from "../../../functions/functions.js";
+import Charts from "../../../../UI/HighCharts.js";
+import {addPolylinePowerCurve} from "../../../service/chartsServices.js";
 import {chartsConfig} from "../../../../../config/config.js";
 import ViewWorkoutContext from "../../../context/Context.js";
 

@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {dict, userLang} from "../../config/config";
 import Ok from "./svgComponents/Ok";
 import Close from "./svgComponents/Close";
-import {editWorkout} from "../../redux/actions/workouts";
+import {editWorkout} from "../../store/workouts/workouts.actions.js";
 import {useDispatch, useSelector} from "react-redux";
 import AppLoader from "../Loaders/AppLoader";
 

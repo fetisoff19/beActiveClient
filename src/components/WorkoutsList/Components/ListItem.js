@@ -7,8 +7,8 @@ import Delete from "../../UI/svgComponents/Delete";
 import SportsIcon from "../../UI/SportsIcon.js";
 import {useDispatch, useSelector} from "react-redux";
 import AppLoader from "../../Loaders/AppLoader";
-import {addFilesToDelete} from "../../../redux/reducers/workoutsReducer";
-import {showModal, showSmallLoader} from "../../../redux/reducers/appReducer";
+import {addFilesToDelete} from "../../../store/workouts/workouts.slice.js";
+import {showModal, showSmallLoader} from "../../../store/appEvents/appEvents.slice.js";
 
 
 const ListItem = ({data}) => {

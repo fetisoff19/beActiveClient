@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {useDispatch} from "react-redux";
-import {hideModal} from "../../redux/reducers/appReducer";
+import {hideModal} from "../../store/appEvents/appEvents.slice.js";
 
 const ModalNotice = ({text, className}) => {
   const dispatch = useDispatch();

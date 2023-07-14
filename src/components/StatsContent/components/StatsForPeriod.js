@@ -3,10 +3,10 @@ import {useSelector} from "react-redux";
 import WorkoutsNotFound from "../../WorkoutsList/Components/WorkoutsNotFound";
 import StatsCharts from "./StatsCharts";
 import {dict, statsConfig, userLang} from "../../../config/config";
-import {calcDate, dayInMs,} from "../../../API/functionsDate&Values";
+import {calcDate, dayInMs,} from "../../../AppService/functionsDate&Values";
 import IndicatorsList from "./IndicatorsList";
 import styles from '../styles.module.scss'
-import {getDataForStatsChart} from "../functions/functions";
+import {getDataForStatsChart} from "../service/stats.service.js";
 import Highcharts from 'highcharts'
 import AddSeriesList from "./AddSeriesList";
 
