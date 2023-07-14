@@ -16,13 +16,13 @@ export let privateRoutes = [
   {path: 'stats', element: Stats},
   {path: 'about', element: About},
   {path: 'settings', element: SettingsPage},
-  {path: '/login', navigate: true,},
+  {path: 'login', navigate: true,},
   {path: "*", element: PageNotFound},
 ];
 
 export let publicRoutes = [
   {path: '/', element: Auth},
-  {path: '/login', element: Auth},
-  {path: '/about', element: About},
+  {path: 'login', element: Auth},
+  {path: 'about', element: About},
   {path: "*", element: Auth},
 ];
