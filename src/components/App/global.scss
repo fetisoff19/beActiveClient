@@ -205,8 +205,8 @@ header{
     a{
       font-style: italic;
       letter-spacing: 1.5px;
-      :hover{
-        color: $primaryColorDark;
+      &:hover{
+        color: $primaryColorDark
       }
     }
   }
