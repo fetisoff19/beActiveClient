@@ -1,15 +1,15 @@
 import React from 'react';
 import {useContext, useMemo, useRef, useState} from "react";
 import styles from "../../styles.module.scss";
-import variables from '../../../DashboardContent/styles.module.scss'
-import Maps from "../../../UI/Maps.js";
-import Pushpin2 from "../../../UI/svgComponents/Pushpin2";
-import Pushpin1 from "../../../UI/svgComponents/Pushpin1";
+import variables from '@components/DashboardContent/styles.module.scss'
+import Maps from "@components/UI/Maps.js";
+import Pushpin2 from "@components/UI/svgComponents/Pushpin2";
+import Pushpin1 from "@components/UI/svgComponents/Pushpin1";
+import TextArea from "@components/UI/TextArea";
 import NameSportDate from "../NameSportDate";
 import MainWorkoutStats from "../WorkoutsStats/MainWorkoutStats";
 import {dictConstant, userLang} from "@constants/dict.constant.js";
 import WorkoutStats from "../WorkoutsStats/WorkoutStats";
-import TextArea from "../../../UI/TextArea";
 import ViewWorkoutContext from "../../context/Context";
 import {useSelector} from "react-redux";
 

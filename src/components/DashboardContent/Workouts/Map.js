@@ -1,10 +1,11 @@
 import React, {useMemo} from 'react';
 import {useEffect} from "react";
-import {getPolyline} from "../../../store/workouts/workouts.actions.js";
+import {getPolyline} from "@store/workouts/workouts.actions";
 import Maps from "../../UI/Maps.js";
 import styles from "../styles.module.scss";
-import {dictConstant, userLang} from "@constants/dict.constant.js";
+import variables from '@components/DashboardContent/styles.module.scss'
 import {useDispatch, useSelector} from "react-redux";
+import NoMap from "@components/UI/svgComponents/NoMap";
 
 const Map = ({id}) => {
   const dispatch = useDispatch();
@@ -20,7 +21,8 @@ const Map = ({id}) => {
   if(!id){
     return (
       <div className={styles.plug}>
-        {dictConstant.title.indoorWorkout[userLang]}
+        <NoMap fillRight={variables.appColor} fillLeft={variables.appColorGrey}/>
+        {/*{dictConstant.title.indoorWorkout[userLang]}*/}
       </div>
     )
   }

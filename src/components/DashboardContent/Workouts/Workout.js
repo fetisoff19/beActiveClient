@@ -6,13 +6,14 @@ import SportsIcon from "../../UI/SportsIcon.js";
 import TextArea from "../../UI/TextArea.js";
 import Map from "./Map.js";
 import Indicators from "./Indicators.js";
+import variables from '@components/DashboardContent/styles.module.scss'
+
 
 const Workout = ({data}) => {
 
-
   return (
     <div className={styles.workout}>
-      <SportsIcon sport={data.sport} fill={'#414141'} height={'30px'} width={'30px'}/>
+      <SportsIcon sport={data.sport} fill={variables.appColorGrey} height={'30px'} width={'30px'}/>
       <div className={styles.workoutInfo}>
         <SportAndDate className={styles.date} data={data}/>
         <WorkoutName className={styles.name} data={data}/>
