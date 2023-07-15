@@ -1,6 +1,5 @@
 import {lazy} from "react";
 
-
 const Auth = lazy(() => import('@pages/Auth'));
 const Add = lazy(() => import('@pages/Add'));
 const About = lazy(() => import('@pages/About'));

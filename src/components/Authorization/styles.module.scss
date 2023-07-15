@@ -3,7 +3,7 @@
 .page{
   @include page($backgroundLightGray);
   @include flexRowCenter;
-  @include bgImg;
+  @include bgImg($url: "@assets/img/authPageBG");
 
   .auth{
     @include flexRowSpaceBetween(5px);
