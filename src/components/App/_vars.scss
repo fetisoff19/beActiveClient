@@ -46,7 +46,7 @@ $grey: rgb(108, 108, 108);
 
 // background-image
 
-@mixin bgImg($url: "@assets/img/authPageBG", $bgp: 70% 20%) {
+@mixin bgImg($url: "@assets/img/aboutPageBG", $bgp: 70% 20%) {
   background-image: url($url);
   background-position: $bgp;
 }

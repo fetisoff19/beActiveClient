@@ -31,7 +31,7 @@ const AppRouter = () => {
               path={route.path}
               element={route?.navigate ? <Navigate to='/'/> : <route.element/>}
               index={route?.index}
-              key={route.path + 1}
+              key={route.path || route?.index}
             />)}
         </Route>
       </Routes>

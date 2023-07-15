@@ -1,6 +1,6 @@
 import React from 'react';
 import {useSelector} from "react-redux";
-import {dict, userLang} from "@constants/config";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
 import styles from "../styles.module.scss";
 
 const Block = ({elem, config}) => {
@@ -12,13 +12,13 @@ const Block = ({elem, config}) => {
         ? config.fields[field].formatter(stats[elem][field])
         : stats[elem][field];
       const unit = config.fields[field]?.unit
-        ? (' ' + dict.units[config.fields[field].unit][userLang])
+        ? (' ' + dictConstant.units[config.fields[field].unit][userLang])
         : '';
 
       return(
         <div key={index} className={styles.block}>
           <span>
-            {dict.fields[field][userLang]}
+            {dictConstant.fields[field][userLang]}
           </span>
           <span>
             {value?.toString().replaceAll('.', ',') + unit}
@@ -31,7 +31,7 @@ const Block = ({elem, config}) => {
   return  (
     <>
       {/*<h3>*/}
-      {/*  {dict.sports[elem][userLang]}*/}
+      {/*  {dictConstant.sports[elem][userLang]}*/}
       {/*</h3>*/}
       {block}
     </>

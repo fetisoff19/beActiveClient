@@ -1,5 +1,5 @@
 import React from 'react';
-import {dict, userLang} from "@constants/config";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
 import SportsIcon from "./SportsIcon.js";
 import {useMemo} from "react";
 import {useSelector} from "react-redux";
@@ -30,7 +30,7 @@ const SportsFilter = ({sport, onClick, styles}) => {
           onClick={() => onClick(item)}
           key={item}>
           {item === 'all'
-            ? dict.title.all[userLang]
+            ? dictConstant.title.all[userLang]
             : <SportsIcon
               className={checkSport(item) ? 'icon active' : 'icon'}
               sport={item}/>}

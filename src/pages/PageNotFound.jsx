@@ -1,5 +1,5 @@
 import React from 'react';
-import {dict, userLang} from "../utils/constants/config.js";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
 import {Link} from "react-router-dom";
 
 const PageNotFound = () => {
@@ -7,8 +7,8 @@ const PageNotFound = () => {
   return (
     <div className={'page'}>
       <div className={'content error'}>
-        <h1>{dict.title.pageNotFound[userLang]}</h1>
-        <Link to={'/'}>{dict.title.goToDashboard[userLang]}</Link>
+        <h1>{dictConstant.title.pageNotFound[userLang]}</h1>
+        <Link to={'/'}>{dictConstant.title.goToDashboard[userLang]}</Link>
       </div>
     </div>
 

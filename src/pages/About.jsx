@@ -1,24 +1,24 @@
 import React from 'react';
-import {dict, userLang} from "@constants/config";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
 
 const About = () => {
   return (
     <div className='about'>
       <div>
         <h1>
-          {dict.title.about[userLang]}
+          {dictConstant.title.about[userLang]}
         </h1>
         <p>
-          {dict.title.aboutApp1[userLang]}
+          {dictConstant.title.aboutApp1[userLang]}
           <a href='https://drive.google.com/drive/folders/1NCrcDjoPpgEUH09G-hz3cVeMb9vs1rhc?usp=drive_link'>
-            {dict.title.link[userLang] + '.'}
+            {dictConstant.title.link[userLang] + '.'}
           </a>
-          {dict.title.aboutApp2[userLang]}
+          {dictConstant.title.aboutApp2[userLang]}
           <br/>
-          {dict.title.repo[userLang]}
+          {dictConstant.title.repo[userLang]}
           <a href='https://github.com/fetisoff19/sports-app'>github.com/fetisoff19/beActiveClient</a>
           <br/><br/>
-          {dict.title.photo[userLang]}
+          {dictConstant.title.photo[userLang]}
           <br/>
           <a href='https://www.pexels.com/photo/black-bicycle-leaning-on-green-wall-3680501/'>Raniery Costa Pelissari</a>
           <br/>

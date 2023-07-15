@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {dict, userLang} from "@constants/config";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
 import Block from "./Block";
 import {convertDistance, convertPace, convertSpeed, getHourMinSec} from "../../../utils/helpers/functionsDate&Values.helpers.js";
 import {useSelector} from "react-redux";
@@ -95,7 +95,7 @@ const StartStats = () => {
     stats.hasOwnProperty(item) && stats[item].totalWorkouts > 0
       && (index === 0 || isOpenList) &&
         <li key={item} id={item}>
-          {dict.sports[item][userLang]}
+          {dictConstant.sports[item][userLang]}
         </li>)
 
   function handleClick(e) {
@@ -114,7 +114,7 @@ const StartStats = () => {
   return (
     <div className={styles.statsContent}>
       <h1>
-        {dict.title.stats[userLang]}
+        {dictConstant.title.stats[userLang]}
       </h1>
       <div className={styles.list}>
         <ul className={isOpenList ? styles.open : null}>

@@ -3,7 +3,8 @@ import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import Exporting from 'highcharts/modules/exporting';
 import {getMinSec} from "@helpers/functionsDate&Values.helpers";
-import {dict, userLang, chartsConfig} from "@constants/config";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
+import {chartsConfig} from "@constants/charts.constant";
 
 Exporting(Highcharts);
 
@@ -36,13 +37,13 @@ const Charts = ({
   },[])
 
 
-  let plotLinesText = chartsConfig[name].plotLinesText && `${chartsConfig[name].plotLinesText && dict.fields[chartsConfig[name].plotLinesText][userLang]} 
+  let plotLinesText = chartsConfig[name].plotLinesText && `${chartsConfig[name].plotLinesText && dictConstant.fields[chartsConfig[name].plotLinesText][userLang]} 
     ${name === 'pace'
       ? getMinSec(data.avg) 
         : (data.avg ? data.avg.toString().replaceAll('.', ',') : '')} 
     ${(data.sport === 'running' || k === 2) && name === 'cadence'
-      ? dict.units[chartsConfig[name].plotLinesTextValueRunning][userLang]
-        : dict.units[chartsConfig[name].plotLinesTextValue][userLang]}`
+      ? dictConstant.units[chartsConfig[name].plotLinesTextValueRunning][userLang]
+        : dictConstant.units[chartsConfig[name].plotLinesTextValue][userLang]}`
 
 
   const options = {
@@ -101,7 +102,7 @@ const Charts = ({
     },
     title: {
       enabled: false,
-      text: '&#9900' + ' ' + dict.fields[chartsConfig[name].title][userLang],
+      text: '&#9900' + ' ' + dictConstant.fields[chartsConfig[name].title][userLang],
         align: 'left',
         x: -10,
         y: 30,
@@ -119,7 +120,7 @@ const Charts = ({
       labels: {
         enabled: true,
         formatter: function () {
-          return this.value + dict.units.km[userLang];
+          return this.value + dictConstant.units.km[userLang];
         },
         y: 12,
       },

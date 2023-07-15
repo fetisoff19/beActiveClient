@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "../styles.module.scss";
-import {dict, userLang} from "../../../utils/constants/config.js";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
 import Button from "../../UI/Button";
 
 const ModalContent = ({text, functionNo, functionYes}) => {
@@ -13,12 +13,12 @@ const ModalContent = ({text, functionNo, functionYes}) => {
       <div>
         <Button
           onClick={functionNo}
-          text={dict.title.yes[userLang]}
+          text={dictConstant.title.yes[userLang]}
           className={styles.active + ' ' + styles.yes}
         />
         <Button
           onClick={functionYes}
-          text={dict.title.no[userLang]}
+          text={dictConstant.title.no[userLang]}
           className={styles.active + ' ' + styles.no}
         />
       </div>

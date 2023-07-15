@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {dict, userLang} from "@constants/config";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
 import BlockMetricContainer from "./BlockMetricContainer";
 import ChangeName from "../../UI/ChangeName";
 import styles from '../styles.modules'
@@ -34,7 +34,7 @@ const ListItem = ({data}) => {
       <SportsIcon className={'icon ' + styles.icon} sport={data.sport}/>
       <div className={styles.sBlock}  key={data._id + 'timestamp'}>
         <span className={styles.unit}>
-          {new Date(data?.timestamp).getDate() + ' ' + dict.month[new Date(data?.timestamp).getMonth()][userLang]}
+          {new Date(data?.timestamp).getDate() + ' ' + dictConstant.month[new Date(data?.timestamp).getMonth()][userLang]}
         </span>
         <span className={styles.label}>
           {new Date(data?.timestamp).getFullYear()}
@@ -43,9 +43,9 @@ const ListItem = ({data}) => {
       <div className={styles.lBlock} key={data.workoutName}>
         <ChangeName data={data} isLink={true} styles={styles} />
         <div className={styles.label}>
-          {dict.sports.hasOwnProperty(data.sport)
-            ? dict.sports[data.sport][userLang]
-            : dict.sports.other[userLang]}
+          {dictConstant.sports.hasOwnProperty(data.sport)
+            ? dictConstant.sports[data.sport][userLang]
+            : dictConstant.sports.other[userLang]}
         </div>
       </div>
       <BlockMetricContainer data={data}/>

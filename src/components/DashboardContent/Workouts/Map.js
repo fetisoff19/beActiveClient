@@ -3,7 +3,7 @@ import {useEffect} from "react";
 import {getPolyline} from "../../../store/workouts/workouts.actions.js";
 import Maps from "../../UI/Maps.js";
 import styles from "../styles.module.scss";
-import {dict, userLang} from "../../../utils/constants/config.js";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
 import {useDispatch, useSelector} from "react-redux";
 
 const Map = ({id}) => {
@@ -20,7 +20,7 @@ const Map = ({id}) => {
   if(!id){
     return (
       <div className={styles.plug}>
-        {dict.title.indoorWorkout[userLang]}
+        {dictConstant.title.indoorWorkout[userLang]}
       </div>
     )
   }

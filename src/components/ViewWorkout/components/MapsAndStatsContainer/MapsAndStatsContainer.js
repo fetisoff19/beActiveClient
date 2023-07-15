@@ -7,7 +7,7 @@ import Pushpin2 from "../../../UI/svgComponents/Pushpin2";
 import Pushpin1 from "../../../UI/svgComponents/Pushpin1";
 import NameSportDate from "../NameSportDate";
 import MainWorkoutStats from "../WorkoutsStats/MainWorkoutStats";
-import {dict, userLang} from "@constants/config";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
 import WorkoutStats from "../WorkoutsStats/WorkoutStats";
 import TextArea from "../../../UI/TextArea";
 import ViewWorkoutContext from "../../context/Context";
@@ -69,12 +69,12 @@ const MapsAndStatsContainer = () => {
       <MainWorkoutStats data={workout} styles={styles}/>
       {maps}
       <h1>
-        {dict.title.stats[userLang]}
+        {dictConstant.title.stats[userLang]}
       </h1>
       <WorkoutStats styles={styles}
         data={workout} />
       <h1>
-        {dict.title.notes[userLang]}
+        {dictConstant.title.notes[userLang]}
       </h1>
       <TextArea _id={workout._id} text={workout?.note}
         styles={styles} setState={setWriting}/>

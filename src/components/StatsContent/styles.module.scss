@@ -2,7 +2,6 @@
 
 .page{
   @include page;
-  @include backgroundImageLightGrayBottles;
   display: flex;
   justify-content: center;
 

@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {dict, userLang} from "@constants/config";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
 import Ok from "./svgComponents/Ok";
 import Close from "./svgComponents/Close";
 import {editWorkout} from "@store/workouts/workouts.actions";
@@ -8,7 +8,7 @@ import AppLoader from "../Loaders/AppLoader";
 
 const TextArea = ({text, _id, styles, setState}) => {
   const dispatch = useDispatch();
-  const [value, setValue] = useState(text || dict.title.placeholderNote[userLang]);
+  const [value, setValue] = useState(text || dictConstant.title.placeholderNote[userLang]);
   const [showButtons, setShowButtons] = useState(false);
   const ref = useRef(null);
   const filesToDelete = useSelector(state => state.workouts.filesToDelete);
@@ -21,7 +21,7 @@ const TextArea = ({text, _id, styles, setState}) => {
   }
 
   function saveNote() {
-    if(value && value !== text && value !== dict.title.placeholderNote[userLang])
+    if(value && value !== text && value !== dictConstant.title.placeholderNote[userLang])
       dispatch(editWorkout(_id, 'note', value))
       setShowButtons(false)
   }
@@ -43,12 +43,12 @@ const TextArea = ({text, _id, styles, setState}) => {
         onFocus={() => {
           setState && setState(true);
           setShowButtons(true);
-        value === dict.title.placeholderNote[userLang] ? setValue('') : null;
+        value === dictConstant.title.placeholderNote[userLang] ? setValue('') : null;
         }}
         onBlur={() => {
           setState && setState(false);
           // setShowButtons(false);
-          !value ? setValue(text || dict.title.placeholderNote[userLang]) : null;
+          !value ? setValue(text || dictConstant.title.placeholderNote[userLang]) : null;
         }}
       />
       {showButtons &&
@@ -58,8 +58,8 @@ const TextArea = ({text, _id, styles, setState}) => {
           </div>
           <div className={styles?.close} onClick={() => {
             setShowButtons(false)
-            setValue(text || dict.title.placeholderNote[userLang]);
-            ref.current.value = text || dict.title.placeholderNote[userLang]}}
+            setValue(text || dictConstant.title.placeholderNote[userLang]);
+            ref.current.value = text || dictConstant.title.placeholderNote[userLang]}}
           >
             <Close fill={'grey'}/>
           </div>

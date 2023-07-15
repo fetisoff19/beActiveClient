@@ -12,6 +12,7 @@ import watermelon from '@assets/icons/watermelon.svg';
 import coffee from '@assets/icons/coffee.svg';
 import energyBottle from '@assets/icons/energyBottle.svg';
 
+
 function NewMarker({position, className, icon, iconSize, iconAnchor}) {
   const newIcon = new Leaflet.Icon({
     iconUrl: icon,

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import {dict, userLang} from "@constants/config";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
 import {setError} from "@store/appEvents/appEvents.slice";
 import {useDispatch} from "react-redux";
 
@@ -15,10 +15,10 @@ const Error = ({error}) => {
   return (
     <div className={'page'}>
       <div className={'content error'}>
-        <h1>{dict.title.error[userLang] + ': ' +  error?.message || 'unknown error'}</h1>
+        <h1>{dictConstant.title.error[userLang] + ': ' +  error?.message || 'unknown error'}</h1>
         <Link to={'/'}>
           <div onClick={clearError}>
-            {dict.title.goToDashboard[userLang]}
+            {dictConstant.title.goToDashboard[userLang]}
           </div>
         </Link>
       </div>

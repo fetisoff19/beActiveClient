@@ -1,11 +1,11 @@
 import React from 'react';
-import {dict, userLang} from "@constants/config";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
 
 const NoWorkouts = () => {
   return (
     <div className={'page'}>
       <div className={'content'}>
-        <h1>{dict.title.addActivities[userLang]}</h1>
+        <h1>{dictConstant.title.addActivities[userLang]}</h1>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import {dict, userLang} from "@constants/config";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
 import {Link} from "react-router-dom";
 
 const DuplicateFile = ({data, className}) => {
@@ -8,9 +8,9 @@ const DuplicateFile = ({data, className}) => {
     <div className={className}>
       <div>{name}</div>
       <div>
-        <span>{dict.title.duplicateFile[userLang] + '. '}</span>
+        <span>{dictConstant.title.duplicateFile[userLang] + '. '}</span>
         <Link to={'../workouts/' + id}>
-          <span>{dict.title.more[userLang]}</span>
+          <span>{dictConstant.title.more[userLang]}</span>
         </Link>
       </div>
 

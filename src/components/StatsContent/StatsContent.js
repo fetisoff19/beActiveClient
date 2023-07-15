@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './styles.module.scss'
-import {dict, userLang} from "@constants/config";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
 import {useSelector} from "react-redux";
 import DateSportsFilter from "./components/DateSportsFilter";
 import ModalTransparent from "../UI/ModalTransparent";
@@ -31,7 +31,7 @@ const StatsContent = () => {
           ? <AppLoader cursorWait={true}/>
           : <>
             <h1>
-              {dict.title.stats[userLang]}
+              {dictConstant.title.stats[userLang]}
             </h1>
             {allWorkouts.length > 0 &&
               <DateSportsFilter

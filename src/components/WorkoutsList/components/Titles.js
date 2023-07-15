@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import styles from "../styles.modules.scss";
-import {dict, userLang} from "@constants/config";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
 import Delete from "../../UI/svgComponents/Delete";
 import Other from "../../UI/svgComponents/Sports/sportsIcons/Other.js";
 import {useContext} from "react";
@@ -25,7 +25,7 @@ const Titles = () => {
     <div className={styles.mBlock + ' ' + styles.active}
          onClick={() => handleClick(field)}
          key={field} >
-      {dict.fields[labels[index]][userLang]}
+      {dictConstant.fields[labels[index]][userLang]}
       <span className={styles.span}>
         {setMarker(field)}
       </span>
@@ -57,10 +57,10 @@ const Titles = () => {
         <span className={styles.span}>
           {marker}
         </span>
-          {dict.fields.date[userLang]}
+          {dictConstant.fields.date[userLang]}
         </div>
         <div className={styles.lBlock}>
-          {dict.title.title[userLang]}
+          {dictConstant.title.title[userLang]}
         </div>
         <div className={styles.blockMetricContainer}>
           {blockMetric}

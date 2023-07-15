@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import styles from './styles.module.scss'
 import FilesList from "./components/FilesList";
-import {dict, userLang} from "@constants/config";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
 import {useDispatch, useSelector} from "react-redux";
 import {uploadWorkouts} from "@store/workouts/workouts.actions";
 import {addFilesToUpload, resetStateUploadedFiles} from "@store/workouts/workouts.slice";
@@ -74,7 +74,7 @@ export default function AddWorkouts() {
     <div className={styles.page}>
       <div className={styles.content}>
         <h1>
-          {dict.title.addWorkouts[userLang]}
+          {dictConstant.title.addWorkouts[userLang]}
         </h1>
         <div className={drag ? (styles.drop + ' ' + styles.dropArea) : styles.drop}
              onDragStart={e => dragStartHandler(e)}
@@ -82,14 +82,14 @@ export default function AddWorkouts() {
              onDragOver={e => dragStartHandler(e)}
              onDrop={e => onDropHandler(e)}>
         <span className={styles.label}>
-          {dict.title.add1[userLang]}
+          {dictConstant.title.add1[userLang]}
           <span className={styles.input} onClick={handleClick}>
-              {dict.title.browse[userLang]}
+              {dictConstant.title.browse[userLang]}
             <input
               type='file' multiple accept={'.fit'}
               ref={inputHiddenRef} onChange={handleChange}/>
             </span>
-          {dict.title.add2[userLang]}
+          {dictConstant.title.add2[userLang]}
         </span>
           <FilesList
             files={files} setFiles={setFiles}
@@ -99,7 +99,7 @@ export default function AddWorkouts() {
           disabled={buttonClick}
           className={!buttonClick && files?.length ? styles.active : null}
           onClick={uploadValidatedFiles}>
-          {dict.title.upload[userLang]}
+          {dictConstant.title.upload[userLang]}
         </button>
       </div>
     </div>

@@ -5,7 +5,7 @@ import {useEffect} from "react";
 import {addFilesToUpload} from "@store/workouts/workouts.slice";
 import ModalNotice from "@components/UI/ModalNotice";
 import {useLocation} from "react-router";
-import {dict, userLang} from "@constants/config";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
 
 const UploadFilesModal = () => {
   const filesToUpload = useSelector(state => state.workouts.filesToUpload);
@@ -16,7 +16,7 @@ const UploadFilesModal = () => {
 
   const delay = 3000;
   const uploadedEnd = filesToUpload?.length > 0 && filesToUpload?.length === uploadedFiles?.length
-  const text = `${dict.title.filesUploaded[userLang]}: ${uploadedFiles.length}/${filesToUpload.length}`
+  const text = `${dictConstant.title.filesUploaded[userLang]}: ${uploadedFiles.length}/${filesToUpload.length}`
 
 
   useEffect(() => {

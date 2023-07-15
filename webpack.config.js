@@ -81,13 +81,14 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ["", ".js", ".jsx", '.png', '.jpg', '.jpeg', '.svg', '.gif', ".es6", ".scss", ".ttf"],  //
+    extensions: ["", ".js", ".jsx", '.png', '.jpg', '.jpeg', ".webp", '.svg', '.gif', ".es6", ".scss", ".ttf", '.woff2'],  //
     alias: {
       '@': path.resolve(__dirname, 'src'),
       '@assets': path.resolve(__dirname, 'src/assets'),
       '@components': path.resolve(__dirname, 'src/components'),
       '@constants': path.resolve(__dirname, 'src/utils/constants'),
       '@helpers': path.resolve(__dirname, 'src/utils/helpers'),
+      '@pages': path.resolve(__dirname, 'src/pages'),
       '@store': path.resolve(__dirname, 'src/store'),
     }
   },

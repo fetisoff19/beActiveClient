@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from "../styles.module.scss";
 import {convertDistance, getHourMinSec} from "../../../utils/helpers/functionsDate&Values.helpers.js";
-import {dict, userLang} from "../../../utils/constants/config.js";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
 
 const Indicators = ({data}) => {
 
@@ -34,10 +34,10 @@ const Indicators = ({data}) => {
         <div key={item} className={styles.indicator}>
           <div className={styles.unit}>
             {fields[item].formatter(data[item]) + ' '
-              + (fields[item].unit ? dict.units[fields[item].unit][userLang] : '')}
+              + (fields[item].unit ? dictConstant.units[fields[item].unit][userLang] : '')}
           </div>
           <div className={styles.label}>
-            {dict.fields[item][userLang]}
+            {dictConstant.fields[item][userLang]}
           </div>
         </div>
       )

@@ -1,5 +1,6 @@
 import React from 'react';
-import {dict, userLang, statsFields} from "@constants/config";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
+import {statsFields} from "@constants/stats.constant";
 
 const WorkoutStats = ({data, styles}) => {
 
@@ -19,15 +20,15 @@ let order =
         <div className={styles.statsUnit}>
           {(statsFields[unit]?.formatter ? statsFields[unit].formatter(data[item]) : data[item])
           + ' ' +
-          (statsFields[unit].unit ? dict.units[statsFields[unit].unit][userLang] : '')}
+          (statsFields[unit].unit ? dictConstant.units[statsFields[unit].unit][userLang] : '')}
         </div>
-        <div className={styles.statsLabel}>{dict.fields[item][userLang]}</div>
+        <div className={styles.statsLabel}>{dictConstant.fields[item][userLang]}</div>
       </div>)
     )
     let block = fields.filter(a => a !== null).length
       ? (<div key={unit}>
         <div className={styles.statsMainLabel}>
-          {dict.fields[unit][userLang]}
+          {dictConstant.fields[unit][userLang]}
         </div>
         {fields}
           </div>)

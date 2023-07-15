@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "../styles.module.scss";
-import {dict, userLang} from "@constants/config";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
 
 const indicators = [ 'totalWorkouts', 'totalTimerTime', 'totalDistance', 'avgHeartRate', 'avgSpeed', 'enhancedAvgSpeed', 'avgPower', 'maxHeartRate',  'totalAscent',  'avgCadence', 'totalCalories']
 
@@ -16,7 +16,7 @@ const IndicatorsList = ({field, setField}) => {
       onClick={() => handleClick(item)}
       className={field === item ? styles.selected : ''}
     >
-      {dict.fields[item][userLang]}
+      {dictConstant.fields[item][userLang]}
     </li>)
 
   return (

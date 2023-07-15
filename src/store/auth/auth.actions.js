@@ -1,8 +1,8 @@
 import axios from 'axios'
 import {logout, setDemo, setUser} from "./auth.slice.js";
-import {API_URL, demoUser} from "@constants/config";
 import {hideLoader, hideSmallLoader, showLoader, showSmallLoader} from "../appEvents/appEvents.slice.js";
 import {setAllWorkouts, setStats} from "../workouts/workouts.slice.js";
+import {API_URL, demoUser} from "@constants/config.constant";
 
 export const registration = (email, password, setRequest) => {
   return async dispatch => {

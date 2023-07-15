@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "../styles.modules.scss";
-import {dict, userLang} from "@constants/config";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
 import FilterBar from "./FilterBar";
 import Titles from "./Titles";
 import {useSelector} from "react-redux";
@@ -15,12 +15,12 @@ const FilterBarTitle = () => {
     <div className={styles.up}>
       {modal &&
         <ModalNotice
-          text={dict.title.notAvailableInDemoMode[userLang]}
+          text={dictConstant.title.notAvailableInDemoMode[userLang]}
           className={'noRules'}/>}
       {stats?.allTime?.totalWorkouts > 0 &&
         <>
           <h1>
-            {dict.title.activities[userLang]}
+            {dictConstant.title.activities[userLang]}
           </h1>
           <FilterBar/>
           <Titles/>

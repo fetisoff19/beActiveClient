@@ -1,9 +1,10 @@
 import React from 'react';
 import {getHourMinSec, getMinSec} from "@helpers/functionsDate&Values.helpers";
-import {dict, userLang, chartsConfig} from "@constants/config";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
 import {useContext} from "react";
 import ViewWorkoutContext from "../../../context/Context.js";
 import styles from "../../../styles.module.scss";
+import {chartsConfig} from "@constants/charts.constant";
 
 const RefreshValuesFromCharts = ({chartsNames}) => {
   const {dataForCharts, index} = useContext(ViewWorkoutContext)
@@ -45,14 +46,14 @@ const RefreshValuesFromCharts = ({chartsNames}) => {
     )
   let thead = chartsNames.map(item =>
     <td key={item} scope="col">
-      {dict.fields[item][userLang]}
+      {dictConstant.fields[item][userLang]}
     </td>)
   thead.push(
     <td key={'distance'} scope="col">
-      {dict.fields.totalDistance[userLang]}
+      {dictConstant.fields.totalDistance[userLang]}
     </td>,
     <td key={'time'} scope="col">
-      {dict.fields.time[userLang]}
+      {dictConstant.fields.time[userLang]}
     </td>)
 
   return (

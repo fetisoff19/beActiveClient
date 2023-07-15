@@ -2,7 +2,8 @@ import React from 'react';
 import Highcharts  from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import Exporting from 'highcharts/modules/exporting';
-import {dict, statsConfig, userLang} from "@constants/config";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
+import {statsConfig} from "@constants/stats.constant";
 
 
 Exporting(Highcharts);
@@ -10,10 +11,10 @@ Exporting(Highcharts);
 const StatsCharts = ({name, xData, yData, days, convertAvg, yAxisFormatter, customPeriod, type, style}) => {
   const avg = yData[1];
   const unit = field => statsConfig[field]?.unit
-    ? dict.units[statsConfig[field]?.unit][userLang]
+    ? dictConstant.units[statsConfig[field]?.unit][userLang]
     : '';
   const plotLines = convertAvg &&
-    (dict.title.avg[userLang] + ': '
+    (dictConstant.title.avg[userLang] + ': '
       + convertAvg(avg).toString().replaceAll('.', ',')
       + ' ' + unit(name));
 
@@ -25,12 +26,12 @@ const StatsCharts = ({name, xData, yData, days, convertAvg, yAxisFormatter, cust
     }
     else if((!customPeriod && days > 100) || (customPeriod && days > 180)) {
       return (
-        dict.monthStrict[x.getMonth()][userLang]
+        dictConstant.monthStrict[x.getMonth()][userLang]
         + (x.getMonth() === 0 ? (xData.length > 12 ? ` ${x.getFullYear()}` : `<br>${x.getFullYear()}`) : '')
       )
     } else {
       return (
-        x.getDate() + ' ' + dict.month[x.getMonth()][userLang]
+        x.getDate() + ' ' + dictConstant.month[x.getMonth()][userLang]
       )
     }
   };
@@ -41,7 +42,7 @@ const StatsCharts = ({name, xData, yData, days, convertAvg, yAxisFormatter, cust
         ? statsConfig[id]?.convertAvg(statsConfig[id]?.yAxisFormatter(y))
         : y.toString().replaceAll('.', ',')
       return (
-        `<b>${xAxisFormatter(x)}</b><br>${dict.fields[id][userLang]}: ${y} ${unit(id)}`
+        `<b>${xAxisFormatter(x)}</b><br>${dictConstant.fields[id][userLang]}: ${y} ${unit(id)}`
       )
     }
   }
@@ -97,7 +98,7 @@ const StatsCharts = ({name, xData, yData, days, convertAvg, yAxisFormatter, cust
       }],
     },
     series: [{
-      name: dict.fields[name][userLang] + (unit(name) ? (', ' + unit(name)) : ''),
+      name: dictConstant.fields[name][userLang] + (unit(name) ? (', ' + unit(name)) : ''),
       data: yData[0],
       color: statsConfig[name]?.color || 'brown',
       id: name,

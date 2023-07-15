@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import styles from "../styles.module.scss";
 import SportsFilter from "../../UI/SportsFilter";
 import {useState} from "react";
-import {dict, userLang} from "@constants/config";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
 import {getStats} from "@store/workouts/workouts.actions";
 import {useDispatch} from "react-redux";
 import StatsForPeriod from "./StatsForPeriod";
@@ -27,7 +27,7 @@ const DateSportsFilter = (
       onClick={() => handleClickPeriod(item)}
       className={item === period && !customPeriod ? styles.check : ''}
     >
-      {dict.title[item][userLang]}
+      {dictConstant.title[item][userLang]}
     </div>)
 
 

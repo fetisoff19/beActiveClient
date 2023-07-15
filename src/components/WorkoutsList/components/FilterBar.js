@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react';
-import {dict, userLang} from "@constants/config";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
 import {useSelector} from "react-redux";
 import styles from '../styles.modules.scss'
 import Input from "../../UI/Input";
@@ -62,7 +62,7 @@ const FilterBar = () => {
             type="text"
             minLength="2"
             classname={''}
-            placeholder={dict.title.searchWorkouts[userLang]}
+            placeholder={dictConstant.title.searchWorkouts[userLang]}
           />
           {searchName && <div onClick={stopSearch}>
             <X/>
@@ -70,8 +70,8 @@ const FilterBar = () => {
         </div>
         {search && !loader &&
           <div>
-          {dict.title.resultSearch1[userLang] + numberOfFiles
-            + dict.title.resultSearch2[userLang] + search}
+          {dictConstant.title.resultSearch1[userLang] + numberOfFiles
+            + dictConstant.title.resultSearch2[userLang] + search}
           </div>}
       </div>
       <SportsFilter

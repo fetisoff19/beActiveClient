@@ -1,12 +1,12 @@
 import React from 'react';
-import {dict, userLang} from "@constants/config";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
 
 const SportAndDate = ({data, className}) => {
   return (
     <div className={className}>
-        {(dict.sports.hasOwnProperty(data.sport)
-            ? dict.sports[data.sport][userLang]
-            : dict.sports.other[userLang]) + ', '
+        {(dictConstant.sports.hasOwnProperty(data.sport)
+            ? dictConstant.sports[data.sport][userLang]
+            : dictConstant.sports.other[userLang]) + ', '
           + (new Date(data.timestamp).toLocaleString() || '')}
     </div>
   );

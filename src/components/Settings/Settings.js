@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {dict, userLang} from "@constants/config";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
 import styles from './styles.module.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {setFunnyMarkers, setLanguage, setSmoothing} from "@store/settings/settings.slice";
@@ -83,14 +83,14 @@ const Settings = () => {
 
   const deleteAllWorkoutsModalContent =
     <ModalContent
-      text={dict.title.deleteAllWorkouts[userLang]}
+      text={dictConstant.title.deleteAllWorkouts[userLang]}
       functionNo={deleteAll}
       functionYes={() => setClickButtonDeleteAllWorkouts(false)}
     />
 
   const deleteUserModalContent =
     <ModalContent
-      text={dict.title.deleteUserConfirmation[userLang]}
+      text={dictConstant.title.deleteUserConfirmation[userLang]}
       functionNo={deleteUser}
       functionYes={() => setClickButtonDeleteUser(false)}
     />
@@ -99,7 +99,7 @@ const Settings = () => {
   //   <div className={styles.info}>
   //     <Question stroke={'grey'} height={"20px"} width={'20px'}/>
   //     <span className={styles.tooltip}>
-  //       {dict.title.settingInfo[userLang]}
+  //       {dictConstant.title.settingInfo[userLang]}
   //     </span>
   //   </div>
 
@@ -109,7 +109,7 @@ const Settings = () => {
     <div className={styles.page}>
       {modal &&
         <ModalNotice
-          text={dict.title.notAvailableInDemoMode[userLang]}
+          text={dictConstant.title.notAvailableInDemoMode[userLang]}
           className={'noRules'}/>}
       {clickButtonDeleteAllWorkouts &&
         <ModalTransparent
@@ -131,19 +131,19 @@ const Settings = () => {
 
 
               <h1>
-                {dict.title.settings[userLang]}
+                {dictConstant.title.settings[userLang]}
               </h1>
               <form className={styles.form} action="" onSubmit={e => e.preventDefault()}>
                 <div>
                   {/*<Select*/}
-                  {/*  label={dict.title.smoothing[userLang]}*/}
+                  {/*  label={dictConstant.title.smoothing[userLang]}*/}
                   {/*  defaultValue={smooth}*/}
                   {/*  options={[1, 2, 4, 8, 12, 16]}*/}
                   {/*  onChange={setSmoothingHandler}*/}
                   {/*  component={info}/>*/}
                   <div>
                     <label className={styles.customInputLabel} htmlFor="markers">
-                      {dict.title.funnyMarkers[userLang]}
+                      {dictConstant.title.funnyMarkers[userLang]}
                       <Input
                         type="checkbox" id={"markers"} name={"markers"}
                         checked={funnyMarks}
@@ -154,7 +154,7 @@ const Settings = () => {
                   </div>
                   {/*<div>*/}
                   {/*  <Select*/}
-                  {/*    label={dict.title.appLanguage[userLang]}*/}
+                  {/*    label={dictConstant.title.appLanguage[userLang]}*/}
                   {/*    defaultValue={language}*/}
                   {/*    options={['English', 'Русский']}*/}
                   {/*    onChange={setLanguageHandler}/>*/}
@@ -163,7 +163,7 @@ const Settings = () => {
                   <div>
                     <Button
                       onClick={handleClickButtonDeleteAllWorkouts}
-                      text={dict.title.deleteAll[userLang]}
+                      text={dictConstant.title.deleteAll[userLang]}
                       className={workouts?.length && styles.active}
                     />
                     <div className={styles.info}/>
@@ -171,7 +171,7 @@ const Settings = () => {
                   <div>
                     <Button
                       onClick={handleClickButtonDeleteUser}
-                      text={dict.title.deleteUser[userLang]}
+                      text={dictConstant.title.deleteUser[userLang]}
                       className={styles.active}
                     />
                     <div className={styles.info}/>
@@ -179,7 +179,7 @@ const Settings = () => {
                   <div>
                     <Button
                       onClick={handleChange}
-                      text={dict.title.save[userLang]}
+                      text={dictConstant.title.save[userLang]}
                       className={stylesActive && styles.active}
                     />
                     <div className={styles.info}/>

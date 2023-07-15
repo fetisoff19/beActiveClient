@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {demoUser, dict, userLang} from "@constants/config";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
 import styles from './styles.module.scss'
 import {useDispatch, useSelector} from "react-redux";
 import Input from "../UI/Input";
 import {login, registration} from "@store/auth/auth.actions";
 import ModalTransparent from "../UI/ModalTransparent.js";
 import Button from "../UI/Button";
+import {demoUser} from "@constants/config.constant";
 
 const Authorization = () => {
   const [auth, setAuth] = useState(true);
@@ -49,15 +50,15 @@ const Authorization = () => {
       {loader && <ModalTransparent/>}
       <div className={styles.auth}>
         <h1>
-          {auth ? dict.title.signIn[userLang]
-            : dict.title.createAccount[userLang]}
+          {auth ? dictConstant.title.signIn[userLang]
+            : dictConstant.title.createAccount[userLang]}
         </h1>
         <div className={styles.request}>
-          {request && dict.title[request]?.en
-            ? dict.title[request][userLang] : request}
+          {request && dictConstant.title[request]?.en
+            ? dictConstant.title[request][userLang] : request}
         </div>
         <label htmlFor="email">
-          {dict.title.enterEmail[userLang]}
+          {dictConstant.title.enterEmail[userLang]}
         </label>
         <Input
           value={email} setValue={setEmail}
@@ -65,7 +66,7 @@ const Authorization = () => {
           type="text" id="email"
         />
         <label htmlFor="password">
-          {dict.title.enterPassword[userLang]}
+          {dictConstant.title.enterPassword[userLang]}
         </label>
         <Input
           value={password} setValue={setPassword}
@@ -74,23 +75,23 @@ const Authorization = () => {
         />
         <Button
           onClick={handleClick}
-          text={auth ? dict.title.signIn[userLang]
-            : dict.title.create[userLang]}
+          text={auth ? dictConstant.title.signIn[userLang]
+            : dictConstant.title.create[userLang]}
           className={!validate ? styles.validate : ''}
         />
         <div className={styles.change}>
-          {auth ? dict.title.notAccount[userLang]
-            : dict.title.haveAccount[userLang]}
+          {auth ? dictConstant.title.notAccount[userLang]
+            : dictConstant.title.haveAccount[userLang]}
           <span onClick={handleChangeAuth}>
-            {auth ? dict.title.create[userLang]
-              : dict.title.signIn[userLang]}
+            {auth ? dictConstant.title.create[userLang]
+              : dictConstant.title.signIn[userLang]}
           </span>
         </div>
         <div className={styles.demo}>
-          {dict.title.aboutDemo[userLang]}
+          {dictConstant.title.aboutDemo[userLang]}
           <Button
             onClick={loginDemo}
-            text={dict.title.demo[userLang]}
+            text={dictConstant.title.demo[userLang]}
           />
         </div>
       </div>

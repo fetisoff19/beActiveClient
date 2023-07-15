@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import styles from "../styles.module.scss";
-import {dict, statsConfig, userLang} from "@constants/config";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
 import Highcharts from "highcharts";
 import {getDataForStatsChart} from "@helpers/stats.helpers";
 import Plus from "../../UI/svgComponents/Plus";
 import Minus from "../../UI/svgComponents/Minus";
+import {statsConfig} from "@constants/stats.constant";
 
 const indicators = ['totalWorkouts', 'totalTimerTime', 'totalDistance', 'avgHeartRate', 'avgSpeed', 'enhancedAvgSpeed', 'avgPower', 'maxHeartRate',  'totalAscent',  'avgCadence', 'totalCalories']
 
@@ -19,7 +20,7 @@ const AddSeriesList = ({seriesNames, setSeriesNames, field, workouts, data}) => 
       key={item}
       className={seriesNames.includes(item) ? styles.selected : ''}
       onClick={() => handleClickList(item)}>
-      {dict.fields[item][userLang]}
+      {dictConstant.fields[item][userLang]}
     </li>
   )
 
@@ -59,11 +60,11 @@ const AddSeriesList = ({seriesNames, setSeriesNames, field, workouts, data}) => 
             field: field,
             type: statsConfig[field]?.chartsType,
             color: statsConfig[field]?.color,
-            nameSeries: dict.fields[field][userLang],
+            nameSeries: dictConstant.fields[field][userLang],
             convertAvg: statsConfig[field]?.convertAvg,
             yAxisFormatter: statsConfig[field]?.yAxisFormatter,
             unit: statsConfig[field]?.unit
-              ? dict.units[statsConfig[field]?.unit][userLang]
+              ? dictConstant.units[statsConfig[field]?.unit][userLang]
               : '',
           }
           chart.addAxis({
@@ -81,7 +82,7 @@ const AddSeriesList = ({seriesNames, setSeriesNames, field, workouts, data}) => 
           });
 
           chart.addSeries({
-            name: dict.fields[data.field][userLang] + (data?.unit ? (', ' + data.unit) : ''),
+            name: dictConstant.fields[data.field][userLang] + (data?.unit ? (', ' + data.unit) : ''),
             id: data.field,
             type: data.type,
             color: data.color,

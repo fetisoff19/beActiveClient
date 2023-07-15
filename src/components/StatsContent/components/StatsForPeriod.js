@@ -2,13 +2,14 @@ import React, {useEffect, useMemo, useState} from 'react';
 import {useSelector} from "react-redux";
 import WorkoutsNotFound from "../../WorkoutsList/components/WorkoutsNotFound";
 import StatsCharts from "./StatsCharts";
-import {dict, statsConfig, userLang} from "@constants/config";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
 import {calcDate, dayInMs,} from "@helpers/functionsDate&Values.helpers";
 import IndicatorsList from "./IndicatorsList";
 import styles from '../styles.module.scss'
 import {getDataForStatsChart} from "@helpers/stats.helpers";
 import Highcharts from 'highcharts'
 import AddSeriesList from "./AddSeriesList";
+import {statsConfig} from "@constants/stats.constant";
 
 
 const StatsForPeriod = ({startDate, endDate, period, customPeriod}) => {
@@ -67,7 +68,7 @@ const StatsForPeriod = ({startDate, endDate, period, customPeriod}) => {
         <IndicatorsList field={field} setField={setField}/>
         <div>
           <h3>
-            {dict.fields[statsConfig[field].name][userLang]}
+            {dictConstant.fields[statsConfig[field].name][userLang]}
             <AddSeriesList
               field={field} workouts={workouts} data={data}
               seriesNames={seriesNames} setSeriesNames={setSeriesNames}/>

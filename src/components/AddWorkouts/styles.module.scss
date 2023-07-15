@@ -2,19 +2,8 @@
 
 .page {
   @include page;
+  @include backgroundImageLightGrayBottles;
   @include flexRowCenter($ai:  flex-start);
-
-  //background: repeat;
-  //overflow: hidden;
-  //&:before {
-  //  content: '';
-  //  z-index: -1;
-  //  width: 100%;
-  //  height: 100%;
-  //  background-image: url("../../../src/assets/img/bottle.svg");
-  //  transform: rotate(315deg);
-  //  transform: rotate(45deg) scale(1.45);
-  //}
 
 }
 .content{

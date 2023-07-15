@@ -74,7 +74,7 @@ export function getDataForCharts(data, workout){
     k: workout?.k || 1,
   }
 
-  console.log(result, workout, workout?.minHeartRate)
+  // console.log(result, workout, workout?.minHeartRate)
 
   return result
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {dict, userLang} from "@constants/config";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
 import Body from "../../UI/svgComponents/Body";
 
 const WorkoutsNotFound = ({styles}) => {
@@ -7,7 +7,7 @@ const WorkoutsNotFound = ({styles}) => {
     <div className={styles.notFound}>
       <Body/>
       <h3>
-        {dict.title.notFound[userLang]}
+        {dictConstant.title.notFound[userLang]}
       </h3>
     </div>
   );

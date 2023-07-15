@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
-import {dict} from "@constants/config";
+import {dictConstant} from "@constants/dict.constant.js";
 import {useDispatch, useSelector} from "react-redux";
 import {logout} from "@store/auth/auth.slice";
 
@@ -26,7 +26,7 @@ const Navbar = () => {
   const about =
     <NavLink to={'about'} className={({isActive, isPending}) =>
       isPending ? "pending" : isActive ? "active" : ""}>
-      {dict.title.about[language]}
+      {dictConstant.title.about[language]}
     </NavLink>
 
 
@@ -40,36 +40,36 @@ const Navbar = () => {
               to={'/'} end
               className={({isActive, isPending}) =>
                 isPending ? "pending" : isActive ? "active" : ""}>
-              {dict.title.dashBoard[language]}
+              {dictConstant.title.dashBoard[language]}
             </NavLink>
             <NavLink
               to={'workouts'}
               className={({isActive, isPending}) =>
                 isPending ? "pending" : isActive ? "active" : ""}>
-              {dict.title.activities[language]}
+              {dictConstant.title.activities[language]}
             </NavLink>
             <NavLink
               to={'stats'}
               className={({isActive, isPending}) =>
                 isPending ? "pending" : isActive ? "active" : ""}>
-              {dict.title.stats[language]}
+              {dictConstant.title.stats[language]}
             </NavLink>
             <NavLink
               to={'add'}
               className={({isActive, isPending}) =>
                 isPending ? "pending" : isActive ? "active" : ""}>
-              {dict.title.add[language]}
+              {dictConstant.title.add[language]}
             </NavLink>
             <NavLink
               to={'settings'}
               className={({isActive, isPending}) =>
                 isPending ? "pending" : isActive ? "active" : ""}>
-              {dict.title.settings[language]}
+              {dictConstant.title.settings[language]}
             </NavLink>
             {about}
           </nav>
           <a onClick={logoutHandlerClick}>
-            {dict.title.out[language]}
+            {dictConstant.title.out[language]}
           </a>
 
         </div>
@@ -87,7 +87,7 @@ const Navbar = () => {
           to={'/'}
           className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "active" : ""}>
-          {dict.title.signIn[language]}
+          {dictConstant.title.signIn[language]}
         </NavLink>
       </div>
     </header>

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "../../../styles.module.scss";
-import {dict, userLang} from "@constants/config";
+import {dictConstant, userLang} from "@constants/dict.constant.js";
 import Info from "../../../../UI/svgComponents/Info.js";
 import {useContext} from "react";
 import ViewWorkoutContext from "../../../context/Context.js";
@@ -21,11 +21,11 @@ const ResetZoomAndInfo = () => {
         hidden={!zooming || !dataForCharts}
         onClick={handleClick}
       >
-        {dict.title.resetZoom[userLang]}
+        {dictConstant.title.resetZoom[userLang]}
       </div>
       <div className={styles.info}>
         <span className={styles.tooltip}>
-          {dict.title.info1[userLang]}
+          {dictConstant.title.info1[userLang]}
         </span>
         <Info className={styles}/>
       </div>

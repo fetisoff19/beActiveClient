@@ -17,9 +17,9 @@ import {
   setWorkouts
 } from "./workouts.slice.js";
 import axios from "axios";
-import {API_URL} from "@constants/config";
 import {logout} from "../auth/auth.slice.js";
 import {auth} from "../auth/auth.actions.js";
+import {API_URL} from "@constants/config.constant";
 
 
 export function uploadWorkouts(files) {
