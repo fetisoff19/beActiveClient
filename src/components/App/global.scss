@@ -1,4 +1,4 @@
-@import-normalize;
+@import '@csstools/normalize.css';
 @import "../App/vars";
 
 @font-face {
@@ -177,7 +177,7 @@ header{
 
 .about{
   @include page;
-  @include bgImg($url: "@assets/img/aboutPageBG", $bgp: 50% 0);
+  @include bgImg($url: "@assets/img/aboutPageBG", $bgp: 15% 0);
 
   div{
     @include border($radius: 6px);
@@ -203,10 +203,12 @@ header{
     }
 
     a{
+      color: $primaryColorDark;
       font-style: italic;
       letter-spacing: 1.5px;
+      text-decoration: none;
       &:hover{
-        color: $primaryColorDark
+        text-decoration: underline;
       }
     }
   }

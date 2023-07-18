@@ -22,7 +22,6 @@ const Map = ({id}) => {
     return (
       <div className={styles.plug}>
         <NoMap fillRight={variables.appColor} fillLeft={variables.appColorGrey}/>
-        {/*{dictConstant.title.indoorWorkout[userLang]}*/}
       </div>
     )
   }

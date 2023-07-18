@@ -16,7 +16,7 @@ const About = () => {
           {dictConstant.title.aboutApp2[userLang]}
           <br/>
           {dictConstant.title.repo[userLang]}
-          <a href='https://github.com/fetisoff19/sports-app'>github.com/fetisoff19/beActiveClient</a>
+          <a href='https://github.com/fetisoff19/beActiveClient'>github.com/fetisoff19/beActiveClient</a>
           <br/><br/>
           {dictConstant.title.photo[userLang]}
           <br/>

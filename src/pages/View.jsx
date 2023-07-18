@@ -67,42 +67,10 @@ const View = () => {
               />
               : !allWorkouts.length
                 ? <NoWorkouts/>
-                : !workoutIds
-                  ? <PageNotFound/>
-                  : null
+                : <PageNotFound/>
       }
     </div>
   )
-
-  // if (error) {
-  //   console.error(error)
-  //   return (
-  //     <Error error={error}/>
-  //   )
-  // }
-  //
-  // else if (loader)
-  //   return (
-  //     <div className='page'>
-  //       <AppLoader cursorWait={true}/>
-  //     </div>);
-  //
-  // else if(workout)
-  //   return (
-  //     <ViewWorkout
-  //       workout={workout}
-  //       chartsData={chartsData}
-  //       polyline={polyline}
-  //       powerCurve={powerCurve}
-  //     />
-  //   )
-  //
-  // else if(!allWorkouts.length)
-  //   return <NoWorkouts/>
-  //
-  // else if(!workoutIds)
-  //   return <PageNotFound/>
-
 };
 
 export default View;

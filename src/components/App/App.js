@@ -5,7 +5,7 @@ import './global.scss';
 import {Provider} from "react-redux";
 import {store} from "@store";
 
-export function App() {
+function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
@@ -13,4 +13,6 @@ export function App() {
       </BrowserRouter>
     </Provider>
   );
-}
+};
+
+export default App;
