@@ -1,11 +1,11 @@
-import React from 'react';
-import {TailSpin} from "react-loader-spinner";
-import {useEffect} from "react";
-import {cursorWaitOff, cursorWaitOn} from "@store/appEvents/appEvents.slice";
-import {useDispatch} from "react-redux";
-import variables from "../DashboardContent/styles.module.scss";
+import React, { useEffect } from 'react'
+import { TailSpin } from 'react-loader-spinner'
 
-const AppLoader = ({height, width, cursorWait}) => {
+import { cursorWaitOff, cursorWaitOn } from '@store/appEvents/appEvents.slice'
+import { useDispatch } from 'react-redux'
+import variables from '../DashboardContent/styles.module.scss'
+
+const AppLoader = ({ height, width, cursorWait }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -13,8 +13,7 @@ const AppLoader = ({height, width, cursorWait}) => {
     return () => {
       cursorWait && dispatch(cursorWaitOff())
     }
-  }, []);
-
+  }, [])
 
   return (
     <div className='center'>
@@ -24,12 +23,12 @@ const AppLoader = ({height, width, cursorWait}) => {
         color={variables.appColor}
         ariaLabel="tail-spin-loading"
         radius="1"
-        wrapperStyle={{zIndex: '2'}}
+        wrapperStyle={{ zIndex: '2' }}
         wrapperClass=""
         visible={true}
       />
     </div>
-  );
-};
+  )
+}
 
-export default AppLoader;
+export default AppLoader

@@ -1,9 +1,8 @@
-import React from 'react';
-import {dictConstant, userLang} from "@constants/dict.constant.js";
-import {Link} from "react-router-dom";
+import React from 'react'
+import { dictConstant, userLang } from '@constants/dict.constant.js'
+import { Link } from 'react-router-dom'
 
 const PageNotFound = () => {
-
   return (
     <div className={'page'}>
       <div className={'content error'}>
@@ -13,6 +12,6 @@ const PageNotFound = () => {
     </div>
 
   )
-};
+}
 
-export default PageNotFound;
+export default PageNotFound

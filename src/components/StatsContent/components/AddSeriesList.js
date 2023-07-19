@@ -1,18 +1,17 @@
-import React, {useEffect, useState} from 'react';
-import styles from "../styles.module.scss";
-import {dictConstant, userLang} from "@constants/dict.constant.js";
-import Highcharts from "highcharts";
-import {getDataForStatsChart} from "@helpers/stats.helpers";
-import Plus from "../../UI/svgComponents/Plus";
-import Minus from "../../UI/svgComponents/Minus";
-import {statsConfig} from "@constants/stats.constant";
+import React, { useEffect, useState } from 'react'
+import styles from '../styles.module.scss'
+import { dictConstant, userLang } from '@constants/dict.constant.js'
+import Highcharts from 'highcharts'
+import { getDataForStatsChart } from '@helpers/stats.helpers'
+import Plus from '../../Svg/Plus'
+import Minus from '../../Svg/Minus'
+import { statsConfig } from '@constants/stats.constant'
 
-const indicators = ['totalWorkouts', 'totalTimerTime', 'totalDistance', 'avgHeartRate', 'avgSpeed', 'enhancedAvgSpeed', 'avgPower', 'maxHeartRate',  'totalAscent',  'avgCadence', 'totalCalories']
+const indicators = ['totalWorkouts', 'totalTimerTime', 'totalDistance', 'avgHeartRate', 'avgSpeed', 'enhancedAvgSpeed', 'avgPower', 'maxHeartRate', 'totalAscent', 'avgCadence', 'totalCalories']
 
-
-const AddSeriesList = ({seriesNames, setSeriesNames, field, workouts, data}) => {
+const AddSeriesList = ({ seriesNames, setSeriesNames, field, workouts, data }) => {
   const [visibleList, setVisibleList] = useState(false)
-  const [state, setState] = useState([]);
+  const [state, setState] = useState([])
 
   const list = indicators.map(item =>
     field !== item &&
@@ -24,40 +23,38 @@ const AddSeriesList = ({seriesNames, setSeriesNames, field, workouts, data}) => 
     </li>
   )
 
-
-  function handleClickList(item) {
-    let chart = Highcharts.charts.at(-1)
-    if(seriesNames.includes(item)) {
-      setSeriesNames(prev => prev.filter(elem => elem !== item));
-      setState(prev => prev.filter(elem => elem[2] !== item));
+  function handleClickList (item) {
+    const chart = Highcharts.charts.at(-1)
+    if (seriesNames.includes(item)) {
+      setSeriesNames(prev => prev.filter(elem => elem !== item))
+      setState(prev => prev.filter(elem => elem[2] !== item))
       chart.get(item)?.remove()
     } else {
       setSeriesNames(prev => [...prev, item])
-      setState(prev => [...prev, getDataForStatsChart(workouts, data[0], statsConfig, item)]);
+      setState(prev => [...prev, getDataForStatsChart(workouts, data[0], statsConfig, item)])
     }
   }
 
-  function handleClickPlus() {
+  function handleClickPlus () {
     setVisibleList(prev => !prev)
   }
 
-
   useEffect(() => {
-    setState([]);
-    setSeriesNames([]);
-    visibleList && setVisibleList(false);
+    setState([])
+    setSeriesNames([])
+    visibleList && setVisibleList(false)
   }, [workouts])
 
   useEffect(() => {
-    let chart = Highcharts.charts.at(-1)
-    if(chart && state.length) {
+    const chart = Highcharts.charts.at(-1)
+    if (chart && state.length) {
       state.forEach(item => {
-        if(!chart.get(item[2])) {
-          let field = item[2]
-          let data = {
+        if (!chart.get(item[2])) {
+          const field = item[2]
+          const data = {
             yData: item[0],
             avg: item[1],
-            field: field,
+            field,
             type: statsConfig[field]?.chartsType,
             color: statsConfig[field]?.color,
             nameSeries: dictConstant.fields[field][userLang],
@@ -65,21 +62,21 @@ const AddSeriesList = ({seriesNames, setSeriesNames, field, workouts, data}) => 
             yAxisFormatter: statsConfig[field]?.yAxisFormatter,
             unit: statsConfig[field]?.unit
               ? dictConstant.units[statsConfig[field]?.unit][userLang]
-              : '',
+              : ''
           }
           chart.addAxis({
             id: data.field,
             title: {
-              text: null,
+              text: null
             },
             opposite: true,
             labels: {
               style: {
-                color: statsConfig[field]?.color,
-              },
-            },
+                color: statsConfig[field]?.color
+              }
+            }
 
-          });
+          })
 
           chart.addSeries({
             name: dictConstant.fields[data.field][userLang] + (data?.unit ? (', ' + data.unit) : ''),
@@ -89,13 +86,11 @@ const AddSeriesList = ({seriesNames, setSeriesNames, field, workouts, data}) => 
             yAxis: data.field,
             data: data.yData,
             zIndex: data.type === 'column' ? 1 : 2
-          });
+          })
         }
       })
     }
   }, [state, field])
-
-
 
   return (
     <div
@@ -115,7 +110,7 @@ const AddSeriesList = ({seriesNames, setSeriesNames, field, workouts, data}) => 
         }
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AddSeriesList;
+export default AddSeriesList

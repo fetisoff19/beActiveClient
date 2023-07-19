@@ -1,9 +1,10 @@
-import React from 'react';
-import {dictConstant, userLang} from "@constants/dict.constant.js";
-import {Link} from "react-router-dom";
+import React from 'react'
+import { dictConstant, userLang } from '@constants/dict.constant.js'
+import { Link } from 'react-router-dom'
 
-const DuplicateFile = ({data, className}) => {
-  const [id, name] = data;
+const DuplicateFile = ({ data, className }) => {
+  const [id, name] = data
+
   return (
     <div className={className}>
       <div>{name}</div>
@@ -15,7 +16,7 @@ const DuplicateFile = ({data, className}) => {
       </div>
 
     </div>
-  );
-};
+  )
+}
 
-export default DuplicateFile;
+export default DuplicateFile

@@ -1,20 +1,18 @@
-import React from 'react';
-import {NavLink} from "react-router-dom";
-import {dictConstant} from "@constants/dict.constant.js";
-import {useDispatch, useSelector} from "react-redux";
-import {logout} from "@store/auth/auth.slice";
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+import { dictConstant } from '@constants/dict.constant.js'
+import { useDispatch, useSelector } from 'react-redux'
+import { logout, setAuth } from '@store/auth/auth.slice'
 
 const Navbar = () => {
   const dispatch = useDispatch()
   const isAuth = useSelector(state => state.user.isAuth)
   const language = useSelector(state => state.settings.language)
 
-
   const logoutHandlerClick = () => {
     dispatch(logout())
+    dispatch(setAuth(false))
   }
-
-
 
   const logo =
     <NavLink
@@ -24,13 +22,12 @@ const Navbar = () => {
     </NavLink>
 
   const about =
-    <NavLink to={'about'} className={({isActive, isPending}) =>
-      isPending ? "pending" : isActive ? "active" : ""}>
+    <NavLink to={'about'} className={({ isActive, isPending }) =>
+      isPending ? 'pending' : isActive ? 'active' : ''}>
       {dictConstant.title.about[language]}
     </NavLink>
 
-
-  if(isAuth) {
+  if (isAuth) {
     return (
       <header>
         <div>
@@ -38,32 +35,32 @@ const Navbar = () => {
             {logo}
             <NavLink
               to={'/'} end
-              className={({isActive, isPending}) =>
-                isPending ? "pending" : isActive ? "active" : ""}>
+              className={({ isActive, isPending }) =>
+                isPending ? 'pending' : isActive ? 'active' : ''}>
               {dictConstant.title.dashBoard[language]}
             </NavLink>
             <NavLink
               to={'workouts'}
-              className={({isActive, isPending}) =>
-                isPending ? "pending" : isActive ? "active" : ""}>
+              className={({ isActive, isPending }) =>
+                isPending ? 'pending' : isActive ? 'active' : ''}>
               {dictConstant.title.activities[language]}
             </NavLink>
             <NavLink
               to={'stats'}
-              className={({isActive, isPending}) =>
-                isPending ? "pending" : isActive ? "active" : ""}>
+              className={({ isActive, isPending }) =>
+                isPending ? 'pending' : isActive ? 'active' : ''}>
               {dictConstant.title.stats[language]}
             </NavLink>
             <NavLink
               to={'add'}
-              className={({isActive, isPending}) =>
-                isPending ? "pending" : isActive ? "active" : ""}>
+              className={({ isActive, isPending }) =>
+                isPending ? 'pending' : isActive ? 'active' : ''}>
               {dictConstant.title.add[language]}
             </NavLink>
             <NavLink
               to={'settings'}
-              className={({isActive, isPending}) =>
-                isPending ? "pending" : isActive ? "active" : ""}>
+              className={({ isActive, isPending }) =>
+                isPending ? 'pending' : isActive ? 'active' : ''}>
               {dictConstant.title.settings[language]}
             </NavLink>
             {about}
@@ -75,23 +72,24 @@ const Navbar = () => {
         </div>
       </header>
     )
+  } else {
+    return (
+      <header>
+        <div>
+          <nav>
+            {logo}
+            {about}
+          </nav>
+          <NavLink
+            to={'/'}
+            className={({ isActive, isPending }) =>
+              isPending ? 'pending' : isActive ? 'active' : ''}>
+            {dictConstant.title.signIn[language]}
+          </NavLink>
+        </div>
+      </header>
+    )
   }
-  else return (
-    <header>
-      <div>
-        <nav>
-          {logo}
-          {about}
-        </nav>
-        <NavLink
-          to={'/'}
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "active" : ""}>
-          {dictConstant.title.signIn[language]}
-        </NavLink>
-      </div>
-    </header>
-  );
-};
+}
 
-export default React.memo(Navbar);
+export default React.memo(Navbar)

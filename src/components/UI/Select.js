@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-const Select = ({defaultValue, onChange, label, options, component}) => {
+const Select = ({ defaultValue, onChange, label, options, component }) => {
   const optionsArray = options.map(item =>
     <option key={item} value={item}>
       {item}
@@ -18,7 +18,7 @@ const Select = ({defaultValue, onChange, label, options, component}) => {
       </select>
       {component}
     </div>
-  );
-};
+  )
+}
 
-export default Select;
+export default Select

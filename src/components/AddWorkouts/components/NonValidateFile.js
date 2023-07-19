@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-const NonValidateFile = ({name, text, className}) => {
+const NonValidateFile = ({ name, text, className }) => {
   return (
     <div className={className}>
       <div>{name}</div>
@@ -8,7 +8,7 @@ const NonValidateFile = ({name, text, className}) => {
         <span>{text}</span>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default NonValidateFile;
+export default NonValidateFile

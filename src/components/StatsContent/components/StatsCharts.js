@@ -1,43 +1,41 @@
-import React from 'react';
-import Highcharts  from 'highcharts'
+import React from 'react'
+import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
-import Exporting from 'highcharts/modules/exporting';
-import {dictConstant, userLang} from "@constants/dict.constant.js";
-import {statsConfig} from "@constants/stats.constant";
+import Exporting from 'highcharts/modules/exporting'
+import { dictConstant, userLang } from '@constants/dict.constant.js'
+import { statsConfig } from '@constants/stats.constant'
 
+Exporting(Highcharts)
 
-Exporting(Highcharts);
-
-const StatsCharts = ({name, xData, yData, days, convertAvg, yAxisFormatter, customPeriod, type, style}) => {
-  const avg = yData[1];
+const StatsCharts = ({ name, xData, yData, days, convertAvg, yAxisFormatter, customPeriod, type, style }) => {
+  const avg = yData[1]
   const unit = field => statsConfig[field]?.unit
     ? dictConstant.units[statsConfig[field]?.unit][userLang]
-    : '';
+    : ''
   const plotLines = convertAvg &&
-    (dictConstant.title.avg[userLang] + ': '
-      + convertAvg(avg).toString().replaceAll('.', ',')
-      + ' ' + unit(name));
+    (dictConstant.title.avg[userLang] + ': ' +
+      convertAvg(avg).toString().replaceAll('.', ',') +
+      ' ' + unit(name))
 
-  function xAxisFormatter(x){
-   if(customPeriod && days > 750) {
-     return (
-     `${x.getFullYear()}`
-     )
-    }
-    else if((!customPeriod && days > 100) || (customPeriod && days > 180)) {
+  function xAxisFormatter (x) {
+    if (customPeriod && days > 750) {
       return (
-        dictConstant.monthStrict[x.getMonth()][userLang]
-        + (x.getMonth() === 0 ? (xData.length > 12 ? ` ${x.getFullYear()}` : `<br>${x.getFullYear()}`) : '')
+        `${x.getFullYear()}`
+      )
+    } else if ((!customPeriod && days > 100) || (customPeriod && days > 180)) {
+      return (
+        dictConstant.monthStrict[x.getMonth()][userLang] +
+        (x.getMonth() === 0 ? (xData.length > 12 ? ` ${x.getFullYear()}` : `<br>${x.getFullYear()}`) : '')
       )
     } else {
       return (
         x.getDate() + ' ' + dictConstant.month[x.getMonth()][userLang]
       )
     }
-  };
+  }
 
-  function tooltipFormatter(x, y, id){
-    if(y > 0) {
+  function tooltipFormatter (x, y, id) {
+    if (y > 0) {
       y = statsConfig[id]?.yAxisFormatter
         ? statsConfig[id]?.convertAvg(statsConfig[id]?.yAxisFormatter(y))
         : y.toString().replaceAll('.', ',')
@@ -47,30 +45,29 @@ const StatsCharts = ({name, xData, yData, days, convertAvg, yAxisFormatter, cust
     }
   }
 
-
   const options = {
     chart: {
       type: type || 'line',
       height: style.height,
-      width: style.width,
+      width: style.width
 
     },
     title: {
-      text: null,
+      text: null
     },
     xAxis: {
       categories: xData,
       labels: {
         formatter: function () {
-          return xAxisFormatter(this.value);
-        },
-      },
+          return xAxisFormatter(this.value)
+        }
+      }
     },
     yAxis: {
-      labels:{
+      labels: {
         style: {
-          color: statsConfig[name]?.color,
-        },
+          color: statsConfig[name]?.color
+        }
       },
       title: {
         text: ''
@@ -86,23 +83,23 @@ const StatsCharts = ({name, xData, yData, days, convertAvg, yAxisFormatter, cust
         label: {
           text: plotLines,
           align: 'right',
-          x: - 5,
+          x: -5,
           y: 15,
-          style:{
+          style: {
             fontWeight: 'bold',
             color: '#383838',
-            textShadow: 'white 0 0 10px',
+            textShadow: 'white 0 0 10px'
           }
         },
-        zIndex: 4,
-      }],
+        zIndex: 4
+      }]
     },
     series: [{
       name: dictConstant.fields[name][userLang] + (unit(name) ? (', ' + unit(name)) : ''),
       data: yData[0],
       color: statsConfig[name]?.color || 'brown',
       id: name,
-      zIndex: type === 'column' ? 1 : 2,
+      zIndex: type === 'column' ? 1 : 2
     }],
     plotOptions: {
       line: {
@@ -119,17 +116,17 @@ const StatsCharts = ({name, xData, yData, days, convertAvg, yAxisFormatter, cust
     },
 
     tooltip: {
-      formatter: function (){
-        return tooltipFormatter(this.x, this.y, this.series.userOptions.id);
-      },
+      formatter: function () {
+        return tooltipFormatter(this.x, this.y, this.series.userOptions.id)
+      }
     },
     navigation: {
       buttonOptions: {
         verticalAlign: 'bottom',
         y: -5,
-        x: 0,
+        x: 0
       }
-    },
+    }
   }
 
   return (
@@ -140,7 +137,7 @@ const StatsCharts = ({name, xData, yData, days, convertAvg, yAxisFormatter, cust
         allowChartUpdate={false}
       />
     </div>
-  );
-};
+  )
+}
 
-export default StatsCharts;
+export default StatsCharts

@@ -1,8 +1,8 @@
-import React from 'react';
-import {dictConstant, userLang} from "@constants/dict.constant.js";
-import Body from "../../UI/svgComponents/Body";
+import React from 'react'
+import { dictConstant, userLang } from '@constants/dict.constant.js'
+import Body from '../../Svg/Body'
 
-const WorkoutsNotFound = ({styles}) => {
+const WorkoutsNotFound = ({ styles }) => {
   return (
     <div className={styles.notFound}>
       <Body/>
@@ -10,7 +10,7 @@ const WorkoutsNotFound = ({styles}) => {
         {dictConstant.title.notFound[userLang]}
       </h3>
     </div>
-  );
-};
+  )
+}
 
-export default WorkoutsNotFound;
+export default WorkoutsNotFound

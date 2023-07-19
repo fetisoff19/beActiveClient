@@ -1,11 +1,11 @@
-import React, {useEffect, Suspense} from 'react';
-import Navbar from "../Navbar/Navbar.js";
-import {Outlet} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import Error from "../../pages/Error";
-import {auth} from "@store/auth/auth.actions";
-import UploadFilesModal from "@components/Main/components/UploadFilesModal";
-import AppLoader from "@components/Loaders/AppLoader";
+import React, { Suspense, useEffect } from 'react'
+import Navbar from '../Navbar/Navbar.js'
+import { Outlet } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import Error from '../../pages/Error'
+import { auth } from '@store/auth/auth.actions'
+import UploadFilesModal from '@components/Main/components/UploadFilesModal'
+import AppLoader from '@components/Loaders/AppLoader'
 
 const Main = () => {
   const error = useSelector(state => state.app.error)
@@ -15,7 +15,7 @@ const Main = () => {
   useEffect(() => {
     localStorage.getItem('token')
       ? dispatch(auth(true))
-        : null
+      : null
   }, [])
 
   return (
@@ -30,7 +30,7 @@ const Main = () => {
           </div>}
       </Suspense>
     </>
-  );
-};
+  )
+}
 
-export default Main;
+export default Main

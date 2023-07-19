@@ -1,4 +1,4 @@
-@import "../App/vars";
+@import "@/App/vars";
 
 .page{
   @include page($backgroundLightGray);

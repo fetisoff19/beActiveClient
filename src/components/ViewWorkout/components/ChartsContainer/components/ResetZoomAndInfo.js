@@ -1,17 +1,17 @@
-import React from 'react';
-import styles from "../../../styles.module.scss";
-import {dictConstant, userLang} from "@constants/dict.constant.js";
-import Info from "../../../../UI/svgComponents/Info.js";
-import {useContext} from "react";
-import ViewWorkoutContext from "../../../context/Context.js";
-import {resetZoom} from "@helpers/viewWorkout.helpers";
+import React, { useContext } from 'react'
+import styles from '../../../styles.module.scss'
+import { dictConstant, userLang } from '@constants/dict.constant.js'
+import Info from '../../../../Svg/Info.js'
+
+import ViewWorkoutContext from '../../../context/Context.js'
+import { resetZoom } from '@helpers/viewWorkout.helpers'
 
 const ResetZoomAndInfo = () => {
-  const {dataForCharts, zooming, setZooming} = useContext(ViewWorkoutContext)
+  const { dataForCharts, zooming, setZooming } = useContext(ViewWorkoutContext)
 
-  function handleClick(){
-    resetZoom();
-    setZooming(false);
+  function handleClick () {
+    resetZoom()
+    setZooming(false)
   }
 
   return (
@@ -30,7 +30,7 @@ const ResetZoomAndInfo = () => {
         <Info className={styles}/>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default React.memo(ResetZoomAndInfo);
+export default React.memo(ResetZoomAndInfo)

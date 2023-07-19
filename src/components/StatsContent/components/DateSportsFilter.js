@@ -1,25 +1,25 @@
-import React, {useEffect} from 'react';
-import styles from "../styles.module.scss";
-import SportsFilter from "../../UI/SportsFilter";
-import {useState} from "react";
-import {dictConstant, userLang} from "@constants/dict.constant.js";
-import {getStats} from "@store/workouts/workouts.actions";
-import {useDispatch} from "react-redux";
-import StatsForPeriod from "./StatsForPeriod";
-import {dayInMs, getDataForInputDate} from "@helpers/functionsDate&Values.helpers";
-import Search from "../../UI/svgComponents/Search";
+import React, { useEffect, useState } from 'react'
+import styles from '../styles.module.scss'
+import SportsFilter from '../../UI/SportsFilter'
 
-const arrPeriod = ['7', '28', '180', '365'];
+import { dictConstant, userLang } from '@constants/dict.constant.js'
+import { getStats } from '@store/workouts/workouts.actions'
+import { useDispatch } from 'react-redux'
+import StatsForPeriod from './StatsForPeriod'
+import { dayInMs, getDataForInputDate } from '@helpers/functionsDate&Values.helpers'
+import Search from '../../Svg/Search'
+
+const arrPeriod = ['7', '28', '180', '365']
 
 const DateSportsFilter = (
-  {minDate, maxDate}
+  { minDate, maxDate }
 ) => {
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
-  const [period, setPeriod] = useState('');
-  const [customPeriod, setCustomPeriod] = useState(false);
-  const [sport, setSport] = useState('all');
-  const dispatch = useDispatch();
+  const [startDate, setStartDate] = useState(null)
+  const [endDate, setEndDate] = useState(null)
+  const [period, setPeriod] = useState('')
+  const [customPeriod, setCustomPeriod] = useState(false)
+  const [sport, setSport] = useState('all')
+  const dispatch = useDispatch()
 
   const timePeriod = arrPeriod.map(item =>
     <div
@@ -30,71 +30,67 @@ const DateSportsFilter = (
       {dictConstant.title[item][userLang]}
     </div>)
 
-
-  function correctLastDate(date){
+  function correctLastDate (date) {
     return date
       ? new Date(date).setHours(23, 59, 59)
       : new Date().setHours(23, 59, 59)
   }
 
-  function handleClickPeriod(item) {
-    setCustomPeriod(false);
-    let newDate = new Date();
-    let month = new Date().getMonth();
-    if(item === '365'){
+  function handleClickPeriod (item) {
+    setCustomPeriod(false)
+    let newDate = new Date()
+    const month = new Date().getMonth()
+    if (item === '365') {
       newDate = new Date(newDate.setMonth(month - 11, 1))
         .setHours(0, 0, 0, 0)
-
-    } else if(item === '180'){
+    } else if (item === '180') {
       newDate = new Date(newDate.setMonth(month - 5, 1))
         .setHours(0, 0, 0, 0)
-    } else if(item === '28' || item === '7'){
+    } else if (item === '28' || item === '7') {
       newDate = new Date()
         .setHours(0, 0, 0, 0) - ((+item - 1) * dayInMs)
     }
-    setPeriod(item);
-    setStartDate(newDate);
-    setEndDate(correctLastDate());
+    setPeriod(item)
+    setStartDate(newDate)
+    setEndDate(correctLastDate())
   }
-
 
   useEffect(() =>
     handleClickPeriod(arrPeriod[3])
   , [])
 
-  function handleClickSport(item){
+  function handleClickSport (item) {
     setSport(item)
   }
 
-  function handleChangeFirstDate(e) {
-    setStartDate(e.target.valueAsNumber);
+  function handleChangeFirstDate (e) {
+    setStartDate(e.target.valueAsNumber)
   }
 
-  function handleChangeSecondDate(e) {
-    setEndDate(correctLastDate(e.target.value));
+  function handleChangeSecondDate (e) {
+    setEndDate(correctLastDate(e.target.value))
   }
 
-
-  function search() {
-    if(startDate && endDate && sport) {
+  function search () {
+    if (startDate && endDate && sport) {
       dispatch(getStats(sport, startDate, endDate))
     }
   }
-  function customPeriodSearch() {
-    setCustomPeriod(true);
-    search();
+
+  function customPeriodSearch () {
+    setCustomPeriod(true)
+    search()
   }
 
   useEffect(() => {
-    search();
-    },
-    [sport])
+    search()
+  },
+  [sport])
 
   useEffect(() => {
-      !customPeriod && search();
-    },
-    [period, customPeriod])
-
+    !customPeriod && search()
+  },
+  [period, customPeriod])
 
   return (
     <div>
@@ -103,7 +99,8 @@ const DateSportsFilter = (
           {timePeriod}
           <div
             className={styles.date + (customPeriod
-              ? (' ' + styles.check) : '')}>
+              ? (' ' + styles.check)
+              : '')}>
             <input
               type="date" id="first" name="first"
               onChange={handleChangeFirstDate}
@@ -133,7 +130,7 @@ const DateSportsFilter = (
         endDate={endDate} period={period}
         customPeriod={customPeriod}/>
     </div>
-  );
-};
+  )
+}
 
-export default DateSportsFilter;
+export default DateSportsFilter

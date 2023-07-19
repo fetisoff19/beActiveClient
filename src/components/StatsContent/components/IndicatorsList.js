@@ -1,12 +1,11 @@
-import React from 'react';
-import styles from "../styles.module.scss";
-import {dictConstant, userLang} from "@constants/dict.constant.js";
+import React from 'react'
+import styles from '../styles.module.scss'
+import { dictConstant, userLang } from '@constants/dict.constant.js'
 
-const indicators = [ 'totalWorkouts', 'totalTimerTime', 'totalDistance', 'avgHeartRate', 'avgSpeed', 'enhancedAvgSpeed', 'avgPower', 'maxHeartRate',  'totalAscent',  'avgCadence', 'totalCalories']
+const indicators = ['totalWorkouts', 'totalTimerTime', 'totalDistance', 'avgHeartRate', 'avgSpeed', 'enhancedAvgSpeed', 'avgPower', 'maxHeartRate', 'totalAscent', 'avgCadence', 'totalCalories']
 
-const IndicatorsList = ({field, setField}) => {
-
-  function handleClick(item) {
+const IndicatorsList = ({ field, setField }) => {
+  function handleClick (item) {
     setField(item)
   }
 
@@ -25,7 +24,7 @@ const IndicatorsList = ({field, setField}) => {
         {list}
       </ul>
     </div>
-  );
-};
+  )
+}
 
-export default IndicatorsList;
+export default IndicatorsList

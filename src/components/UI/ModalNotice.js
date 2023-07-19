@@ -1,32 +1,32 @@
-import React, {useEffect, useState} from 'react';
-import {useDispatch} from "react-redux";
-import {hideModal} from "@store/appEvents/appEvents.slice";
+import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { hideModal } from '@store/appEvents/appEvents.slice'
 
-const ModalNotice = ({text, className, delay = 2500}) => {
-  const dispatch = useDispatch();
+const ModalNotice = ({ text, className, delay = 2500 }) => {
+  const dispatch = useDispatch()
   const [visible, setVisible] = useState('')
 
   useEffect(() => {
     setVisible(' visible')
-    let timeoutHide = setTimeout(() => {
+    const timeoutHide = setTimeout(() => {
       setVisible('')
-    }, delay);
+    }, delay)
 
-    let timeoutHideModal = setTimeout(() => {
-        dispatch(hideModal())
-      },
-      delay + 500);
+    const timeoutHideModal = setTimeout(() => {
+      dispatch(hideModal())
+    },
+    delay + 500)
 
     return () => {
-      clearTimeout(timeoutHideModal);
-      clearTimeout(timeoutHide);
-      dispatch(hideModal());
+      clearTimeout(timeoutHideModal)
+      clearTimeout(timeoutHide)
+      dispatch(hideModal())
       setVisible('')
     }
-  },[delay])
+  }, [delay])
 
-  function handleClick() {
-    setVisible('');
+  function handleClick () {
+    setVisible('')
   }
 
   return (
@@ -37,7 +37,7 @@ const ModalNotice = ({text, className, delay = 2500}) => {
         {text}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ModalNotice;
+export default ModalNotice

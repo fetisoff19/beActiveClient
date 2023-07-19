@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const Input = (props) => {
   return (
@@ -13,7 +13,7 @@ const Input = (props) => {
       maxLength={props.maxLength}
       checked={props.checked}
       placeholder={props.placeholder}/>
-  );
-};
+  )
+}
 
-export default Input;
+export default Input

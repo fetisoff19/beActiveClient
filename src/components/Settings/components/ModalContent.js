@@ -1,10 +1,9 @@
-import React from 'react';
-import styles from "../styles.module.scss";
-import {dictConstant, userLang} from "@constants/dict.constant.js";
-import Button from "../../UI/Button";
+import React from 'react'
+import styles from '../styles.module.scss'
+import { dictConstant, userLang } from '@constants/dict.constant.js'
+import Button from '../../UI/Button'
 
-const ModalContent = ({text, functionNo, functionYes}) => {
-
+const ModalContent = ({ text, functionNo, functionYes }) => {
   return (
     <div className={styles.modal}>
       <h3>
@@ -23,7 +22,7 @@ const ModalContent = ({text, functionNo, functionYes}) => {
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ModalContent;
+export default ModalContent

@@ -1,29 +1,27 @@
-import React, {useEffect} from 'react';
-import styles from "../styles.modules.scss";
-import {dictConstant, userLang} from "@constants/dict.constant.js";
-import Delete from "../../UI/svgComponents/Delete";
-import {useContext} from "react";
-import WorkoutsListContext from "../context/Context";
+import React, { useContext, useEffect } from 'react'
+import styles from '../styles.modules.scss'
+import { dictConstant, userLang } from '@constants/dict.constant.js'
+import Delete from '../../Svg/Delete'
 
+import WorkoutsListContext from '../context/Context'
 
 const Titles = () => {
   const {
     chosenField, setChosenField,
     direction, setDirection,
-    setPage,
-  } = useContext(WorkoutsListContext);
+    setPage
+  } = useContext(WorkoutsListContext)
 
+  const fields = ['totalDistance', 'totalTimerTime', 'enhancedAvgSpeed', 'totalAscent', 'avgHeartRate']
+  const labels = ['totalDistance', 'totalTimerTime', 'avgSpeed', 'totalAscent', 'avgHeartRate']
 
-  const fields = ['totalDistance', 'totalTimerTime', 'enhancedAvgSpeed', 'totalAscent', 'avgHeartRate'];
-  const labels = ['totalDistance', 'totalTimerTime', 'avgSpeed', 'totalAscent', 'avgHeartRate'];
-
-  const up = ' \u25B4 ';
-  const down = ' \u25BE ';
+  const up = ' \u25B4 '
+  const down = ' \u25BE '
 
   const blockMetric = fields.map((field, index) =>
     <div className={styles.mBlock + ' ' + styles.active}
          onClick={() => handleClick(field)}
-         key={field} >
+         key={field}>
       {dictConstant.fields[labels[index]][userLang]}
       <span className={styles.span}>
         {setMarker(field)}
@@ -34,18 +32,17 @@ const Titles = () => {
     setPage(1)
   }, [chosenField, direction])
 
-  function handleClick(field){
+  function handleClick (field) {
     setDirection(prev => prev > 0 ? -1 : 1)
     setChosenField(field)
   }
 
-  function setMarker(field){
-   if(chosenField !== field) return ''
-   return (chosenField === field && direction < 0) ? down : up
+  function setMarker (field) {
+    if (chosenField !== field) return ''
+    return (chosenField === field && direction < 0) ? down : up
   }
 
-  const marker = setMarker('timestamp');
-
+  const marker = setMarker('timestamp')
 
   return (
     <ul>
@@ -70,6 +67,6 @@ const Titles = () => {
       </li>
     </ul>
   )
-};
+}
 
-export default Titles;
+export default Titles

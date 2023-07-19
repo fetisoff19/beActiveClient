@@ -1,5 +1,5 @@
-import React from 'react';
-import {dictConstant, userLang} from "@constants/dict.constant.js";
+import React from 'react'
+import { dictConstant, userLang } from '@constants/dict.constant.js'
 
 const NoWorkouts = () => {
   return (
@@ -8,7 +8,7 @@ const NoWorkouts = () => {
         <h1>{dictConstant.title.addActivities[userLang]}</h1>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default NoWorkouts;
+export default NoWorkouts

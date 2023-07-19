@@ -1,6 +1,5 @@
-import {createContext} from "react";
+import { createContext } from 'react'
 
-
-const ViewWorkoutContext = createContext();
+const ViewWorkoutContext = createContext()
 
 export default ViewWorkoutContext

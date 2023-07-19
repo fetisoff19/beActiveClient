@@ -4,17 +4,17 @@ import {
   convertPaceInMinute,
   convertSpeed,
   getHourMinSec
-} from "@helpers/functionsDate&Values.helpers";
+} from '@helpers/functionsDate&Values.helpers'
 
 export const configMainStats = {
   totalDistance: {
     formatter: value => convertDistance(value).toString().replace('.', ','),
     unit: 'km',
-    label: 'totalDistance',
+    label: 'totalDistance'
   },
   totalTimerTime: {
     formatter: getHourMinSec,
-    label: 'totalTimerTime',
+    label: 'totalTimerTime'
   },
   enhancedAvgSpeed: {
     formatter: x => convertSpeed(x).toString().replace('.', ','),
@@ -24,116 +24,114 @@ export const configMainStats = {
     uniqueSport: ['running', 'walking', 'hiking'],
     // uniqueSport: 'running',
     label: 'avgSpeed',
-    uniqueLabel: 'avgPace',
+    uniqueLabel: 'avgPace'
   },
   totalAscent: {
     unit: 'm',
-    label: 'totalAscent',
+    label: 'totalAscent'
   },
   avgHeartRate: {
     unit: 'bpm',
-    label: 'avgHeartRate',
+    label: 'avgHeartRate'
   },
   maxHeartRate: {
     unit: 'bpm',
-    label: 'maxHeartRate',
+    label: 'maxHeartRate'
   },
   avgPower: {
     unit: 'w',
-    label: 'avgPower',
-  },
+    label: 'avgPower'
+  }
 }
-
 
 export const statsFields = {
   heartRate: {
     fields: [
       'maxHeartRate',
-      'avgHeartRate',
+      'avgHeartRate'
     ],
-    unit: 'bpm',
+    unit: 'bpm'
   },
   speed: {
     fields: [
       'maxSpeed',
-      'avgSpeed',
+      'avgSpeed'
     ],
     formatter: x => convertSpeed(x).toString().replace('.', ','),
-    unit: 'kmph',
+    unit: 'kmph'
   },
   pace: {
     fields: [
       'enhancedMaxSpeed',
-      'enhancedAvgSpeed',
+      'enhancedAvgSpeed'
     ],
     unit: 'pace',
-    formatter: convertPace,
+    formatter: convertPace
   },
   power: {
     fields: [
       'maxPower',
       'normalizedPower',
-      'avgPower',
+      'avgPower'
     ],
-    unit: 'w',
+    unit: 'w'
   },
   time: {
     fields: [
       'totalTimerTime',
       'totalElapsedTime',
       'startTime',
-      'timestamp',
+      'timestamp'
     ],
     formatter: getHourMinSec,
-    unit: null,
+    unit: null
   },
   cadenceRun: {
     fields: [
       'maxCadence',
-      'avgCadence',
+      'avgCadence'
     ],
-    unit: 'cadenceRun',
+    unit: 'cadenceRun'
   },
   cadence: {
     fields: [
       'maxCadence',
-      'avgCadence',
+      'avgCadence'
     ],
-    unit: 'cadenceCycling',
+    unit: 'cadenceCycling'
   },
   altitude: {
     fields: [
       'totalAscent',
       'totalDescent',
       'maxAltitude',
-      'minAltitude',
+      'minAltitude'
     ],
-    unit: 'm',
+    unit: 'm'
   },
   temperature: {
     fields: [
       'maxTemperature',
-      'avgTemperature',
+      'avgTemperature'
     ],
-    unit: 'degreeCelsius',
+    unit: 'degreeCelsius'
   },
   other: {
     fields: [
       'totalStrides',
       'trainingStressScore',
-      'totalCalories',
+      'totalCalories'
     ],
-    unit: null,
+    unit: null
   }
 }
-
 
 export const statsConfig = {
   totalWorkouts: {
     name: 'totalWorkouts',
     convert: x => x.length,
     chartsType: 'column',
-    color: '#2f9a9a',
+    color: '#2f9a9a'
   },
   totalTimerTime: {
     unit: 'min',
@@ -154,43 +152,39 @@ export const statsConfig = {
     unit: 'kmph',
     name: 'avgSpeed',
     convert: x => convertSpeed(
-      x.reduce((sum, current) => (sum + (+current[0] * +current[1])), 0)
-      /
+      x.reduce((sum, current) => (sum + (+current[0] * +current[1])), 0) /
       x.reduce((sum, current) => current[0] ? (sum + +current[1]) : sum, 0) || 0
     ),
     chartsType: 'spline',
     avg: x => convertSpeed(
-      x.reduce((sum, current) => (sum + (+current[0] * +current[1])), 0)
-      /
+      x.reduce((sum, current) => (sum + (+current[0] * +current[1])), 0) /
       x.reduce((sum, current) => current[0] ? (sum + +current[1]) : sum, 0) || 0
     ),
     convertAvg: convertSpeed,
-    color: '#11a9ed',
+    color: '#11a9ed'
   },
   enhancedAvgSpeed: {
     unit: 'pace',
     name: 'avgPace',
     convert: x =>
       convertPaceInMinute(
-        x.reduce((sum, current) => (sum + (+current[0] * +current[1])), 0)
-        /
+        x.reduce((sum, current) => (sum + (+current[0] * +current[1])), 0) /
         x.reduce((sum, current) => current[0] ? (sum + +current[1]) : sum, 0) || 0),
     yAxisFormatter: convertPaceInMinute,
     chartsType: 'spline',
     convertAvg: convertPace,
-    color: '#11a9ed',
+    color: '#11a9ed'
   },
   avgHeartRate: {
     unit: 'bpm',
     name: 'avgHeartRate',
     convert: x =>
       Math.round(
-        x.reduce((sum, current) => (sum + (+current[0] * +current[1])), 0)
-        /
+        x.reduce((sum, current) => (sum + (+current[0] * +current[1])), 0) /
         x.reduce((sum, current) => current[0] ? (sum + +current[1]) : sum, 0) || 0),
     chartsType: 'spline',
     convertAvg: Math.round,
-    color: '#ff0035',
+    color: '#ff0035'
   },
   maxHeartRate: {
     unit: 'bpm',
@@ -199,43 +193,41 @@ export const statsConfig = {
     chartsType: 'spline',
     convertAvg: Math.round,
     type: 'maxValue',
-    color: '#83031f',
+    color: '#83031f'
   },
   avgPower: {
     unit: 'w',
     name: 'avgPower',
     convert: x => Math.round(
-      x.reduce((sum, current) => (sum + (+current[0] * +current[1])), 0)
-      /
+      x.reduce((sum, current) => (sum + (+current[0] * +current[1])), 0) /
       x.reduce((sum, current) => current[0] ? (sum + +current[1]) : sum, 0) || 0
     ),
     chartsType: 'spline',
     convertAvg: Math.round,
-    color: '#6bc531',
+    color: '#6bc531'
   },
   avgCadence: {
     unit: 'cadence',
     name: 'avgCadence',
     convert: x => Math.round(
-      x.reduce((sum, current) => (sum + (+current[0] * +current[1])), 0)
-      /
+      x.reduce((sum, current) => (sum + (+current[0] * +current[1])), 0) /
       x.reduce((sum, current) => current[0] ? (sum + +current[1]) : sum, 0) || 0
     ),
     chartsType: 'spline',
     convertAvg: Math.round,
-    color: '#c74cb1',
+    color: '#c74cb1'
   },
   totalAscent: {
     unit: 'm',
     name: 'totalAscent',
     convert: x => Math.round(x.reduce((sum, current) => (sum + +current[0]), 0)),
     chartsType: 'column',
-    color: '#750bc4',
+    color: '#750bc4'
   },
   totalCalories: {
     name: 'totalCalories',
     convert: x => Math.round(x.reduce((sum, current) => (sum + +current[0]), 0)),
     chartsType: 'column',
-    color: '#c47237',
-  },
+    color: '#c47237'
+  }
 }

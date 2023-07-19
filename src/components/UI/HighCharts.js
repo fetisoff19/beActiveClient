@@ -1,67 +1,69 @@
-import React, {useEffect, useRef} from 'react';
+import React, { useEffect } from 'react'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
-import Exporting from 'highcharts/modules/exporting';
-import {getMinSec} from "@helpers/functionsDate&Values.helpers";
-import {dictConstant, userLang} from "@constants/dict.constant.js";
-import {chartsConfig} from "@constants/charts.constant";
+import Exporting from 'highcharts/modules/exporting'
+import { getMinSec } from '@helpers/functionsDate&Values.helpers'
+import { dictConstant, userLang } from '@constants/dict.constant.js'
+import { chartsConfig } from '@constants/charts.constant'
 
-Exporting(Highcharts);
+Exporting(Highcharts)
 
 const Charts = ({
-    setLoaded,
-    name, data, k,
-    name2, data2, addPolylinePowerCurve,
-    xAxis, minX, maxX,
+  setLoaded,
+  name, data, k,
+  name2, data2, addPolylinePowerCurve,
+  xAxis, minX, maxX,
 
-    mouseOver, mouseOut, selection,
+  mouseOver, mouseOut, selection,
 
-    style, type, animation,
-    tooltip, exporting, credits,
-  }) => {
-
+  style, type, animation,
+  tooltip, exporting, credits
+}) => {
   useEffect(() => {
-    if(name === 'powerCurve')
+    if (name === 'powerCurve') {
       Highcharts.charts.forEach((chart) =>
-        chart.series[0].name === 'powerCurve' ?
-          chart.xAxis[0].setExtremes(chart.xAxis[0].min,
-            chart.xAxis[0].max < 1200 ? chart.xAxis[0].max
-              : chart.xAxis[0].max < 5600 ? 1200
-                :chart.xAxis[0].max < 10800 ? 4800 : 7200)
+        chart.series[0].name === 'powerCurve'
+          ? chart.xAxis[0].setExtremes(chart.xAxis[0].min,
+            chart.xAxis[0].max < 1200
+              ? chart.xAxis[0].max
+              : chart.xAxis[0].max < 5600
+                ? 1200
+                : chart.xAxis[0].max < 10800 ? 4800 : 7200)
           : null)
+    }
     return () => {
       while (Highcharts.charts.length > 0) {
-        Highcharts.charts.pop();
+        Highcharts.charts.pop()
       }
     }
-  },[])
+  }, [])
 
-
-  let plotLinesText = chartsConfig[name].plotLinesText && `${chartsConfig[name].plotLinesText && dictConstant.fields[chartsConfig[name].plotLinesText][userLang]} 
+  const plotLinesText = chartsConfig[name].plotLinesText && `${chartsConfig[name].plotLinesText && dictConstant.fields[chartsConfig[name].plotLinesText][userLang]} 
     ${name === 'pace'
-      ? getMinSec(data.avg) 
-        : (data.avg ? data.avg.toString().replaceAll('.', ',') : '')} 
+    ? getMinSec(data.avg)
+    : (data.avg ? data.avg.toString().replaceAll('.', ',') : '')} 
     ${(data.sport === 'running' || k === 2) && name === 'cadence'
-      ? dictConstant.units[chartsConfig[name].plotLinesTextValueRunning][userLang]
-        : dictConstant.units[chartsConfig[name].plotLinesTextValue][userLang]}`
-
+    ? dictConstant.units[chartsConfig[name].plotLinesTextValueRunning][userLang]
+    : dictConstant.units[chartsConfig[name].plotLinesTextValue][userLang]}`
 
   const options = {
     series: [{
       data: data.data,
-      name: name,
+      name,
       color: chartsConfig[name]?.lineColor || 'red',
       lineWidth: 1,
       marker: { radius: 1 },
       zIndex: 2,
       point: {
-        events:{
-          mouseOver: addPolylinePowerCurve && mouseOver ? function (){
-            addPolylinePowerCurve(this, ...mouseOver)
-  } : null,
-          mouseOut: mouseOut || null,
-        },
-      },
+        events: {
+          mouseOver: addPolylinePowerCurve && mouseOver
+            ? function () {
+              addPolylinePowerCurve(this, ...mouseOver)
+            }
+            : null,
+          mouseOut: mouseOut || null
+        }
+      }
     },
     {
       data: data2?.data,
@@ -69,8 +71,8 @@ const Charts = ({
       color: data2 && chartsConfig[name2].lineColor,
       lineWidth: 1,
       zIndex: 1,
-      marker: { radius: 1 },
-      },
+      marker: { radius: 1 }
+    }
     ],
 
     accessibility: {
@@ -91,28 +93,28 @@ const Charts = ({
         position:
         // data2
         //   ? {x: - 1, y: 0,} :
-          {x: 5000, y: 1000,},
+          { x: 5000, y: 1000 }
       },
       panning: true,
       panKey: 'shift',
       events: {
         selection: selection || null,
-        load: setLoaded || null,
-      },
+        load: setLoaded || null
+      }
     },
     title: {
       enabled: false,
       text: '&#9900' + ' ' + dictConstant.fields[chartsConfig[name].title][userLang],
-        align: 'left',
-        x: -10,
-        y: 30,
-        style: {
+      align: 'left',
+      x: -10,
+      y: 30,
+      style: {
         color: chartsConfig[name].themeColor,
-        fontSize: '1rem',
-      },
+        fontSize: '1rem'
+      }
     },
     legend: {
-      enabled: false,
+      enabled: false
     },
     xAxis: xAxis || {
       tickWidth: 0,
@@ -120,18 +122,18 @@ const Charts = ({
       labels: {
         enabled: true,
         formatter: function () {
-          return this.value + dictConstant.units.km[userLang];
+          return this.value + dictConstant.units.km[userLang]
         },
-        y: 12,
+        y: 12
       },
       min: minX || 0,
-      max: maxX || data.data.at(-1)[0],
+      max: maxX || data.data.at(-1)[0]
     },
     yAxis: [{
       title: {
-        enabled: false,
+        enabled: false
       },
-          // gridZIndex: 2,
+      // gridZIndex: 2,
       min: data?.min || 0,
       labels: {
         align: 'left',
@@ -140,7 +142,7 @@ const Charts = ({
         zIndex: 5,
         style: {
           color: '#383838',
-          textShadow: 'white 0 0 10px',
+          textShadow: 'white 0 0 10px'
         }
       },
       reversed: chartsConfig[name]?.reversed,
@@ -152,21 +154,21 @@ const Charts = ({
         label: {
           text: plotLinesText,
           align: 'right',
-          x: - 5,
+          x: -5,
           y: 15,
-          style:{
+          style: {
             fontWeight: 'bold',
             color: '#383838',
-            textShadow: 'white 0 0 10px',
+            textShadow: 'white 0 0 10px'
           }
         },
         zIndex: 4
-      }],
+      }]
     }],
     plotOptions: {
       series: {
         marker: {
-          fillColor: chartsConfig[name].themeColor,
+          fillColor: chartsConfig[name].themeColor
         },
         allowPointSelect: animation,
         states: {
@@ -179,23 +181,25 @@ const Charts = ({
           select: {
             enabled: animation
           }
-        },
+        }
       },
       areaspline: {
-        fillOpacity: 1,
-      },
+        fillOpacity: 1
+      }
     },
     tooltip: {
       enabled: tooltip || false,
-      formatter: chartsConfig[name].formatter ? function (){
-        return chartsConfig[name].formatter(this.x, this.y)
-      }  : null,
+      formatter: chartsConfig[name].formatter
+        ? function () {
+          return chartsConfig[name].formatter(this.x, this.y)
+        }
+        : null
     },
     navigation: {
       buttonOptions: {
         y: 15,
-        x: 10,
-      },
+        x: 10
+      }
     },
     exporting: {
       enabled: exporting || true,
@@ -204,10 +208,10 @@ const Charts = ({
           symbolStrokeWidth: 2,
           symbolStroke: chartsConfig[name].themeColor,
           symbol: 'menu',
-          symbolFill: chartsConfig[name].themeColor,
+          symbolFill: chartsConfig[name].themeColor
         }
-      },
-    },
+      }
+    }
   }
 
   return (
@@ -218,7 +222,7 @@ const Charts = ({
         allowChartUpdate={false}
       />
     </div>
-  );
-};
+  )
+}
 
-export default Charts;
+export default Charts

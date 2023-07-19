@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit'
 
 const appEventsSlice = createSlice({
   name: 'appEvents',
@@ -9,52 +9,52 @@ const appEventsSlice = createSlice({
     modal: false,
     cursorWait: false,
     error: null,
-    requestGetWorkouts: false,
+    requestGetWorkouts: false
   },
   reducers: {
-    showLoader(state) {
-      state.appLoader = true;
+    showLoader (state) {
+      state.appLoader = true
     },
-    hideLoader(state){
-      state.appLoader = false;
+    hideLoader (state) {
+      state.appLoader = false
     },
-    setError(state, action){
-      state.error = action.payload;
+    setError (state, action) {
+      state.error = action.payload
     },
-    showSmallLoader(state, action) {
-      if(action.payload){
-        state.smallLoaderId = [...state.smallLoaderId, action.payload];
+    showSmallLoader (state, action) {
+      if (action.payload) {
+        state.smallLoaderId = [...state.smallLoaderId, action.payload]
       }
-      state.smallLoader = true;
+      state.smallLoader = true
     },
-    hideSmallLoader(state, action){
-      if(action.payload){
-        state.smallLoaderId = state.smallLoaderId.filter(id => id !== action.payload);
+    hideSmallLoader (state, action) {
+      if (action.payload) {
+        state.smallLoaderId = state.smallLoaderId.filter(id => id !== action.payload)
       }
-      state.smallLoader = false;
+      state.smallLoader = false
     },
-    cursorWaitOn(state) {
-      state.cursorWait = true;
+    cursorWaitOn (state) {
+      state.cursorWait = true
     },
-    cursorWaitOff(state) {
-      state.cursorWait = false;
+    cursorWaitOff (state) {
+      state.cursorWait = false
     },
-    setRequestGetWorkouts(state){
-      state.requestGetWorkouts = true;
+    setRequestGetWorkouts (state) {
+      state.requestGetWorkouts = true
     },
-    removeRequestGetWorkouts(state){
-      state.requestGetWorkouts = false;
+    removeRequestGetWorkouts (state) {
+      state.requestGetWorkouts = false
     },
-    showModal(state){
-      state.modal = true;
+    showModal (state) {
+      state.modal = true
     },
-    hideModal(state){
-      state.modal = false;
-    },
+    hideModal (state) {
+      state.modal = false
+    }
   }
 })
 
-export default appEventsSlice.reducer;
+export default appEventsSlice.reducer
 
 export const {
   showLoader, hideLoader, setError,
@@ -62,4 +62,4 @@ export const {
   cursorWaitOn, cursorWaitOff,
   showModal, hideModal,
   setRequestGetWorkouts, removeRequestGetWorkouts
-} = appEventsSlice.actions;
+} = appEventsSlice.actions

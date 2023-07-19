@@ -1,10 +1,10 @@
-import React, {useRef} from 'react';
+import React, { useRef } from 'react'
 
-const ModalTransparent = ({content, className, setState}) => {
+const ModalTransparent = ({ content, className, setState }) => {
   const ref = useRef()
 
-  function handleClick(e){
-    e.stopPropagation();
+  function handleClick (e) {
+    e.stopPropagation()
     e.target === ref.current && setState && setState(prev => !prev)
   }
 
@@ -15,7 +15,7 @@ const ModalTransparent = ({content, className, setState}) => {
       className={'modalBackground ' + className}>
       {content}
     </div>
-  );
-};
+  )
+}
 
-export default ModalTransparent;
+export default ModalTransparent

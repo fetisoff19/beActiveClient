@@ -1,10 +1,9 @@
-import React from 'react';
-import {ThreeDots} from "react-loader-spinner";
-import {useDispatch} from "react-redux";
-import {useEffect} from "react";
-import {cursorWaitOff, cursorWaitOn} from "@store/appEvents/appEvents.slice";
-import variables from '../DashboardContent/styles.module.scss'
+import React, { useEffect } from 'react'
+import { ThreeDots } from 'react-loader-spinner'
+import { useDispatch } from 'react-redux'
 
+import { cursorWaitOff, cursorWaitOn } from '@store/appEvents/appEvents.slice'
+import variables from '../DashboardContent/styles.module.scss'
 
 const AddWorkoutsLoader = () => {
   const dispatch = useDispatch()
@@ -14,8 +13,7 @@ const AddWorkoutsLoader = () => {
     return () => {
       dispatch(cursorWaitOff())
     }
-  }, []);
-
+  }, [])
 
   return (
     <div className='container'>
@@ -30,7 +28,7 @@ const AddWorkoutsLoader = () => {
         visible={true}
       />
     </div>
-  );
-};
+  )
+}
 
-export default AddWorkoutsLoader;
+export default AddWorkoutsLoader

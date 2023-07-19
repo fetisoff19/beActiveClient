@@ -1,8 +1,8 @@
 import axios from 'axios'
-import {logout, setDemo, setUser} from "./auth.slice.js";
-import {hideLoader, hideSmallLoader, showLoader, showSmallLoader} from "../appEvents/appEvents.slice.js";
-import {setAllWorkouts, setStats} from "../workouts/workouts.slice.js";
-import {API_URL, demoUser} from "@constants/config.constant";
+import { logout, setAuth, setDemo, setUser } from './auth.slice.js'
+import { hideLoader, hideSmallLoader, showLoader, showSmallLoader } from '../appEvents/appEvents.slice.js'
+import { setAllWorkouts, setStats } from '../workouts/workouts.slice.js'
+import { API_URL, demoUser } from '@constants/config.constant'
 
 export const registration = (email, password, setRequest) => {
   return async dispatch => {
@@ -41,12 +41,14 @@ export const login = (email, password, setRequest) => {
         }
       })
       dispatch(setUser(response.data.user))
+      dispatch(setAuth(true))
       dispatch(setStats(response.data.user.stats))
       localStorage.setItem('token', response.data.token)
       dispatch(setAllWorkouts(response.data.user.workouts))
       setRequest(response.data.message)
-      if(demoUser.includes(response.data.user?.email))
-        dispatch(setDemo());
+      if (demoUser.includes(response.data.user?.email)) {
+        dispatch(setDemo())
+      }
     } catch (e) {
       console.log(e)
       setRequest(e?.response?.data?.message || e.message)
@@ -61,22 +63,23 @@ export const auth = (update = false) => {
     try {
       !update && dispatch(showLoader())
       const response = await axios.get(`${API_URL}api/auth/auth`,
-        {headers:
-            {Authorization:`Bearer ${localStorage.getItem('token')}`}
+        {
+          headers:
+            { Authorization: `Bearer ${localStorage.getItem('token')}` }
         }
       )
       dispatch(setUser(response.data.user))
+      dispatch(setAuth(true))
       dispatch(setStats(response.data.user.stats))
       !update && localStorage.setItem('token', response.data.token)
       dispatch(setAllWorkouts(response.data.user.workouts))
-      if(!update && demoUser.includes(response.data.user?.email))
-        dispatch(setDemo());
-
+      if (!update && demoUser.includes(response.data.user?.email)) {
+        dispatch(setDemo())
+      }
     } catch (e) {
       console.log(e)
-      !update && dispatch(logout())
-    }
-    finally {
+      !update && dispatch(logout()) && dispatch(setAuth(false))
+    } finally {
       !update && dispatch(hideLoader())
     }
   }

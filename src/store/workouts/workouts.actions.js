@@ -2,50 +2,55 @@ import {
   cursorWaitOff,
   cursorWaitOn,
   hideLoader,
-  hideSmallLoader, removeRequestGetWorkouts,
-  setError, setRequestGetWorkouts,
+  hideSmallLoader,
+  removeRequestGetWorkouts,
+  setError,
+  setRequestGetWorkouts,
   showLoader,
   showSmallLoader
-} from "../appEvents/appEvents.slice.js";
+} from '../appEvents/appEvents.slice.js'
 import {
   addChartsData,
-  addPolyline, addPowerCurve,
-  addWorkout, addWorkouts,
+  addPolyline,
+  addPowerCurve,
+  addWorkout,
+  addWorkouts,
   changeWorkoutAction,
-  deleteWorkoutAction, removeFilesToDelete,
+  deleteWorkoutAction,
+  removeFilesToDelete,
   setNumberOfFiles,
   setWorkouts
-} from "./workouts.slice.js";
-import axios from "axios";
-import {logout} from "../auth/auth.slice.js";
-import {auth} from "../auth/auth.actions.js";
-import {API_URL} from "@constants/config.constant";
+} from './workouts.slice.js'
+import axios from 'axios'
+import { logout } from '../auth/auth.slice.js'
+import { auth } from '../auth/auth.actions.js'
+import { API_URL } from '@constants/config.constant'
 
-
-export function uploadWorkouts(files) {
+export function uploadWorkouts (files) {
   return async dispatch => {
     dispatch(cursorWaitOn())
-    async function upload(file){
 
+    async function upload (file) {
       try {
         const formData = new FormData()
         formData.append('file', file)
         const response = await axios.post(`${API_URL}api/workouts/upload`, formData, {
-          headers: {Authorization: `Bearer ${localStorage.getItem('token')}`},
-        });
+          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+        })
         dispatch(addWorkout(response.data))
       } catch (e) {
         if (e?.response?.status === 400) {
           dispatch(addWorkout(e.response.data?.message))
         } else if (e?.response?.status === 500) {
-          console.log("server error", e?.response)
-          dispatch(addWorkout("error"))
+          console.log('server error', e?.response)
+          dispatch(addWorkout('error'))
         } else {
-          dispatch(addWorkout("unknown error"))
-          console.log("unknown error", e)
+          dispatch(addWorkout('unknown error'))
+          console.log('unknown error', e)
         }
       }
     }
+
     for (const file of files) {
       await upload(file)
     }
@@ -54,7 +59,7 @@ export function uploadWorkouts(files) {
   }
 }
 
-export function getWorkouts(sport, sort, direction, page, limit, search, _id) {
+export function getWorkouts (sport, sort, direction, page, limit, search, _id) {
   return async dispatch => {
     try {
       dispatch(setRequestGetWorkouts())
@@ -64,25 +69,25 @@ export function getWorkouts(sport, sort, direction, page, limit, search, _id) {
       sport = sport ? `sport=${sport}&` : ''
       sort = sort ? `sort=${sort}&` : ''
       direction = direction ? `direction=${direction}&` : ''
-      let pageNum = page ? `page=${page}&` : ''
+      const pageNum = page ? `page=${page}&` : ''
       limit = limit ? `limit=${limit}&` : ''
       search = search ? `search=${search}&` : ''
       _id = _id ? `id=${_id}` : ''
 
-      if(sport || sort || direction || pageNum || limit || search){
+      if (sport || sort || direction || pageNum || limit || search) {
         url = url + '?' + sport + sort + direction + pageNum + limit + search + _id
       }
 
       const response = await axios.get(url, {
-        headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}
-      });
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+      })
       dispatch(setNumberOfFiles(response.headers['file-length']))
-      if(page === 1){
+      if (page === 1) {
         dispatch(setWorkouts(response.data))
       } else {
         dispatch(addWorkouts(response.data))
       }
-     } catch (e) {
+    } catch (e) {
       console.log(e)
     } finally {
       dispatch(removeRequestGetWorkouts())
@@ -91,8 +96,7 @@ export function getWorkouts(sport, sort, direction, page, limit, search, _id) {
   }
 }
 
-
-export function getStats(sport, startDate, endDate) {
+export function getStats (sport, startDate, endDate) {
   return async dispatch => {
     try {
       dispatch(showLoader())
@@ -102,16 +106,15 @@ export function getStats(sport, startDate, endDate) {
       startDate = startDate ? `startDate=${startDate}&` : ''
       endDate = endDate ? `endDate=${endDate}&` : ''
 
-      if(sport || startDate || endDate){
+      if (sport || startDate || endDate) {
         url = url + '?' + sport + startDate + endDate
       }
 
       const response = await axios.get(url, {
-        headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}
-      });
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+      })
       dispatch(setNumberOfFiles(response.headers['file-length']))
       dispatch(setWorkouts(response.data))
-
     } catch (e) {
       console.log(e)
     } finally {
@@ -120,13 +123,11 @@ export function getStats(sport, startDate, endDate) {
   }
 }
 
-
-export function getPolyline(_id){
+export function getPolyline (_id) {
   return async dispatch => {
     try {
-        const response = await axios.get(`${API_URL}api/workouts/polyline?id=${_id}`,
-          {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}
-        });
+      const response = await axios.get(`${API_URL}api/workouts/polyline?id=${_id}`,
+        { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
       dispatch(addPolyline(response.data))
     } catch (e) {
       console.log(e?.response?.data?.message)
@@ -135,14 +136,12 @@ export function getPolyline(_id){
   }
 }
 
-
-export function getChartsData(_id){
+export function getChartsData (_id) {
   return async dispatch => {
     try {
-      dispatch(showLoader());
+      dispatch(showLoader())
       const response = await axios.get(`${API_URL}api/workouts/chartsdata?id=${_id}`,
-        {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}
-        });
+        { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
       dispatch(addChartsData(response.data))
     } catch (e) {
       console.log(e?.response?.data?.message)
@@ -152,13 +151,11 @@ export function getChartsData(_id){
   }
 }
 
-
-export function getPowerCurve(_id){
+export function getPowerCurve (_id) {
   return async dispatch => {
     try {
       const response = await axios.get(`${API_URL}api/workouts/powercurve?id=${_id}`,
-        {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}
-        });
+        { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
       dispatch(addPowerCurve(response.data))
     } catch (e) {
       console.log(e?.response?.data?.message)
@@ -167,18 +164,18 @@ export function getPowerCurve(_id){
   }
 }
 
-export function deleteOneWorkout(_id) {
+export function deleteOneWorkout (_id) {
   console.log('deleteOneWorkout', _id)
   return async dispatch => {
     try {
       // dispatch(showSmallLoader(_id));
-      const response = await axios.delete(`${API_URL}api/workouts?id=${_id}`,{
-        headers:{
+      const response = await axios.delete(`${API_URL}api/workouts?id=${_id}`, {
+        headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
       })
       console.log(response)
-      if (response.status === 200){
+      if (response.status === 200) {
         dispatch(deleteWorkoutAction(_id))
       }
       return response.statusText
@@ -193,18 +190,17 @@ export function deleteOneWorkout(_id) {
   }
 }
 
-
-export function deleteAllWorkouts() {
+export function deleteAllWorkouts () {
   console.log('deleteAllWorkouts')
   return async dispatch => {
     try {
-      dispatch(showLoader());
-      const response = await axios.delete(`${API_URL}api/workouts/all`,{
-        headers:{
+      dispatch(showLoader())
+      const response = await axios.delete(`${API_URL}api/workouts/all`, {
+        headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
       })
-      if(response.status === 200){
+      if (response.status === 200) {
         dispatch(setWorkouts([]))
         dispatch(auth())
         return 'OK'
@@ -218,17 +214,17 @@ export function deleteAllWorkouts() {
   }
 }
 
-export function deleteUserWorkouts() {
+export function deleteUserWorkouts () {
   console.log('deleteUserWorkouts')
   return async dispatch => {
     try {
-      dispatch(showLoader());
-      const response = await axios.delete(`${API_URL}api/workouts/user`,{
-        headers:{
+      dispatch(showLoader())
+      const response = await axios.delete(`${API_URL}api/workouts/user`, {
+        headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
       })
-      if(response.status === 200){
+      if (response.status === 200) {
         dispatch(dispatch(logout()))
         return 'OK'
       }
@@ -242,20 +238,20 @@ export function deleteUserWorkouts() {
   }
 }
 
-
-export function editWorkout(id, field, text) {
+export function editWorkout (id, field, text) {
   return async dispatch => {
     try {
-      dispatch(showSmallLoader(id));
+      dispatch(showSmallLoader(id))
       const response = await axios.post(`${API_URL}api/workouts/edit`, {
         id,
         field,
         text
-      },{
-        headers: {Authorization: `Bearer ${localStorage.getItem('token')}`},
-      });
-      if(response.status === 200)
+      }, {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+      })
+      if (response.status === 200) {
         dispatch(changeWorkoutAction(response.data.workout))
+      }
     } catch (e) {
       console.log(e)
       dispatch(setError(e))
@@ -264,5 +260,3 @@ export function editWorkout(id, field, text) {
     }
   }
 }
-
-

@@ -1,9 +1,8 @@
-import React from 'react';
-import {ThreeDots} from "react-loader-spinner";
+import React from 'react'
+import { ThreeDots } from 'react-loader-spinner'
 import variables from '../DashboardContent/styles.module.scss'
 
-const ThreeDotsLoader = ({className}) => {
-
+const ThreeDotsLoader = ({ className }) => {
   return (
     <div className={'appLoader ' + className}>
       <ThreeDots
@@ -17,7 +16,7 @@ const ThreeDotsLoader = ({className}) => {
         visible={true}
       />
     </div>
-  );
-};
+  )
+}
 
-export default ThreeDotsLoader;
+export default ThreeDotsLoader

@@ -1,5 +1,5 @@
-import React from 'react';
-import {dictConstant, userLang} from "@constants/dict.constant.js";
+import React from 'react'
+import { dictConstant, userLang } from '@constants/dict.constant.js'
 
 const About = () => {
   return (
@@ -20,13 +20,14 @@ const About = () => {
           <br/><br/>
           {dictConstant.title.photo[userLang]}
           <br/>
-          <a href='https://www.pexels.com/photo/black-bicycle-leaning-on-green-wall-3680501/'>Raniery Costa Pelissari</a>
+          <a href='https://www.pexels.com/photo/black-bicycle-leaning-on-green-wall-3680501/'>Raniery Costa
+            Pelissari</a>
           <br/>
           <a href='https://www.pexels.com/photo/man-riding-bicycle-on-road-6090949/'>lawlesscapture</a>
         </p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default About;
+export default About

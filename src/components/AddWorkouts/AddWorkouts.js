@@ -1,58 +1,55 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from 'react'
 import styles from './styles.module.scss'
-import FilesList from "./components/FilesList";
-import {dictConstant, userLang} from "@constants/dict.constant.js";
-import {useDispatch, useSelector} from "react-redux";
-import {uploadWorkouts} from "@store/workouts/workouts.actions";
-import {addFilesToUpload, resetStateUploadedFiles} from "@store/workouts/workouts.slice";
-import {auth} from "@store/auth/auth.actions";
+import FilesList from './components/FilesList'
+import { dictConstant, userLang } from '@constants/dict.constant.js'
+import { useDispatch, useSelector } from 'react-redux'
+import { uploadWorkouts } from '@store/workouts/workouts.actions'
+import { addFilesToUpload, resetStateUploadedFiles } from '@store/workouts/workouts.slice'
+import { auth } from '@store/auth/auth.actions'
 
+export default function AddWorkouts () {
+  const [files, setFiles] = useState([])
+  const [drag, setDrag] = useState(false)
+  const [buttonClick, setButtonClick] = useState(false)
+  const inputHiddenRef = useRef()
+  const dispatch = useDispatch()
+  const uploadedFiles = useSelector(state => state.workouts.uploadedFiles)
 
-export default function AddWorkouts() {
-  const [files, setFiles] = useState([]);
-  const [drag, setDrag] = useState(false);
-  const [buttonClick, setButtonClick] = useState(false);
-  const inputHiddenRef = useRef();
-  const dispatch = useDispatch();
-  const uploadedFiles = useSelector(state => state.workouts.uploadedFiles);
-
-
-  function dragStartHandler(e) {
-    e.preventDefault();
-    setDrag(true);
+  function dragStartHandler (e) {
+    e.preventDefault()
+    setDrag(true)
   }
 
-  function dragLeaveHandler(e) {
-    e.preventDefault();
-    setDrag(false);
+  function dragLeaveHandler (e) {
+    e.preventDefault()
+    setDrag(false)
   }
 
-  function onDropHandler(e) {
-    e.preventDefault();
-    setFiles([]);
+  function onDropHandler (e) {
+    e.preventDefault()
+    setFiles([])
     dispatch(resetStateUploadedFiles())
     setButtonClick(false)
-    let workouts = [...e.dataTransfer.files]
-      .filter(workout => workout.name.split('.').pop() === 'fit');
+    const workouts = [...e.dataTransfer.files]
+      .filter(workout => workout.name.split('.').pop() === 'fit')
     setFiles(workouts)
-    setDrag(false);
+    setDrag(false)
   }
 
-  function handleClick() {
-    inputHiddenRef.current.click();
+  function handleClick () {
+    inputHiddenRef.current.click()
   }
 
-
-  function handleChange(e) {
-    setFiles([]);
+  function handleChange (e) {
+    setFiles([])
     dispatch(resetStateUploadedFiles())
     setButtonClick(false)
-    let workouts = [...e.target.files]
-      .filter(workout => workout.name.split('.').pop() === 'fit');
+    const workouts = [...e.target.files]
+      .filter(workout => workout.name.split('.').pop() === 'fit')
     setFiles(workouts)
   }
 
-  function uploadValidatedFiles() {
+  function uploadValidatedFiles () {
     if (files?.length) {
       setButtonClick(true)
       dispatch(uploadWorkouts(files))
@@ -62,12 +59,11 @@ export default function AddWorkouts() {
 
   useEffect(() => {
     return () => {
-      if(uploadedFiles.length && files.length === uploadedFiles.length) {
+      if (uploadedFiles.length && files.length === uploadedFiles.length) {
         dispatch(auth())
-        dispatch(resetStateUploadedFiles());
+        dispatch(resetStateUploadedFiles())
       }
     }
-
   }, [])
 
   return (
@@ -104,5 +100,5 @@ export default function AddWorkouts() {
       </div>
     </div>
 
-  );
+  )
 };

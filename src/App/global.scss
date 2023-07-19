@@ -1,0 +1,282 @@
+@import '../../node_modules/@csstools/normalize.css';
+@import "vars";
+
+@font-face {
+  font-family: Logo;
+  src: url('@assets/fonts/Acetone.ttf');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Main;
+  src: url("@assets/fonts/OpenSans-Light.woff2");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+
+}
+
+@font-face {
+  font-family: Main;
+  src: url("@assets/fonts/OpenSans-LightItalic.woff2");
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+
+}
+
+@font-face {
+  font-family: Main;
+  src: url("@assets/fonts/OpenSans-Regular.woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+
+}
+@font-face {
+  font-family: Main;
+  src: url("@assets/fonts/OpenSans-Medium.woff2");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+
+}
+@font-face {
+  font-family: Main;
+  src: url("@assets/fonts/OpenSans-SemiBold.woff2");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: Main;
+  src: url("@assets/fonts/OpenSans-Bold.woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+
+}
+@font-face {
+  font-family: Main;
+  src: url("@assets/fonts/OpenSans-ExtraBold.woff2");
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+
+}
+
+
+body {
+  @include mainFont;
+  width: 100%;
+  height: 100vh;
+  padding: 0;
+  margin: 0 auto;
+
+  h1{
+    font-weight: 300;
+    padding: 30px 0;
+    margin: 0;
+  }
+
+}
+
+.pace{
+  .highcharts-plot-border{
+    fill: #11a9ed;
+  }
+}
+
+.appLoader{
+  @include flexRowCenter;
+}
+
+a{
+  color: $primaryColor;
+}
+
+header{
+  @include flexRowCenter;
+
+  background: $backgroundLight;
+  box-shadow: inset 0 0 0 1px $borderColor;
+  box-sizing: border-box;
+
+  height: 7vh;
+
+  //padding: 0 calc((100% - 1200px)/2);
+
+  div{
+    @include flexRowSpaceBetween;
+    width: $contentWidth;
+    a{
+      @include mainFont($fs: $fsLarge,  $fw: 400);
+      //background: $backgroundLight;
+      color: black;
+      padding: calc((7vh - 28px) / 2) 20px;
+      border-bottom: 3px solid rgba(255, 255, 255, 0);
+      cursor: pointer;
+      text-decoration: none;
+    }
+    a:hover{
+      color: $primaryColor;
+    }
+    .active{
+      border-color: $primaryColor;
+    }
+    nav, div{
+      display: flex;
+      align-items: center;
+      .logo{
+        color: $primaryColor;
+        font-family: Logo, sans-serif;
+        font-size: 32px;
+        text-decoration: none;
+        border: none;
+        border-bottom: 3px solid rgba(255, 255, 255, 0);
+        padding: calc((7vh - 44px) / 2) 20px calc((7vh - 44px) / 2) 0;
+
+        &:hover{
+          color: $primaryColorDark;
+        }
+      }
+    }
+  }
+
+}
+
+#root{
+  > div{
+    height: 93vh;
+    overflow: auto;
+  }
+}
+
+.page{
+  @include page;
+  //@include flexRowCenter;
+}
+
+.content{
+  @include page;
+  width: $contentWidth;
+}
+
+.center{
+  height: 100%;
+  @include flexRowCenter;
+  @include backgroundImageLightGrayChains;
+}
+
+.childRef{
+  height: 1px;
+  opacity: 0
+}
+
+.about{
+  @include page;
+  @include bgImg($url: "@assets/img/aboutPageBG", $bgp: 15% 0);
+
+  div{
+    @include border($radius: 6px);
+    background-color: $backgroundLight;
+    min-height: 100px;
+    width: 500px;
+    margin: 100px calc((100% - $contentWidth)/2);
+    padding: 30px;
+
+    h1{
+      padding: 0;
+    }
+
+    p{
+      margin: 0;
+      padding: 20px 0 0 0;
+
+      font-size: $fsLarge;
+      font-weight: 300;
+      letter-spacing: 1px;
+      line-height: 150%;
+      white-space: pre-wrap
+    }
+
+    a{
+      color: $primaryColorDark;
+      font-style: italic;
+      letter-spacing: 1.5px;
+      text-decoration: none;
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.loading{
+  cursor: wait;
+}
+
+.icon{
+  @include flexRowCenter;
+  svg{
+    @include svg;
+  }
+}
+
+.active{
+  svg{
+   fill: $backgroundLight;
+  }
+}
+
+.viewWorkoutMaps{
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.modalBackground{
+  position: absolute;
+  width: 100%;
+  height: 93vh;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 2;
+  transition: opacity 200ms ease-out;
+  opacity: 1;
+  cursor: wait;
+}
+
+.modalNotice{
+  position: absolute;
+  @include flexRowCenter;
+  left: calc(50% - 156px);
+  top: 10vh;
+  width: 300px;
+  min-height: 30px;
+  padding: 10px;
+  z-index: 3;
+  transition: opacity 500ms ease-out;
+  opacity: 0;
+}
+
+.noRules{
+  @include border($color: #d9a7ab);
+  color: #721c24;
+  background-color: #f8d7da;
+}
+
+.uploadModal{
+  @include border($color: $primaryColor);
+  color: $primaryColorDark;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+
+.visible{
+  opacity: 1;
+  cursor: pointer;
+}
+
+

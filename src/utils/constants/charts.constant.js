@@ -1,5 +1,5 @@
-import {getHourMinSec} from "@helpers/functionsDate&Values.helpers";
-import {dictConstant, userLang} from "@constants/dict.constant.js";
+import { getHourMinSec } from '@helpers/functionsDate&Values.helpers'
+import { dictConstant, userLang } from '@constants/dict.constant.js'
 
 export const chartsConfig = {
   speed: {
@@ -8,7 +8,7 @@ export const chartsConfig = {
     plotLinesTextValue: 'kmph',
     lineColor: '#11a9ed',
     themeColor: '#11a9ed',
-    reversed: false,
+    reversed: false
 
   },
   pace: {
@@ -17,7 +17,7 @@ export const chartsConfig = {
     plotLinesTextValue: 'pace',
     lineColor: 'white',
     themeColor: '#11a9ed',
-    reversed: true,
+    reversed: true
   },
   power: {
     title: 'power',
@@ -25,7 +25,7 @@ export const chartsConfig = {
     plotLinesTextValue: 'w',
     lineColor: '#6bc531',
     themeColor: '#6bc531',
-    reversed: false,
+    reversed: false
   },
   heartRate: {
     title: 'heartRate',
@@ -33,7 +33,7 @@ export const chartsConfig = {
     plotLinesTextValue: 'bpm',
     lineColor: '#ff0035',
     themeColor: '#ff0035',
-    reversed: false,
+    reversed: false
   },
   cadence: {
     title: 'cadence',
@@ -42,7 +42,7 @@ export const chartsConfig = {
     plotLinesTextValueRunning: 'cadenceRun',
     lineColor: '#c74cb1',
     themeColor: '#c74cb1',
-    reversed: false,
+    reversed: false
   },
   altitude: {
     title: 'altitude',
@@ -50,7 +50,7 @@ export const chartsConfig = {
     plotLinesTextValue: 'm',
     lineColor: '#750bc4',
     themeColor: '#750bc4',
-    reversed: false,
+    reversed: false
   },
   powerCurve: {
     title: 'powerCurve',
@@ -62,7 +62,7 @@ export const chartsConfig = {
       if (x < 60) return `${x}${dictConstant.units.s[userLang]}<br>${y} ${dictConstant.units.w[userLang]}`
       else {
         x = getHourMinSec(x)
-        return `${x}<br>${y}${dictConstant.units.w[userLang]}`;
+        return `${x}<br>${y}${dictConstant.units.w[userLang]}`
       }
     },
     options: {
@@ -73,13 +73,13 @@ export const chartsConfig = {
         showFirstLabel: true,
         labels: {
           formatter: function () {
-            if (this.value < 60) return this.value + dictConstant.units.s[userLang];
+            if (this.value < 60) return this.value + dictConstant.units.s[userLang]
             else return getHourMinSec(this.value)
           },
           enabled: true,
-          y: 12,
+          y: 12
         },
-        min: 1,
+        min: 1
       }
     }
   },
@@ -88,8 +88,8 @@ export const chartsConfig = {
     plotLinesTextValue: 'w',
     lineColor: 'rgb(90,90,90)',
     themeColor: 'rgb(90,90,90)',
-    reversed: false,
-  },
+    reversed: false
+  }
   // totalTimerTime: {
   //   name: 'totalTimerTime',
   //   // plotLinesText: 'avgAltitude',
