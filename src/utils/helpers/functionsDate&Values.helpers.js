@@ -72,76 +72,69 @@ export function calcDate (firstDay, lastDay, period, customPeriod) {
 }
 
 function more750Days (firstDay, days, year) {
-  const timestampArray = []
-  const dateArray = []
+  const result = [[], []]
   for (let i = 0; i < days / 365; i++) {
     const date = i === 0
       ? new Date(firstDay)
       : new Date(year + i, 0, 1)
-    dateArray.push(new Date(date))
-    timestampArray.push(date)
+    result[0].push(date)
+    result[1].push(new Date(date))
   }
-  return [timestampArray, dateArray]
+  return [...result]
 }
 
 function daysOver180 (firstDay, month, days) {
-  const timestampArray = []
-  const dateArray = []
+  const result = [[], []]
   for (let i = 0; i < days / 30.4; i++) {
     const day = i === 0 ? new Date(firstDay).getDate() : 1
-    dateArray.push(new Date(new Date(firstDay).setMonth(month + i, day)))
-    timestampArray.push(new Date(firstDay).setMonth(month + i, day))
+    result[0].push(new Date(firstDay).setMonth(month + i, day))
+    result[1].push(new Date(new Date(firstDay).setMonth(month + i, day)))
   }
-  return [timestampArray, dateArray]
+  return [...result]
 }
 
 function more28Days (firstDay, days) {
-  const timestampArray = []
-  const dateArray = []
+  const result = [[], []]
   for (let i = 0; i < days / 7; i++) {
-    dateArray.push(new Date(firstDay + i * 7 * dayInMs))
-    timestampArray.push(firstDay + i * 7 * dayInMs)
+    result[0].push(firstDay + i * 7 * dayInMs)
+    result[1].push(new Date(firstDay + i * 7 * dayInMs))
   }
-  return [timestampArray, dateArray]
+  return [...result]
 }
 
 function less28days (firstDay, days) {
-  const timestampArray = []
-  const dateArray = []
+  const result = [[], []]
   for (let i = 0; i < days; i++) {
-    dateArray.push(new Date(firstDay + i * dayInMs))
-    timestampArray.push(firstDay + i * dayInMs)
+    result[0].push(firstDay + i * dayInMs)
+    result[1].push(new Date(firstDay + i * dayInMs))
   }
-  return [timestampArray, dateArray]
+  return [...result]
 }
 
 function period365or180Days (firstDay, month, period) {
-  const timestampArray = []
-  const dateArray = []
+  const result = [[], []]
   const numberOfMonths = period === '365' ? 12 : 6
   for (let i = 0; i < numberOfMonths; i++) {
-    dateArray.push(new Date(new Date(firstDay).setMonth(month + i, 1)))
-    timestampArray.push(new Date(firstDay).setMonth(month + i, 1))
+    result[0].push(new Date(firstDay).setMonth(month + i, 1))
+    result[1].push(new Date(new Date(firstDay).setMonth(month + i, 1)))
   }
-  return [timestampArray, dateArray]
+  return [...result]
 }
 
 function period28Days (firstDay) {
-  const timestampArray = []
-  const dateArray = []
+  const result = [[], []]
   for (let i = 0; i < 4; i++) {
-    dateArray.push(new Date(firstDay + i * 7 * dayInMs))
-    timestampArray.push(firstDay + i * 7 * dayInMs)
+    result[0].push(firstDay + i * 7 * dayInMs)
+    result[1].push(new Date(firstDay + i * 7 * dayInMs))
   }
-  return [timestampArray, dateArray]
+  return [...result]
 }
 
 function period7Days (firstDay) {
-  const timestampArray = []
-  const dateArray = []
+  const result = [[], []]
   for (let i = 0; i < 7; i++) {
-    dateArray.push(new Date(firstDay + i * dayInMs))
-    timestampArray.push(firstDay + i * dayInMs)
+    result[0].push(firstDay + i * dayInMs)
+    result[1].push(new Date(firstDay + i * dayInMs))
   }
-  return [timestampArray, dateArray]
+  return [...result]
 }
