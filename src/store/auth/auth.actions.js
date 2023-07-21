@@ -73,7 +73,7 @@ export const auth = (update = false) => {
       dispatch(setStats(response.data.user.stats))
       !update && localStorage.setItem('token', response.data.token)
       dispatch(setAllWorkouts(response.data.user.workouts))
-      if (!update && demoUser.includes(response.data.user?.email)) {
+      if (demoUser.includes(response.data.user?.email)) {
         dispatch(setDemo())
       }
     } catch (e) {

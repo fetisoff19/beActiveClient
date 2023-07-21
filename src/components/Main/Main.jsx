@@ -13,9 +13,9 @@ const Main = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    localStorage.getItem('token')
-      ? dispatch(auth(true))
-      : null
+    if (localStorage.getItem('token')) {
+      dispatch(auth())
+    }
   }, [])
 
   return (

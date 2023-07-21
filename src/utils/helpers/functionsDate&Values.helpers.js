@@ -51,90 +51,92 @@ export function calcDate (firstDay, lastDay, period, customPeriod) {
 
   if (customPeriod) {
     if (days > 750) {
-      return more750Days(firstDay, days, year)
+      return CalcDateService.more750Days(firstDay, days, year)
     }
     if (days > 180) {
-      return daysOver180(firstDay, month, days)
+      return CalcDateService.daysOver180(firstDay, month, days)
     }
     if (days > 28) {
-      return more28Days(firstDay, days)
-    } else return less28days(firstDay, days)
+      return CalcDateService.more28Days(firstDay, days)
+    } else return CalcDateService.less28days(firstDay, days)
   }
   if (period === '365' || period === '180') {
-    return period365or180Days(firstDay, month, period)
+    return CalcDateService.period365or180Days(firstDay, month, period)
   }
   if (period === '28') {
-    return period28Days(firstDay)
+    return CalcDateService.period28Days(firstDay)
   }
   if (period === '7') {
-    return period7Days(firstDay)
+    return CalcDateService.period7Days(firstDay)
   }
 }
 
-function more750Days (firstDay, days, year) {
-  const result = [[], []]
-  for (let i = 0; i < days / 365; i++) {
-    const date = i === 0
-      ? new Date(firstDay)
-      : new Date(year + i, 0, 1)
-    result[0].push(date)
-    result[1].push(new Date(date))
+class CalcDateService {
+  static more750Days (firstDay, days, year) {
+    const result = [[], []]
+    for (let i = 0; i < days / 365; i++) {
+      const date = i === 0
+        ? new Date(firstDay)
+        : new Date(year + i, 0, 1)
+      result[0].push(date)
+      result[1].push(new Date(date))
+    }
+    return [...result]
   }
-  return [...result]
-}
 
-function daysOver180 (firstDay, month, days) {
-  const result = [[], []]
-  for (let i = 0; i < days / 30.4; i++) {
-    const day = i === 0 ? new Date(firstDay).getDate() : 1
-    result[0].push(new Date(firstDay).setMonth(month + i, day))
-    result[1].push(new Date(new Date(firstDay).setMonth(month + i, day)))
+  static daysOver180 (firstDay, month, days) {
+    const result = [[], []]
+    for (let i = 0; i < days / 30.4; i++) {
+      const day = i === 0 ? new Date(firstDay).getDate() : 1
+      result[0].push(new Date(firstDay).setMonth(month + i, day))
+      result[1].push(new Date(new Date(firstDay).setMonth(month + i, day)))
+    }
+    return [...result]
   }
-  return [...result]
-}
 
-function more28Days (firstDay, days) {
-  const result = [[], []]
-  for (let i = 0; i < days / 7; i++) {
-    result[0].push(firstDay + i * 7 * dayInMs)
-    result[1].push(new Date(firstDay + i * 7 * dayInMs))
+  static more28Days (firstDay, days) {
+    const result = [[], []]
+    for (let i = 0; i < days / 7; i++) {
+      result[0].push(firstDay + i * 7 * dayInMs)
+      result[1].push(new Date(firstDay + i * 7 * dayInMs))
+    }
+    return [...result]
   }
-  return [...result]
-}
 
-function less28days (firstDay, days) {
-  const result = [[], []]
-  for (let i = 0; i < days; i++) {
-    result[0].push(firstDay + i * dayInMs)
-    result[1].push(new Date(firstDay + i * dayInMs))
+  static less28days (firstDay, days) {
+    const result = [[], []]
+    for (let i = 0; i < days; i++) {
+      result[0].push(firstDay + i * dayInMs)
+      result[1].push(new Date(firstDay + i * dayInMs))
+    }
+    return [...result]
   }
-  return [...result]
-}
 
-function period365or180Days (firstDay, month, period) {
-  const result = [[], []]
-  const numberOfMonths = period === '365' ? 12 : 6
-  for (let i = 0; i < numberOfMonths; i++) {
-    result[0].push(new Date(firstDay).setMonth(month + i, 1))
-    result[1].push(new Date(new Date(firstDay).setMonth(month + i, 1)))
+  static period365or180Days (firstDay, month, period) {
+    const result = [[], []]
+    const numberOfMonths = period === '365' ? 12 : 6
+    for (let i = 0; i < numberOfMonths; i++) {
+      result[0].push(new Date(firstDay).setMonth(month + i, 1))
+      result[1].push(new Date(new Date(firstDay).setMonth(month + i, 1)))
+    }
+    return [...result]
   }
-  return [...result]
-}
 
-function period28Days (firstDay) {
-  const result = [[], []]
-  for (let i = 0; i < 4; i++) {
-    result[0].push(firstDay + i * 7 * dayInMs)
-    result[1].push(new Date(firstDay + i * 7 * dayInMs))
+  static period28Days (firstDay) {
+    const result = [[], []]
+    for (let i = 0; i < 4; i++) {
+      result[0].push(firstDay + i * 7 * dayInMs)
+      result[1].push(new Date(firstDay + i * 7 * dayInMs))
+    }
+    return [...result]
   }
-  return [...result]
-}
 
-function period7Days (firstDay) {
-  const result = [[], []]
-  for (let i = 0; i < 7; i++) {
-    result[0].push(firstDay + i * dayInMs)
-    result[1].push(new Date(firstDay + i * dayInMs))
+  static period7Days (firstDay) {
+    const result = [[], []]
+    for (let i = 0; i < 7; i++) {
+      result[0].push(firstDay + i * dayInMs)
+      result[1].push(new Date(firstDay + i * dayInMs))
+    }
+    return [...result]
   }
-  return [...result]
 }
