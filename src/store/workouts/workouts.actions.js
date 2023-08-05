@@ -131,7 +131,6 @@ export function getPolyline (_id) {
       dispatch(addPolyline(response.data))
     } catch (e) {
       console.log(e?.response?.data?.message)
-    } finally {
     }
   }
 }
@@ -159,22 +158,19 @@ export function getPowerCurve (_id) {
       dispatch(addPowerCurve(response.data))
     } catch (e) {
       console.log(e?.response?.data?.message)
-    } finally {
     }
   }
 }
 
 export function deleteOneWorkout (_id) {
-  console.log('deleteOneWorkout', _id)
   return async dispatch => {
     try {
-      // dispatch(showSmallLoader(_id));
+      dispatch(showSmallLoader(_id))
       const response = await axios.delete(`${API_URL}api/workouts?id=${_id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
       })
-      console.log(response)
       if (response.status === 200) {
         dispatch(deleteWorkoutAction(_id))
       }
@@ -191,7 +187,6 @@ export function deleteOneWorkout (_id) {
 }
 
 export function deleteAllWorkouts () {
-  console.log('deleteAllWorkouts')
   return async dispatch => {
     try {
       dispatch(showLoader())
@@ -215,7 +210,6 @@ export function deleteAllWorkouts () {
 }
 
 export function deleteUserWorkouts () {
-  console.log('deleteUserWorkouts')
   return async dispatch => {
     try {
       dispatch(showLoader())

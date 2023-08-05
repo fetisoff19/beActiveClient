@@ -115,7 +115,7 @@ header{
       @include mainFont($fs: $fsLarge,  $fw: 400);
       //background: $backgroundLight;
       color: black;
-      padding: calc((7vh - 28px) / 2) 20px;
+      padding: calc((7vh - 26px) / 2) 20px;
       border-bottom: 3px solid rgba(255, 255, 255, 0);
       cursor: pointer;
       text-decoration: none;

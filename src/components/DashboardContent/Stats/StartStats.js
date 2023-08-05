@@ -1,12 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { dictConstant, userLang } from '@constants/dict.constant.js'
 import Block from './Block'
-import {
-  convertDistance,
-  convertPace,
-  convertSpeed,
-  getHourMinSec
-} from '../../../utils/helpers/functionsDate&Values.helpers.js'
+import { convertDistance, convertPace, convertSpeed, getHourMinSec } from '@helpers/functionsDate&Values.helpers'
 import { useSelector } from 'react-redux'
 import styles from '../styles.module.scss'
 

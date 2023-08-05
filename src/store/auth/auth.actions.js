@@ -8,14 +8,9 @@ export const registration = (email, password, setRequest) => {
   return async dispatch => {
     try {
       dispatch(showSmallLoader())
-      const response = await axios({
-        method: 'post',
-        url: `${API_URL}api/auth/registration`,
-        timeout: 20000,
-        data: {
-          email,
-          password
-        }
+      const response = await axios.post(`${API_URL}api/auth/registration`, {
+        email,
+        password
       })
       setRequest(response.data.message)
     } catch (e) {
@@ -27,18 +22,13 @@ export const registration = (email, password, setRequest) => {
   }
 }
 
-export const login = (email, password, setRequest) => {
+export const login = (email, password, setRequest, demo) => {
   return async dispatch => {
     try {
       dispatch(showSmallLoader())
-      const response = await axios({
-        method: 'post',
-        url: `${API_URL}api/auth/login`,
-        timeout: 20000,
-        data: {
-          email,
-          password
-        }
+      const response = await axios.post(`${API_URL}api/auth/login`, {
+        email,
+        password
       })
       dispatch(setUser(response.data.user))
       dispatch(setAuth(true))
@@ -46,7 +36,7 @@ export const login = (email, password, setRequest) => {
       localStorage.setItem('token', response.data.token)
       dispatch(setAllWorkouts(response.data.user.workouts))
       setRequest(response.data.message)
-      if (demoUser.includes(response.data.user?.email)) {
+      if (demoUser.includes(response.data.user?.email) && demo) {
         dispatch(setDemo())
       }
     } catch (e) {
