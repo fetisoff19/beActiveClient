@@ -51,8 +51,8 @@ const ChangeName = ({ data, isLink, styles, setState }) => {
     ? (
       <div className={styles?.changeName}>
         {disabled
-          ? <Link to={router.pathname + `/${data._id}`}>
-            {input}
+          ? <Link className={styles?.input} to={router.pathname + `/${data._id}`}>
+            {value}
           </Link>
           : input
         }
